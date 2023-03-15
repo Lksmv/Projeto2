@@ -21,15 +21,15 @@ public class HotelController {
 
     private final HotelService hotelService;
 
-    @GetMapping
-    public ResponseEntity<List<HotelEntity>> listar() {
-        List<HotelEntity> lista = hotelService.list();
-        return new ResponseEntity<>(lista, HttpStatus.OK);
-    }
-
-    @PostMapping
-    public ResponseEntity<HotelEntity> create(@RequestBody HotelEntity hotel) {
-        return new ResponseEntity<>(hotelService.create(hotel), HttpStatus.OK);
-    }
+//    @GetMapping
+//    public ResponseEntity<List<HotelEntity>> listar() {
+//        List<HotelEntity> lista = hotelService.list();
+//        return new ResponseEntity<>(lista, HttpStatus.OK);
+//    }
+//
+//    @PostMapping
+//    public ResponseEntity<HotelEntity> create(@RequestBody HotelEntity hotel) {
+//        return new ResponseEntity<>(hotelService.create(hotel), HttpStatus.OK);
+//    }
 
 }
