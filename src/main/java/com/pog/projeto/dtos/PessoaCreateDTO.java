@@ -7,9 +7,7 @@ import lombok.Data;
 import org.hibernate.validator.constraints.br.CPF;
 
 import javax.persistence.*;
-import javax.validation.constraints.Email;
-import javax.validation.constraints.Max;
-import javax.validation.constraints.NotNull;
+import javax.validation.constraints.*;
 import java.util.Set;
 
 @Data
@@ -23,10 +21,9 @@ public class PessoaCreateDTO {
     @Email
     private String email;
     @NotNull
-    @Max(15)
+    @Size(max = 15)
     private String telefone;
     @NotNull
     private String senha;
 
-    private Integer idCargo;
 }

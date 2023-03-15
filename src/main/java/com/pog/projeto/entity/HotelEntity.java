@@ -18,8 +18,8 @@ import java.util.Set;
 @Entity(name = "hotel")
 public class HotelEntity {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hotel_id_seq")
-    @SequenceGenerator(name = "hotel_id_seq", sequenceName = "hotel_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hotel_id_hotel_seq")
+    @SequenceGenerator(name = "hotel_id_hotel_seq", sequenceName = "hotel_id_hotel_seq", allocationSize = 1)
     @Id
     @Column(name = "ID_HOTEL")
     private Integer idHotel;

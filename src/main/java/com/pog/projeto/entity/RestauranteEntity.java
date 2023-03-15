@@ -17,8 +17,8 @@ import java.util.Set;
 @Entity(name = "RESTAURANTE")
 public class RestauranteEntity {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "restaurante_id_seq")
-    @SequenceGenerator(name = "restaurante_id_seq", sequenceName = "restaurante_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "restaurante_id_restaurante_seq")
+    @SequenceGenerator(name = "restaurante_id_restaurante_seq", sequenceName = "restaurante_id_restaurante_seq", allocationSize = 1)
     @Id
     @Column(name = "ID_RESTAURANTE")
     private Integer idRestaurante;

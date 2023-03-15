@@ -9,6 +9,7 @@ import com.pog.projeto.repository.PacoteRepository;
 import com.pog.projeto.repository.PessoaRepository;
 import com.pog.projeto.repository.PontoTuristicoRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,34 @@ public class PessoaService {
 
     private final PasswordEncoder passwordEncoder;
 
+    public PessoaDTO cadastrar(PessoaCreateDTO pessoaCreateDTO) throws BusinessException {
+        if (pessoaRepository.findAllByEmailOrCpf(pessoaCreateDTO.getEmail(), pessoaCreateDTO.getCpf()).isPresent()) {
+            throw new BusinessException("Email ou CPF Já cadastrados");
+        }
+        PessoaEntity pessoaEntity = toEntity(pessoaCreateDTO);
+        pessoaEntity.setCargoEntity(cargoService.findById(2));
+        pessoaEntity.setSenha(passwordEncoder.encode(pessoaCreateDTO.getSenha()));
+        return toDTO(pessoaRepository.save(pessoaEntity));
+    }
+
+    public List<PessoaDTO> list() {
+        return pessoaRepository.findAll().stream()
+                .map(pessoaEntity -> toDTO(pessoaEntity))
+                .toList();
+    }
+
+    public Integer getIdLoggedUser() {
+        return Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
+    }
+
+    public PessoaDTO getLoggedUser() throws BusinessException {
+        return toDTO(findById(getIdLoggedUser()));
+    }
+
+    public PessoaEntity findById(Integer idPessoa) throws BusinessException {
+        return pessoaRepository.findById(idPessoa)
+                .orElseThrow(() -> new BusinessException("Pessoa não encontrada"));
+    }
 
     public PessoaEntity findByEmail(String email) throws BusinessException {
         return pessoaRepository.findPessoaEntityByEmail(email)
@@ -47,7 +76,6 @@ public class PessoaService {
     public PessoaEntity toEntity(PessoaCreateDTO dto) throws BusinessException {
         PessoaEntity pessoaEntity = objectMapper.convertValue(dto, PessoaEntity.class);
         pessoaEntity.setPacoteEntities(Collections.emptySet());
-        pessoaEntity.setCargoEntity(cargoService.findById(dto.getIdCargo()));
         return pessoaEntity;
     }
 

@@ -11,6 +11,7 @@ import com.pog.projeto.exception.BusinessException;
 import com.pog.projeto.repository.PacoteRepository;
 import com.pog.projeto.repository.PessoaRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
@@ -28,14 +29,20 @@ public class PacoteService {
     private final PessoaRepository pessoaRepository;
     private final RestauranteService restauranteService;
 
-    public PacoteDTO create(Integer idPessoa) {
+    public PacoteDTO create() {
         PacoteEntity pacoteEntity = new PacoteEntity();
         pacoteEntity.setPessoas(Collections.emptySet());
         pacoteEntity.setHoteis(Collections.emptySet());
         pacoteEntity.setRestauranteEntities(Collections.emptySet());
         pacoteEntity.setVooEntities(Collections.emptySet());
         pacoteEntity.setPontoTuristicoEntities(Collections.emptySet());
-        pacoteEntity.getPessoas().add(pessoaRepository.findById(idPessoa).get());
+        PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.valueOf(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString())).get();
+        if (pessoaEntity.getCargoEntity().getNome().equals("ROLE_ADMIN")) {
+            pacoteEntity.setPromocional("S");
+        } else {
+            pacoteEntity.setPromocional("N");
+        }
+        pacoteEntity.getPessoas().add(pessoaEntity);
         return toDTO(repository.save(pacoteEntity));
     }
 

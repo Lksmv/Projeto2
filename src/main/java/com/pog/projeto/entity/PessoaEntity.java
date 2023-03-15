@@ -18,8 +18,8 @@ import java.util.*;
 @Entity(name = "PESSOA")
 public class PessoaEntity implements UserDetails {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_id_seq")
-    @SequenceGenerator(name = "pessoa_id_seq", sequenceName = "pessoa_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_id_pessoa_seq")
+    @SequenceGenerator(name = "pessoa_id_pessoa_seq", sequenceName = "pessoa_id_pessoa_seq", allocationSize = 1)
     @Id
     @Column(name = "ID_PESSOA")
     private Integer idPessoa;
@@ -45,7 +45,7 @@ public class PessoaEntity implements UserDetails {
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "id")
+    @JoinColumn(name = "CARGO_ID")
     private CargoEntity cargoEntity;
 
     @Override

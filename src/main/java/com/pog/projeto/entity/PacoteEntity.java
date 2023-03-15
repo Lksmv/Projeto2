@@ -17,8 +17,8 @@ import java.util.Set;
 @Entity(name = "PACOTE")
 public class PacoteEntity {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pacote_id_seq")
-    @SequenceGenerator(name = "pacote_id_seq", sequenceName = "pacote_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pacote_id_pacote_seq")
+    @SequenceGenerator(name = "pacote_id_pacote_seq", sequenceName = "pacote_id_pacote_seq", allocationSize = 1)
     @Id
     @Column(name = "ID_PACOTE")
     private Integer idPacote;

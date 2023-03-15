@@ -15,8 +15,8 @@ import java.util.Set;
 @NoArgsConstructor
 @Entity(name = "PONTO_TURISTICO")
 public class PontoTuristicoEntity {
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ponto_turistico_id_seq")
-    @SequenceGenerator(name = "ponto_turistico_id_seq", sequenceName = "ponto_turistico_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "ponto_turistico_id_ponto_seq")
+    @SequenceGenerator(name = "ponto_turistico_id_ponto_seq", sequenceName = "ponto_turistico_id_ponto_seq", allocationSize = 1)
     @Id
     @Column(name = "ID_PONTO")
     private Integer idPontoTuristico;
