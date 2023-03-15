@@ -21,7 +21,7 @@ public class PessoaEntity implements UserDetails {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pessoa_id_seq")
     @SequenceGenerator(name = "pessoa_id_seq", sequenceName = "pessoa_id_seq", allocationSize = 1)
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID_PESSOA")
     private Integer idPessoa;
 
     @Column(name = "NOME")

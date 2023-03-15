@@ -20,7 +20,7 @@ public class PacoteEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pacote_id_seq")
     @SequenceGenerator(name = "pacote_id_seq", sequenceName = "pacote_id_seq", allocationSize = 1)
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID_PACOTE")
     private Integer idPacote;
 
     @Column(name = "DATA_PARTIDA")

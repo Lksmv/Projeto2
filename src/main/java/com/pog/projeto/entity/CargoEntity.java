@@ -16,7 +16,7 @@ public class CargoEntity implements GrantedAuthority {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "cargo_id_seq")
     @SequenceGenerator(name = "cargo_id_seq", sequenceName = "cargo_id_seq", allocationSize = 1)
-    @Column(name = "ID")
+    @Column(name = "ID_CARGO")
     private Integer idCargo;
 
     @Column(name = "nome")

@@ -21,7 +21,7 @@ public class HotelEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hotel_id_seq")
     @SequenceGenerator(name = "hotel_id_seq", sequenceName = "hotel_id_seq", allocationSize = 1)
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID_HOTEL")
     private Integer idHotel;
     @Column(name = "NOME")
     private String nome;

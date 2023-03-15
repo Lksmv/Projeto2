@@ -20,7 +20,7 @@ public class RestauranteEntity {
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "restaurante_id_seq")
     @SequenceGenerator(name = "restaurante_id_seq", sequenceName = "restaurante_id_seq", allocationSize = 1)
     @Id
-    @Column(name = "ID")
+    @Column(name = "ID_RESTAURANTE")
     private Integer idRestaurante;
 
     @Column(name = "NOME")
