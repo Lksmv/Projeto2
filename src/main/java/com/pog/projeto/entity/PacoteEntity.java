@@ -8,7 +8,6 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.Date;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -30,6 +29,9 @@ public class PacoteEntity {
     @Column(name = "DATA_CHEGADA")
     private Date dataChegada;
 
+    @Column(name = "PROMOCIONAL")
+    private String promocional;
+
     @Column(name = "VALOR")
     private Double valor;
 
@@ -42,4 +44,40 @@ public class PacoteEntity {
             inverseJoinColumns = @JoinColumn(name = "HOTEL_ID")
     )
     private Set<HotelEntity> hoteis;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "PACOTE_HOTEL",
+            joinColumns = @JoinColumn(name = "PACOTE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PESSOA_ID")
+    )
+    private Set<PessoaEntity> pessoas;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "PACOTE_RESTAURANTE",
+            joinColumns = @JoinColumn(name = "PACOTE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "RESTAURANTE_ID")
+    )
+    private Set<RestauranteEntity> restauranteEntities;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "PACOTE_VOO",
+            joinColumns = @JoinColumn(name = "PACOTE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "VOO_ID")
+    )
+    private Set<VooEntity> vooEntities;
+
+    @JsonIgnore
+    @ManyToMany(fetch = FetchType.LAZY)
+    @JoinTable(
+            name = "PACOTE_PONTO_TURISTICO",
+            joinColumns = @JoinColumn(name = "PACOTE_ID"),
+            inverseJoinColumns = @JoinColumn(name = "PONTO_TURISTICO_ID")
+    )
+    private Set<PontoTuristicoEntity> pontoTuristicoEntities;
 }

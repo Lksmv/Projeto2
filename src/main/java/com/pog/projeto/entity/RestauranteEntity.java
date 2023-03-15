@@ -7,22 +7,22 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
-import java.util.List;
+import java.util.Date;
 import java.util.Set;
-
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "hotel")
-public class HotelEntity {
+@Entity(name = "RESTAURANTE")
+public class RestauranteEntity {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "hotel_id_seq")
-    @SequenceGenerator(name = "hotel_id_seq", sequenceName = "hotel_id_seq", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "restaurante_id_seq")
+    @SequenceGenerator(name = "restaurante_id_seq", sequenceName = "restaurante_id_seq", allocationSize = 1)
     @Id
     @Column(name = "ID")
-    private Integer idHotel;
+    private Integer idRestaurante;
+
     @Column(name = "NOME")
     private String nome;
 
@@ -31,8 +31,8 @@ public class HotelEntity {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "PACOTE_HOTEL", joinColumns = @JoinColumn(name = "HOTEL_ID"), inverseJoinColumns = @JoinColumn(name = "PACOTE_ID"))
+    @JoinTable(name = "PACOTE_RESTAURANTE", joinColumns = @JoinColumn(name = "RESTAURANTE_ID"), inverseJoinColumns = @JoinColumn(name = "PACOTE_ID"))
     private Set<PacoteEntity> pacoteEntities;
+
+
 }
-
-
