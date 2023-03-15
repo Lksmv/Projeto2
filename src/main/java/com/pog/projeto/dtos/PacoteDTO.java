@@ -11,61 +11,21 @@ import java.util.Set;
 @Data
 public class PacoteDTO {
 
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "pacote_id_seq")
-    @SequenceGenerator(name = "pacote_id_seq", sequenceName = "pacote_id_seq", allocationSize = 1)
-    @Id
-    @Column(name = "ID_PACOTE")
     private Integer idPacote;
 
-    @Column(name = "DATA_PARTIDA")
     private Date dataPartida;
 
-    @Column(name = "DATA_CHEGADA")
     private Date dataChegada;
 
-    @Column(name = "PROMOCIONAL")
     private String promocional;
 
-    @Column(name = "VALOR")
     private Double valor;
 
+    private Set<HotelDTO> hoteis;
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "PACOTE_HOTEL",
-            joinColumns = @JoinColumn(name = "PACOTE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "HOTEL_ID")
-    )
-    private Set<HotelEntity> hoteis;
+    private Set<RestauranteDTO> restauranteDTOS;
 
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "PACOTE_HOTEL",
-            joinColumns = @JoinColumn(name = "PACOTE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "PESSOA_ID")
-    )
-    private Set<PessoaEntity> pessoas;
-
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "PACOTE_RESTAURANTE",
-            joinColumns = @JoinColumn(name = "PACOTE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "RESTAURANTE_ID")
-    )
-    private Set<RestauranteEntity> restauranteEntities;
-
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "PACOTE_VOO",
-            joinColumns = @JoinColumn(name = "PACOTE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "VOO_ID")
-    )
-    private Set<VooEntity> vooEntities;
-
-
-    private Set<PontoTuristicoEntity> pontoTuristicoEntities;
+    private Set<VooDTO> vooDTOS;
+    
+    private Set<PontoTuristicoDTO> pontoTuristicoDTOS;
 }
