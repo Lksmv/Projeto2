@@ -40,8 +40,8 @@ public class PacoteEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "PACOTE_HOTEL",
-            joinColumns = @JoinColumn(name = "PACOTE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "HOTEL_ID")
+            joinColumns = @JoinColumn(name = "ID_PACOTE"),
+            inverseJoinColumns = @JoinColumn(name = "ID_HOTEL")
     )
     private Set<HotelEntity> hoteis;
 
@@ -49,8 +49,8 @@ public class PacoteEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "PACOTE_HOTEL",
-            joinColumns = @JoinColumn(name = "PACOTE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "PESSOA_ID")
+            joinColumns = @JoinColumn(name = "ID_PACOTE"),
+            inverseJoinColumns = @JoinColumn(name = "ID_PESSOA")
     )
     private Set<PessoaEntity> pessoas;
 
@@ -58,8 +58,8 @@ public class PacoteEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "PACOTE_RESTAURANTE",
-            joinColumns = @JoinColumn(name = "PACOTE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "RESTAURANTE_ID")
+            joinColumns = @JoinColumn(name = "ID_PACOTE"),
+            inverseJoinColumns = @JoinColumn(name = "ID_RESTAURANTE")
     )
     private Set<RestauranteEntity> restauranteEntities;
 
@@ -67,8 +67,8 @@ public class PacoteEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "PACOTE_VOO",
-            joinColumns = @JoinColumn(name = "PACOTE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "VOO_ID")
+            joinColumns = @JoinColumn(name = "ID_PACOTE"),
+            inverseJoinColumns = @JoinColumn(name = "ID_VOO")
     )
     private Set<VooEntity> vooEntities;
 
@@ -76,8 +76,8 @@ public class PacoteEntity {
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
             name = "PACOTE_PONTO_TURISTICO",
-            joinColumns = @JoinColumn(name = "PACOTE_ID"),
-            inverseJoinColumns = @JoinColumn(name = "PONTO_TURISTICO_ID")
+            joinColumns = @JoinColumn(name = "ID_PACOTE"),
+            inverseJoinColumns = @JoinColumn(name = "ID_PONTO_TURISTICO")
     )
     private Set<PontoTuristicoEntity> pontoTuristicoEntities;
 }

@@ -42,7 +42,6 @@ public class LoginController {
                 );
         Authentication authenticate = authenticationManager.authenticate(usernamePasswordAuthenticationToken);
 
-        // UsuarioEntity
         Object principal = authenticate.getPrincipal();
         PessoaEntity pessoaEntity = (PessoaEntity) principal;
         TokenDTO token = tokenService.getToken(pessoaEntity);

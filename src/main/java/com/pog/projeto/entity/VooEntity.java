@@ -43,7 +43,7 @@ public class VooEntity {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "PACOTE_VOO", joinColumns = @JoinColumn(name = "VOO_ID"), inverseJoinColumns = @JoinColumn(name = "PACOTE_ID"))
+    @JoinTable(name = "PACOTE_VOO", joinColumns = @JoinColumn(name = "ID_VOO"), inverseJoinColumns = @JoinColumn(name = "ID_PACOTE"))
     private Set<PacoteEntity> pacoteEntities;
 
 }

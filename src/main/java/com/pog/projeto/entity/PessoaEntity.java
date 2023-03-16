@@ -40,12 +40,12 @@ public class PessoaEntity implements UserDetails {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "PACOTE_PESSOA", joinColumns = @JoinColumn(name = "PESSOA_ID"), inverseJoinColumns = @JoinColumn(name = "PACOTE_ID"))
+    @JoinTable(name = "PACOTE_PESSOA", joinColumns = @JoinColumn(name = "ID_PESSOA"), inverseJoinColumns = @JoinColumn(name = "ID_PACOTE"))
     private Set<PacoteEntity> pacoteEntities;
 
     @JsonIgnore
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "CARGO_ID")
+    @JoinColumn(name = "ID_CARGO")
     private CargoEntity cargoEntity;
 
     @Override

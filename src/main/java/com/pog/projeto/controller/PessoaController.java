@@ -1,8 +1,10 @@
 package com.pog.projeto.controller;
 
+import com.pog.projeto.dtos.PacoteListagemDTO;
 import com.pog.projeto.dtos.PessoaCreateDTO;
 import com.pog.projeto.dtos.PessoaDTO;
 import com.pog.projeto.exception.BusinessException;
+import com.pog.projeto.service.PacoteService;
 import com.pog.projeto.service.PessoaService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -20,6 +22,7 @@ import java.util.List;
 public class PessoaController {
 
     private final PessoaService pessoaService;
+    private final PacoteService pacoteService;
 
 
     @GetMapping
@@ -28,9 +31,14 @@ public class PessoaController {
     }
 
     @PostMapping("/cadastro")
-    public ResponseEntity<PessoaDTO> cadastroCandidato(@Valid @RequestBody PessoaCreateDTO pessoaCreateDTO) throws BusinessException {
+    public ResponseEntity<PessoaDTO> cadastroPessoa(@Valid @RequestBody PessoaCreateDTO pessoaCreateDTO) throws BusinessException {
         PessoaDTO pessoaDTO = pessoaService.cadastrar(pessoaCreateDTO);
         return ResponseEntity.ok(pessoaDTO);
+    }
+
+    @GetMapping("/pacotes")
+    public ResponseEntity<List<PacoteListagemDTO>> pacotesUsuarioLogado() {
+        return new ResponseEntity<>(pacoteService.pacotesUsuarioLogado(), HttpStatus.OK);
     }
 
 }

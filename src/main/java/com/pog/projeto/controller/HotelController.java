@@ -1,5 +1,7 @@
 package com.pog.projeto.controller;
 
+import com.pog.projeto.dtos.HotelCreateDTO;
+import com.pog.projeto.dtos.HotelDTO;
 import com.pog.projeto.entity.HotelEntity;
 import com.pog.projeto.service.HotelService;
 import lombok.RequiredArgsConstructor;
@@ -21,15 +23,15 @@ public class HotelController {
 
     private final HotelService hotelService;
 
-//    @GetMapping
-//    public ResponseEntity<List<HotelEntity>> listar() {
-//        List<HotelEntity> lista = hotelService.list();
-//        return new ResponseEntity<>(lista, HttpStatus.OK);
-//    }
-//
-//    @PostMapping
-//    public ResponseEntity<HotelEntity> create(@RequestBody HotelEntity hotel) {
-//        return new ResponseEntity<>(hotelService.create(hotel), HttpStatus.OK);
-//    }
+    @GetMapping
+    public ResponseEntity<List<HotelDTO>> listar() {
+        List<HotelDTO> lista = hotelService.list();
+        return new ResponseEntity<>(lista, HttpStatus.OK);
+    }
+
+    @PostMapping
+    public ResponseEntity<HotelDTO> create(@RequestBody HotelCreateDTO hotel, @RequestParam Integer idPacote) {
+        return new ResponseEntity<>(hotelService.create(hotel, idPacote), HttpStatus.OK);
+    }
 
 }

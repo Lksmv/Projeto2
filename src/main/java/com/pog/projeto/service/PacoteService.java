@@ -1,10 +1,7 @@
 package com.pog.projeto.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pog.projeto.dtos.CargoDTO;
-import com.pog.projeto.dtos.PacoteDTO;
-import com.pog.projeto.dtos.PessoaCreateDTO;
-import com.pog.projeto.dtos.PessoaDTO;
+import com.pog.projeto.dtos.*;
 import com.pog.projeto.entity.PacoteEntity;
 import com.pog.projeto.entity.PessoaEntity;
 import com.pog.projeto.exception.BusinessException;
@@ -15,6 +12,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
 import java.util.Collections;
+import java.util.List;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -61,6 +59,20 @@ public class PacoteService {
                 .map(pontoTuristicoEntity -> pontoTuristicoService.toDTO(pontoTuristicoEntity))
                 .collect(Collectors.toSet()));
         return pacoteDTO;
+    }
+
+    public List<PacoteListagemDTO> pacotesUsuarioLogado() {
+        PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString())).get();
+        if (pessoaEntity.getCargoEntity().getNome().equals("ROLE_ADMIN")) {
+            return pessoaEntity.getPacoteEntities().stream()
+                    .map(pacoteEntity -> objectMapper.convertValue(pacoteEntity, PacoteListagemDTO.class))
+                    .toList();
+        } else {
+            return pessoaEntity.getPacoteEntities().stream()
+                    .filter(pacoteEntity -> pacoteEntity.getPromocional() == "N")
+                    .map(pacoteEntity -> objectMapper.convertValue(pacoteEntity, PacoteListagemDTO.class))
+                    .toList();
+        }
     }
 
 }

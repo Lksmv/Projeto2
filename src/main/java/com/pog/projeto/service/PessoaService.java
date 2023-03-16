@@ -24,7 +24,6 @@ public class PessoaService {
     private final ObjectMapper objectMapper;
     private final PacoteService pacoteService;
     private final CargoService cargoService;
-
     private final PessoaRepository pessoaRepository;
 
     private final PasswordEncoder passwordEncoder;
