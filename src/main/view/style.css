@@ -1,0 +1,1057 @@
+/* Configurações Gerais */
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    font-family: 'Poppins';
+}
+
+/* Página Inicial */
+#paginaInicial {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: #FFFFFF;
+    overflow-x: hidden;
+}
+
+/* Footer da Página */
+#topoInicial {
+    position: absolute;
+    width: 100vw;
+    height: 100px;
+    background: #F7F4E8;
+}
+
+/* Centraliza o Header */
+#divCentralizaTopo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    right: 259px;
+    height: 48px;
+    left: 259px;
+    top: 26px;
+}
+
+/* Título da Págnina Inicial */
+#tituloPaginaInicial {
+    width: 166px;
+    height: 24px;
+    font-weight: 600;
+    line-height: 24px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #6BB39B;
+}
+
+/* Segunda Cor do Título da Págnina Inicial */
+#tituloPaginaInicial span {
+    color: #0B0B0D;
+}
+
+/* Borda com a Elipse do Perfil do Usuário */
+#elipsePerfilUsuario {
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
+    background: #F2FAF9;
+    border: 1px solid #3F3F3F;
+    border-radius: 100%;
+
+    flex: none;
+    flex-grow: 0;
+}
+
+/* Posicionamento e Centralização da Imagem do Usuário */
+#bordaImagemPerfilUsuario {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 12px;
+    top: 12px;
+}
+
+/* Ícone do Perfil */
+#imagemPerfilUsuario {
+    position: absolute;
+    left: 9.38%;
+    right: 9.37%;
+    top: 9.38%;
+    bottom: 9.37%;
+    background: #3F3F3F;
+}
+
+/* Gradiente da Imagem na Tela Inicial */
+#secaoImagemInicial {
+    position: absolute;
+    width: 100vw;
+    height: 500px;
+    left: 0px;
+    top: 100px;
+
+    background: linear-gradient(90deg, #6BB39B 7.37%, #2E2E31 101.56%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Título Secundário da Imagem na Tela Inicial */
+#tituloSecundario {
+    position: absolute;
+    width: 700px;
+    height: 112px;
+    left: 260px;
+    top: 96px;
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 56px;
+    display: flex;
+    align-items: end;
+    color: #FFFFFF;
+    z-index: 1;
+}
+
+/* Segunda Cor do Título Secundário */
+#tituloSecundario span {
+    font-size: 44px;
+    color: #F5B963;
+    z-index: 1;
+}
+
+/* Texto da Imagem na Tela Inicial */
+#textoSecundario {
+    position: absolute;
+    height: 140px;
+    left: 260px;
+    top: 230px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    z-index: 1;
+}
+
+/* Imagem da Tela Inicial */
+#imagemInicial {
+    position: absolute;
+    width: 50%;
+    height: 500px;
+    right: 0;
+    opacity: 5%;
+
+    background: linear-gradient(90deg, #588879 5.34%, rgba(0, 0, 0, 0) 34.25%);
+}
+
+/* Botão para Criar um Pacote */
+#botaoCriarPacote {
+    position: absolute;
+    width: 512px;
+    height: 54px;
+    top: 573px;
+    border: 1px solid #FFFFFF;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 2px rgba(18, 18, 20, 0.2), 0px 12px 24px rgba(39, 45, 77, 0.2);
+    border-radius: 4px;
+
+    color: #59361D;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    z-index: 1;
+}
+
+/* Seção com os Pacotes Criados pelo Usuário Admin */
+#secaoPacotesCompletos {
+    position: absolute;
+    width: 100vw;
+    height: 740px;
+    left: 0;
+    top: 600px;
+
+    background: #F7F4E8;
+}
+
+/* Título da Seção de Pacotes */
+#secaoPacotesCompletos h3 {
+    position: absolute;
+    width: 240px;
+    height: 26px;
+    left: 260px;
+    top: 89px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 26px;
+
+    color: #0B0B0D;
+}
+
+/* Texto da Seção de Pacotes */
+#textoSecaoPacotes {
+    position: absolute;
+    height: 28px;
+    left: 260px;
+    top: 148px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #0B0B0D;
+}
+
+/* Centraliza os Pacotes */
+#divCentralizaPacotes {
+    display: flex;
+    flex-direction: row;
+    margin-top: 199px;
+    overflow: auto;
+    margin-left: 260px;
+    margin-right: 260px;
+}
+
+/* Pacotes */
+.pacotes {
+    min-width: 339px;
+    max-width: 339px;
+    height: 489px;
+    margin: 0 10px 0 0;
+
+    background: #252525;
+    border-radius: 4px;
+}
+
+/* Imagem do Pacote */
+.imagemPacote {
+    width: 339px;
+    height: 247px;
+}
+
+/* Ajusta a Posição do Texto Dentro do Pacote */
+.textoDentroPacote {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 13px 18px;
+    gap: 8px;
+    margin: 0 10px 0 0;
+
+    width: 303px;
+    height: 174px;
+
+    background: #252525;
+}
+
+/* Texto 1 Dentro do Pacote */
+#texto1Pacote {
+    height: 26px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 26px;
+
+    text-transform: uppercase;
+
+    color: #D7FFF1;
+}
+
+/* Ajusta a Posição dos Textos 2 e 3 */
+#posicaoTexto2e3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+    gap: 4px;
+
+    width: 303px;
+    height: 52px;
+}
+
+/* Texto 2 Dentro do Pacote */
+#texto2Pacote {
+    width: 50px;
+    height: 26px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+
+    color: #FFFFFF;
+}
+
+/* Texto 3 Dentro do Pacote */
+#texto3Pacote {
+    width: 132px;
+    height: 55px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+
+    text-align: right;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+}
+
+/* Texto 4 Dentro do Pacote */
+#texto4Pacote {
+    width: 303px;
+    height: 24px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #E0F2EB;
+}
+
+/* Seção de Feedback */
+#secaoFeedback {
+    position: absolute;
+    width: 100vw;
+    min-height: 663px;
+    max-height: 663px;
+    left: 0px;
+    top: 1340px;
+}
+
+/* Título da Seção de Feedback */
+#secaoFeedback h3 {
+    position: absolute;
+    width: 412px;
+    height: 108px;
+    right: 260px;
+    top: 146px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 54px;
+
+    color: #0B0B0D;
+    z-index: 1;
+}
+
+/* Texto do Feedback */
+#comentarioFeedback {
+    position: absolute;
+    width: 412px;
+    height: 144px;
+    right: 260px;
+    top: 276px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: justify;
+
+    color: #0B0B0D;
+    z-index: 1;
+}
+
+/* Autor do Feedback */
+#autorFeedback {
+    position: absolute;
+    width: 90px;
+    height: 24px;
+    right: 260px;
+    top: 420px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    color: #0B0B0D;
+}
+
+/* Seção de FAQ */
+#secaoFaq {
+    position: absolute;
+    width: 100vw;
+    height: 652px;
+    top: 2003px;
+}
+
+/* Título da Seção FAQ */
+#secaoFaq h3 {
+    position: absolute;
+    width: 277px;
+    height: 56px;
+    left: 260px;
+    top: 60px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 56px;
+
+    color: #0B0B0D;
+}
+
+/* Perguntas FAQ */
+#perguntasFaq {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 34px;
+
+    position: absolute;
+    height: 338px;
+    left: 260px;
+    right: 260px;
+    top: 157px;
+
+    background: #F7F4E8;
+}
+
+/* Quadro com Pergunta */
+.quadroPergunta {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 56px;
+    min-height: 90px;
+}
+
+/* Questão de Pergunta */
+#pergunta {
+    max-width: 300px;
+    position: absolute;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+
+    color: #0B0B0D;
+}
+
+/* Resposta da Pergunta */
+#resposta {
+    box-sizing: border-box;
+    position: absolute;
+    width: 600px;
+    min-height: 90px;
+    right: 0;
+    text-align: justify;
+
+    background: #6BB39B;
+    border: 1px solid #BEC2D9;
+    box-shadow: 0px 2px 4px #D1DFDA;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+/* Texto de Resposta */
+#resposta p {
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+}
+
+/* Texto Entrar em Contato */
+#footerFaq {
+    position: absolute;
+    height: 45px;
+    left: 260px;
+    top: 545px;
+
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+
+    color: #0B0B0D;
+}
+
+/* Footer da Página Inicial */
+#fimInicial {
+    position: absolute;
+    width: 100vw;
+    height: 513.31px;
+    left: 0;
+    top: 2655px;
+    background: #252525;
+}
+
+/* Centraliza os Textos do Footer */
+#divCentralizaFim {
+    display: flex;
+    flex-direction: row;
+    margin: 67px 260px;
+    justify-content: space-between;
+}
+
+/* Informações Sobre */
+#footerSobre {
+    width: 114px;
+    height: 101.2px;
+    top: 2722px;
+
+
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+
+    color: #85E6C0;
+}
+
+/* Links do Sobre */
+#footerSobre a {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    color: #C1C7CD;
+}
+
+/* Informações Pacotes */
+#footerPacotes {
+    width: 170px;
+    height: 303px;
+    top: 2722px;
+
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+
+    color: #85E6C0;
+}
+
+/* Parágrafos do Pacotes */
+#footerPacotes p {
+    width: 170px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    color: #C1C7CD;
+}
+
+/* Informações Inspire-se */
+#footerInspire {
+    width: 338px;
+    height: 296px;
+
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+
+    color: #85E6C0;
+}
+
+/* Centraliza Inspire-se */
+#divCentralizaInspire {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* Parágrafos do Inspire-se */
+#footerInspire p {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    color: #C1C7CD;
+}
+
+/* Informações Ajuda */
+#footerAjuda {
+    width: 156px;
+    height: 132.23px;
+
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+
+    color: #85E6C0;
+}
+
+/* Parágrafos do Ajuda */
+#footerAjuda p {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    color: #C1C7CD;
+}
+
+/* Linha Horizontal do Footer */
+#footerHorizontalLine {
+    height: 0px;
+    margin-left: 260px;
+    margin-right: 260px;
+    top: 3063px;
+
+    border: 0.8441px solid #346769;
+}
+
+/* Centraliza Créditos do Footer */
+#divCentralizaCreditos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 25px 260px;
+}
+
+/* POG Viagens no Footer */
+#pogViagensFooter {
+    width: 170px;
+    height: 16.17px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+
+    text-transform: uppercase;
+    color: #85E6C0;
+}
+
+/* Centraliza Creditos do POG Viagens */
+#pogViagensCreditos {
+    width: 143px;
+    height: 22px;
+    left: 706px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+
+    color: #909EA2;
+}
+
+/* Seção Imagem Pacote */
+#secaoImagemInicialPacote {
+    position: absolute;
+    width: 100vw;
+    height: 423px;
+    left: 0px;
+    top: 100px;
+
+    background: linear-gradient(90deg, #6BB39B 7.37%, #2E2E31 101.56%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Imagem da Tela de Pacotes */
+#imagemInicialPacote {
+    position: absolute;
+    width: 50%;
+    height: 423px;
+    right: 0;
+    opacity: 5%;
+
+    background: linear-gradient(90deg, #588879 5.34%, rgba(0, 0, 0, 0) 34.25%);
+}
+
+/* Seção para Selecionar as Passagens Aéreas */
+#secaoPassagemAerea {
+    height: 537px;
+    top: 523px;
+    background: #F7F4E8;
+    position: absolute;
+    width: 100vw;
+    left: 0;
+
+    background: #F7F4E8;
+}
+
+/* Título da Seção de Pacotes */
+#secaoPassagemAerea h3 {
+    position: absolute;
+    width: 385px;
+    height: 26px;
+    left: 260px;
+    top: 89px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 26px;
+
+    color: #0B0B0D;
+}
+
+/* Texto do Input Local de Saída */
+#textoInputSaida {
+    position: absolute;
+    width: 451px;
+    height: 28px;
+    left: 260px;
+    top: 148px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #0B0B0D;
+}
+
+/* Input Local de Saída */
+#inputSaida {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    width: 451px;
+    height: 58px;
+    left: 260px;
+    top: 199px;
+
+    background: #FFFFFF;
+    border: 1px solid #2B3030;
+    border-radius: 4px;
+}
+
+/* Texto do Input Local de Destino */
+#textoInputDestino {
+    position: absolute;
+    width: 451px;
+    height: 28px;
+    right: 275px;
+    top: 148px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #0B0B0D;
+}
+
+/* Input Local de Destino */
+#inputDestino {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    width: 451px;
+    height: 58px;
+    right: 260px;
+    top: 199px;
+
+    background: #FFFFFF;
+    border: 1px solid #2B3030;
+    border-radius: 4px;
+}
+
+/* Texto do Input Escolher Datas */
+#textoInputDatas {
+    position: absolute;
+    width: 451px;
+    height: 28px;
+    left: 260px;
+    top: 305px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #0B0B0D;
+}
+
+/* Texto do Input Ida */
+#textoInputIda {
+    position: absolute;
+    width: 23px;
+    height: 25px;
+    left: 260px;
+    top: 425px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #47475F;
+}
+
+/* Input Ida */
+#inputIda {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    margin-right: 49px;
+    width: 199px;
+    height: 58px;
+    left: 260px;
+    top: 356px;
+
+    background: #FFFFFF;
+    border: 1px solid #2B3030;
+    border-radius: 4px;
+}
+
+/* Texto do Input Volta */
+#textoInputVolta {
+    position: absolute;
+    width: 39px;
+    height: 25px;
+    left: 527px;
+    top: 425px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #47475F;
+}
+
+/* Input Volta */
+#inputVolta {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    left: 527px;
+    width: 199px;
+    height: 58px;
+    top: 356px;
+
+    background: #FFFFFF;
+    border: 1px solid #2B3030;
+    border-radius: 4px;
+}
+
+/* Texto do Input Passageiros */
+#textoInputPassageiros {
+    position: absolute;
+    width: 451px;
+    height: 28px;
+    right: 275px;
+    top: 305px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #0B0B0D;
+}
+
+/* Input Passageiros */
+#inputPassageiros {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    right: 512px;
+    width: 199px;
+    height: 58px;
+    top: 356px;
+
+    background: #FFFFFF;
+    border: 1px solid #2B3030;
+    border-radius: 4px;
+}
+
+/* Botão Buscar */
+#botaoBuscar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    position: absolute;
+    width: 199px;
+    height: 58px;
+    right: 260px;
+    top: 356px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
+/* Texto do Valor da Passagem Aérea */
+#textoValorPassagem {
+    position: absolute;
+    width: 152px;
+    height: 28px;
+    left: 180px;
+    top: 13px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #0B0B0D;
+}
+
+/* Opção de Passagem Aérea */
+#secaoOpcoesPassagem {
+    position: absolute;
+    width: 100vw;
+    height: 285px;
+    left: 0;
+    top: 1087px;
+
+    background: #FFFFFF;
+}
+
+/* Texto da Opção de Avião de Ida */
+#textoIda {
+    position: absolute;
+    width: 23px;
+    height: 24px;
+    left: 68px;
+    top: 46px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #0B0B0D;
+}
+
+/* Texto da Opção de Avião de Volta */
+#textoVolta {
+    position: absolute;
+    width: 44px;
+    height: 24px;
+    right: 634px;
+    top: 46px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #0B0B0D;
+}
+
+/* Opções de Ida e Volta */
+#opcao1Aviao,
+#opcao2Aviao,
+#opcao3Aviao,
+#opcao4Aviao,
+#opcao5Aviao,
+#opcao6Aviao,
+#opcao7Aviao,
+#opcao8Aviao,
+#opcao9Aviao,
+#opcao10Aviao,
+#opcao11Aviao {
+    display: flex;
+    flex-direction: row;
+    width: 666px;
+    height: 54px;
+
+    background: #FFFFFF;
+}
+
+/* Checkbox Selecionar Ida e Volta */
+.checkboxAviao {
+    width: 26px;
+    height: 22px;
+    margin-left: 80px;
+    border: 1px solid #2B3030;
+    border-radius: 4px;
+    outline: none;
+    margin-top: 4px;
+}
+
+/* Todos os Textos das Passagens */
+.textosAviao {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: #47475F;
+}
+
+/* Opção de Passagem Aérea */
+#secaoOpcoesPassagem2 {
+    position: absolute;
+    width: 100vw;
+    height: 285px;
+    left: 0;
+    top: 1430px;
+
+    background: #FFFFFF;
+}
+
+/* Botão de Confirmar Passagem */
+#botaoConfirmarPassagem {
+    display: flex;
+    justify-content: center;
+    width: 199px;
+    height: 58px;
+    left: 681px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
+/* Footer da Página de Criar Pacote */
+#fimPacote {
+    position: absolute;
+    width: 100vw;
+    height: 85px;
+    left: 0;
+    top: 1846px;
+    background: #252525;
+}
+
+/* Hovers */
+
+/* Botão para Criar um Pacote ao Passar o Mouse */
+#botaoCriarPacote:hover {
+    cursor: pointer;
+    background-color: #d3d3d3;
+    border-color: #d3d3d3;
+}
+
+/* Selecionar Pacote ao Passar o Mouse */
+.pacotes:hover {
+    cursor: pointer;
+    opacity: 70%;
+}
+
+/* Botão de Buscar e Confirmar ao Passar o Mouse*/
+#botaoBuscar:hover,
+#botaoConfirmarPassagem:hover {
+    cursor: pointer;
+    background: #8adfc2;
+    border: 1px solid #8adfc2;
+}
+
+.checkboxAviao:hover {
+    cursor: pointer;
+}
+
+/* Focus */
+
+/* Focus Inputs Passagens */
+#inputSaida:focus,
+#inputDestino:focus,
+#inputIda:focus,
+#inputVolta:focus,
+#inputPassageiros:focus {
+    border: 1px solid #437963;
+}

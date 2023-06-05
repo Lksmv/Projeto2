@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./style.css">
+    <title>POG Viagens - Criar Pacote</title>
+</head>
+
+<body>
+    <div id="paginaInicial">
+        <header id="topoInicial">
+            <div id="divCentralizaTopo">
+                <h1 id="tituloPaginaInicial">POG&nbsp;<span>Viagens</span></h1>
+
+                <div id="elipsePerfilUsuario">
+                    <div id="bordaImagemPerfilUsuario">
+                        <div id="imagemPerfilUsuario"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <article>
+            <section id="secaoImagemInicialPacote">
+                <h2 id="tituloSecundario">Crie seu&nbsp;<span>pacote</span></h2>
+
+                <p id="textoSecundario">Deixe que suas viagens te levem a lugares que você nunca<br>
+                    imaginou!
+                </p>
+
+                <img id="imagemInicialPacote" src="../resources/images/ImagemPacote.png" alt="Viagem">
+            </section>
+
+            <section id="secaoPassagemAerea">
+                <h3>Selecione as passagens aéreas</h3>
+
+                <div style="position: absolute;
+                            width: 122px;
+                            left: 260px;
+                            top: 125px;
+                            border: 2px solid #D97128;"></div>
+
+                <p id="textoInputSaida">De onde você está saindo?</p>
+                <input type="text" id="inputSaida" class="inputPassagens">
+
+                <p id="textoInputDestino">Para onde você vai?</p>
+                <input type="text" id="inputDestino" class="inputPassagens">
+
+                <p id="textoInputDatas">Escolha as datas</p>
+                <input type="date" id="inputIda" class="inputPassagens">
+                <p id="textoInputIda">Ida</p>
+                <input type="date" id="inputVolta" class="inputPassagens">
+                <p id="textoInputVolta">Volta</p>
+
+                <p id="textoInputPassageiros">Número de passageiros</p>
+                <input type="text" id="inputPassageiros" class="inputPassagens">
+
+                <input type="button" value="Buscar" id="botaoBuscar">
+            </section>
+
+            <div style="display:flex; width: 100vw;justify-content: center;">
+                <div style="width: 512px;
+                        align-items: center;
+                        position: absolute;
+                        height: 54px;
+                        top: 1033px;
+                        z-index: 1;
+                        background: #FFFFFF;
+                        box-shadow: 0px 1px 2px rgba(30, 30, 32, 0.2), 0px 12px 24px rgba(39, 45, 77, 0.2);
+                        border-radius: 4px;">
+                    <p id="textoValorPassagem">R$ 00.000,00</p>
+                </div>
+            </div>
+
+            <section id="secaoOpcoesPassagem">
+                <p id="textoIda">IDA</p>
+
+                <div style="position: absolute;">
+                    <div id="opcao1Aviao" style="margin-top: 95px;">
+                        <input type="checkbox" class="checkboxAviao">
+                        <p class="textosAviao" style="margin-left: 12px;">Companhia</p>
+                        <p class="textosAviao" style="margin-left: 87px;">XXX</p>
+                        <p class="textosAviao" style="margin-left: 17px;">00:00</p>
+
+                        <div style="text-align: center; margin-left: 82px; margin-top: -11px; width: 70px;">
+                            <p class="textosAviao">Direto</p>
+                            <p class="textosAviao">01h&nbsp;20min</p>
+                        </div>
+
+                        <p class="textosAviao" style="margin-left: 82px;">00:00</p>
+                        <p class="textosAviao" style="margin-left: 17px;">XXX</p>
+                    </div>
+
+                    <div id="opcao2Aviao">
+                        <input type="checkbox" class="checkboxAviao">
+                        <p class="textosAviao" style="margin-left: 12px;">Companhia</p>
+                        <p class="textosAviao" style="margin-left: 87px;">XXX</p>
+                        <p class="textosAviao" style="margin-left: 17px;">00:00</p>
+
+                        <div style="text-align: center; margin-left: 82px; margin-top: -11px; width: 70px;">
+                            <p class="textosAviao">Direto</p>
+                            <p class="textosAviao">01h&nbsp;20min</p>
+                        </div>
+
+                        <p class="textosAviao" style="margin-left: 82px;">00:00</p>
+                        <p class="textosAviao" style="margin-left: 17px;">XXX</p>
+                    </div>
+
+                    <div id="opcao3Aviao">
+                        <input type="checkbox" class="checkboxAviao">
+                        <p class="textosAviao" style="margin-left: 12px;">Companhia</p>
+                        <p class="textosAviao" style="margin-left: 87px;">XXX</p>
+                        <p class="textosAviao" style="margin-left: 17px;">00:00</p>
+
+                        <div style="text-align: center; margin-left: 82px; margin-top: -11px; width: 70px;">
+                            <p class="textosAviao">Direto</p>
+                            <p class="textosAviao">01h&nbsp;20min</p>
+                        </div>
+
+                        <p class="textosAviao" style="margin-left: 82px;">00:00</p>
+                        <p class="textosAviao" style="margin-left: 17px;">XXX</p>
+                    </div>
+                </div>
+
+                <p id="textoVolta">VOLTA</p>
+                <div style="position: absolute; right: 80px;">
+                    <div id="opcao4Aviao" style="margin-top: 95px;">
+                        <input type="checkbox" class="checkboxAviao">
+                        <p class="textosAviao" style="margin-left: 12px;">Companhia</p>
+                        <p class="textosAviao" style="margin-left: 87px;">XXX</p>
+                        <p class="textosAviao" style="margin-left: 17px;">00:00</p>
+
+                        <div style="text-align: center; margin-left: 82px; margin-top: -11px; width: 70px;">
+                            <p class="textosAviao">Direto</p>
+                            <p class="textosAviao">01h&nbsp;20min</p>
+                        </div>
+
+                        <p class="textosAviao" style="margin-left: 82px;">00:00</p>
+                        <p class="textosAviao" style="margin-left: 17px;">XXX</p>
+                    </div>
+
+                    <div id="opcao5Aviao">
+                        <input type="checkbox" class="checkboxAviao">
+                        <p class="textosAviao" style="margin-left: 12px;">Companhia</p>
+                        <p class="textosAviao" style="margin-left: 87px;">XXX</p>
+                        <p class="textosAviao" style="margin-left: 17px;">00:00</p>
+
+                        <div style="text-align: center; margin-left: 82px; margin-top: -11px; width: 70px;">
+                            <p class="textosAviao">Direto</p>
+                            <p class="textosAviao">01h&nbsp;20min</p>
+                        </div>
+
+                        <p class="textosAviao" style="margin-left: 82px;">00:00</p>
+                        <p class="textosAviao" style="margin-left: 17px;">XXX</p>
+                    </div>
+
+                    <div id="opcao6Aviao">
+                        <input type="checkbox" class="checkboxAviao">
+                        <p class="textosAviao" style="margin-left: 12px;">Companhia</p>
+                        <p class="textosAviao" style="margin-left: 87px;">XXX</p>
+                        <p class="textosAviao" style="margin-left: 17px;">00:00</p>
+
+                        <div style="text-align: center; margin-left: 82px; margin-top: -11px; width: 70px;">
+                            <p class="textosAviao">Direto</p>
+                            <p class="textosAviao">01h&nbsp;20min</p>
+                        </div>
+
+                        <p class="textosAviao" style="margin-left: 82px;">00:00</p>
+                        <p class="textosAviao" style="margin-left: 17px;">XXX</p>
+                    </div>
+                </div>
+            </section>
+
+            <div style="display:flex; width: 100vw;justify-content: center;">
+                <div style="width: 512px;
+                        align-items: center;
+                        position: absolute;
+                        height: 54px;
+                        top: 1403px;
+                        z-index: 1;
+                        background: #FFFFFF;
+                        box-shadow: 0px 1px 2px rgba(30, 30, 32, 0.2), 0px 12px 24px rgba(39, 45, 77, 0.2);
+                        border-radius: 4px;">
+                    <p id="textoValorPassagem">R$ 00.000,00</p>
+                </div>
+            </div>
+
+            <section id="secaoOpcoesPassagem2">
+                <p id="textoIda">IDA</p>
+
+                <div style="position: absolute;">
+                    <div id="opcao7Aviao" style="margin-top: 95px;">
+                        <input type="checkbox" class="checkboxAviao">
+                        <p class="textosAviao" style="margin-left: 12px;">Companhia</p>
+                        <p class="textosAviao" style="margin-left: 87px;">XXX</p>
+                        <p class="textosAviao" style="margin-left: 17px;">00:00</p>
+
+                        <div style="text-align: center; margin-left: 82px; margin-top: -11px; width: 70px;">
+                            <p class="textosAviao">Direto</p>
+                            <p class="textosAviao">01h&nbsp;20min</p>
+                        </div>
+
+                        <p class="textosAviao" style="margin-left: 82px;">00:00</p>
+                        <p class="textosAviao" style="margin-left: 17px;">XXX</p>
+                    </div>
+
+                    <div id="opcao8Aviao">
+                        <input type="checkbox" class="checkboxAviao">
+                        <p class="textosAviao" style="margin-left: 12px;">Companhia</p>
+                        <p class="textosAviao" style="margin-left: 87px;">XXX</p>
+                        <p class="textosAviao" style="margin-left: 17px;">00:00</p>
+
+                        <div style="text-align: center; margin-left: 82px; margin-top: -11px; width: 70px;">
+                            <p class="textosAviao">Direto</p>
+                            <p class="textosAviao">01h&nbsp;20min</p>
+                        </div>
+
+                        <p class="textosAviao" style="margin-left: 82px;">00:00</p>
+                        <p class="textosAviao" style="margin-left: 17px;">XXX</p>
+                    </div>
+
+                    <div id="opcao9Aviao">
+                        <input type="checkbox" class="checkboxAviao">
+                        <p class="textosAviao" style="margin-left: 12px;">Companhia</p>
+                        <p class="textosAviao" style="margin-left: 87px;">XXX</p>
+                        <p class="textosAviao" style="margin-left: 17px;">00:00</p>
+
+                        <div style="text-align: center; margin-left: 82px; margin-top: -11px; width: 70px;">
+                            <p class="textosAviao">Direto</p>
+                            <p class="textosAviao">01h&nbsp;20min</p>
+                        </div>
+
+                        <p class="textosAviao" style="margin-left: 82px;">00:00</p>
+                        <p class="textosAviao" style="margin-left: 17px;">XXX</p>
+                    </div>
+                </div>
+
+                <p id="textoVolta">VOLTA</p>
+                <div style="position: absolute; right: 80px;">
+                    <div id="opcao10Aviao" style="margin-top: 95px;">
+                        <input type="checkbox" class="checkboxAviao">
+                        <p class="textosAviao" style="margin-left: 12px;">Companhia</p>
+                        <p class="textosAviao" style="margin-left: 87px;">XXX</p>
+                        <p class="textosAviao" style="margin-left: 17px;">00:00</p>
+
+                        <div style="text-align: center; margin-left: 82px; margin-top: -11px; width: 70px;">
+                            <p class="textosAviao">Direto</p>
+                            <p class="textosAviao">01h&nbsp;20min</p>
+                        </div>
+
+                        <p class="textosAviao" style="margin-left: 82px;">00:00</p>
+                        <p class="textosAviao" style="margin-left: 17px;">XXX</p>
+                    </div>
+
+                    <div id="opcao11Aviao">
+                        <input type="checkbox" class="checkboxAviao">
+                        <p class="textosAviao" style="margin-left: 12px;">Companhia</p>
+                        <p class="textosAviao" style="margin-left: 87px;">XXX</p>
+                        <p class="textosAviao" style="margin-left: 17px;">00:00</p>
+
+                        <div style="text-align: center; margin-left: 82px; margin-top: -11px; width: 70px;">
+                            <p class="textosAviao">Direto</p>
+                            <p class="textosAviao">01h&nbsp;20min</p>
+                        </div>
+
+                        <p class="textosAviao" style="margin-left: 82px;">00:00</p>
+                        <p class="textosAviao" style="margin-left: 17px;">XXX</p>
+                    </div>
+                </div>
+            </section>
+
+            <div style="width: 100vw; display: flex; justify-content: center; position: absolute; top: 1746px;">
+                <input type="button" value="Confirmar" id="botaoConfirmarPassagem">
+            </div>
+        </article>
+
+        <footer id="fimPacote">
+            <div id="divCentralizaCreditos">
+                <p id="pogViagensFooter">POG VIAGENS</p>
+                <p id="pogViagensCreditos">© 2023 POG Viagens</p>
+                <p style="color: #252525;">POG VIAGENS</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>
