@@ -12,6 +12,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -33,7 +34,7 @@ public class HotelService {
     public List<HotelDTO> list() {
         return hotelRepositoy.findAll().stream()
                 .map(hotel -> toDTO(hotel))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public HotelDTO findById(Integer id) throws BusinessException {

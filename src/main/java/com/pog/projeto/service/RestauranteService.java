@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -29,7 +30,7 @@ public class RestauranteService {
     public List<RestauranteDTO> list() {
         return repository.findAll().stream()
                 .map(restaurante -> toDTO(restaurante))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public RestauranteDTO findById(Integer id) throws BusinessException {

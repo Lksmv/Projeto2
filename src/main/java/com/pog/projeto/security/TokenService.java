@@ -16,6 +16,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.Date;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @RequiredArgsConstructor
@@ -33,7 +34,7 @@ public class TokenService {
 
         List<String> cargos = pessoaEntity.getAuthorities().stream()
                 .map(pessoa -> pessoa.getAuthority())
-                .toList();
+                .collect(Collectors.toList());
 
         String token = Jwts.builder()
                 .setIssuer("pog")
@@ -61,7 +62,7 @@ public class TokenService {
         List<String> cargos = chaves.get(KEY, List.class);
         List<SimpleGrantedAuthority> cargosList = cargos.stream()
                 .map(SimpleGrantedAuthority::new)
-                .toList();
+                .collect(Collectors.toList());
 
 
         return new UsernamePasswordAuthenticationToken(id,

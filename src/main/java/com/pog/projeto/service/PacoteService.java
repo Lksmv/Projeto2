@@ -66,12 +66,12 @@ public class PacoteService {
         if (pessoaEntity.getCargoEntity().getNome().equals("ROLE_ADMIN")) {
             return pessoaEntity.getPacoteEntities().stream()
                     .map(pacoteEntity -> objectMapper.convertValue(pacoteEntity, PacoteListagemDTO.class))
-                    .toList();
+                    .collect(Collectors.toList());
         } else {
             return pessoaEntity.getPacoteEntities().stream()
                     .filter(pacoteEntity -> pacoteEntity.getPromocional() == "N")
                     .map(pacoteEntity -> objectMapper.convertValue(pacoteEntity, PacoteListagemDTO.class))
-                    .toList();
+                    .collect(Collectors.toList());
         }
     }
 
