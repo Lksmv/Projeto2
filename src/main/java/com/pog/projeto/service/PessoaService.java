@@ -41,7 +41,7 @@ public class PessoaService {
     public List<PessoaDTO> list() {
         return pessoaRepository.findAll().stream()
                 .map(pessoaEntity -> toDTO(pessoaEntity))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public Integer getIdLoggedUser() {
