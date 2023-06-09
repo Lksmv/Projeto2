@@ -14,8 +14,8 @@
 	<name>pog-viagens</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<maven.compiler.target>18</maven.compiler.target>
-		<maven.compiler.source>18</maven.compiler.source>
+		<maven.compiler.target>20</maven.compiler.target>
+		<maven.compiler.source>20</maven.compiler.source>
 	</properties>
 	<dependencies>
 		<dependency>
