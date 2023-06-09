@@ -14,9 +14,8 @@
 	<name>pog-viagens</name>
 	<description>Demo project for Spring Boot</description>
 	<properties>
-		<java.version>17</java.version>
-		<maven.compiler.target>17</maven.compiler.target>
-		<maven.compiler.source>17</maven.compiler.source>
+		<maven.compiler.target>18</maven.compiler.target>
+		<maven.compiler.source>18</maven.compiler.source>
 	</properties>
 	<dependencies>
 		<dependency>
@@ -74,6 +73,7 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<configuration>
+					<release>20</release>
 					<excludes>
 						<exclude>
 							<groupId>org.projectlombok</groupId>
