@@ -35,6 +35,9 @@ public class PacoteEntity {
     @Column(name = "VALOR")
     private Double valor;
 
+    @Column(name = "NOME_PACOTE")
+    private String nome;
+
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
@@ -48,7 +51,7 @@ public class PacoteEntity {
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
-            name = "PACOTE_HOTEL",
+            name = "PACOTE_PESSOA",
             joinColumns = @JoinColumn(name = "ID_PACOTE"),
             inverseJoinColumns = @JoinColumn(name = "ID_PESSOA")
     )

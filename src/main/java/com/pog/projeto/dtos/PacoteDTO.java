@@ -11,6 +11,8 @@ import java.util.Set;
 @Data
 public class PacoteDTO {
 
+    private String nome;
+
     private Integer idPacote;
 
     private Date dataPartida;
@@ -26,6 +28,6 @@ public class PacoteDTO {
     private Set<RestauranteDTO> restauranteDTOS;
 
     private Set<VooDTO> vooDTOS;
-    
+
     private Set<PontoTuristicoDTO> pontoTuristicoDTOS;
 }

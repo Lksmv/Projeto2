@@ -11,8 +11,12 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Collections;
+import java.util.Date;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -29,7 +33,6 @@ public class PacoteService {
 
     public PacoteDTO create() {
         PacoteEntity pacoteEntity = new PacoteEntity();
-        pacoteEntity.setPessoas(Collections.emptySet());
         pacoteEntity.setHoteis(Collections.emptySet());
         pacoteEntity.setRestauranteEntities(Collections.emptySet());
         pacoteEntity.setVooEntities(Collections.emptySet());
@@ -40,7 +43,11 @@ public class PacoteService {
         } else {
             pacoteEntity.setPromocional("N");
         }
-        pacoteEntity.getPessoas().add(pessoaEntity);
+        pacoteEntity.setDataPartida(Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
+        pacoteEntity.setDataChegada(Date.from(LocalDate.now().atStartOfDay().atZone(ZoneId.systemDefault()).toInstant()));
+        pacoteEntity.setNome("Pacote " + (pessoaEntity.getPacoteEntities().size() + 1));
+        pacoteEntity.setValor(0.0);
+        pacoteEntity.setPessoas(Collections.singleton(pessoaEntity));
         return toDTO(repository.save(pacoteEntity));
     }
 
@@ -69,7 +76,7 @@ public class PacoteService {
                     .collect(Collectors.toList());
         } else {
             return pessoaEntity.getPacoteEntities().stream()
-                    .filter(pacoteEntity -> pacoteEntity.getPromocional() == "N")
+                    .filter(pacoteEntity -> pacoteEntity.getPromocional().equals("N"))
                     .map(pacoteEntity -> objectMapper.convertValue(pacoteEntity, PacoteListagemDTO.class))
                     .collect(Collectors.toList());
         }

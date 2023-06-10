@@ -33,7 +33,7 @@ public class SecurityConfiguration {
                 .and().csrf().disable()
                 .authorizeHttpRequests((auth) -> auth.antMatchers("/", "/auth/**", "/auth").permitAll()
                         .antMatchers(HttpMethod.POST).hasAnyRole("USUARIO")
-                        .antMatchers(HttpMethod.GET).permitAll()
+                        .antMatchers(HttpMethod.GET).hasAnyRole("USUARIO")
                         .anyRequest().authenticated()
                 );
         http.addFilterBefore(new TokenAuthenticationFilter(tokenService), UsernamePasswordAuthenticationFilter.class);

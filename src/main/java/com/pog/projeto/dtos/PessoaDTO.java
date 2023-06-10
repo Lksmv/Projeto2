@@ -21,7 +21,5 @@ public class PessoaDTO {
 
     private String telefone;
 
-    private Set<PacoteDTO> pacoteDTOSet;
-
     private CargoDTO cargo;
 }
