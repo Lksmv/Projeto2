@@ -50,7 +50,7 @@ function setarValorTotalPacote(data) {
 
     let paragrafo = document.createElement('p');
     paragrafo.id = 'textoValorPassagem';
-    paragrafo.textContent = 'R$ ' + valorTotal;
+    paragrafo.textContent = 'R$ ' + valorTotal.toLocaleString('pt-BR');
 
     divInterno.appendChild(paragrafo);
 
