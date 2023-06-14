@@ -1,0 +1,243 @@
+let contadorSecoes = 1;
+let tamanhoOriginal = 750;
+let tamanhoAcrescentar = 350;
+
+function buscarPacotes() {
+    // Cria o elemento <div> externo
+    setarValorTotalPacote();
+
+    let section = criaSectionDivGeral();
+
+    criarFilhosSection(section);
+
+    let divGeral = document.getElementById('divGeral');
+    divGeral.appendChild(section);
+
+    adicionarBotaoTela();
+
+    document.getElementById('botaoConfirmarPassagem').scrollIntoView({ behavior: 'smooth', block: 'end' });
+}
+
+function setarValorTotalPacote() {
+    let valorPacote = document.getElementById('valorPacote');
+
+    if (valorPacote.firstChild) {
+        valorPacote.removeChild(valorPacote.firstChild);
+    }
+
+    let divExterno = document.createElement('div');
+    divExterno.style.display = 'flex';
+    divExterno.style.width = '100vw';
+    divExterno.style.justifyContent = 'center';
+
+    let divInterno = document.createElement('div');
+    divInterno.style.width = '512px';
+    divInterno.style.alignItems = 'center';
+    divInterno.style.position = 'absolute';
+    divInterno.style.height = '54px';
+    divInterno.style.top = '1033px';
+    divInterno.style.zIndex = '1';
+    divInterno.style.background = '#FFFFFF';
+    divInterno.style.boxShadow = '0px 1px 2px rgba(30, 30, 32, 0.2), 0px 12px 24px rgba(39, 45, 77, 0.2)';
+    divInterno.style.borderRadius = '4px';
+
+    let paragrafo = document.createElement('p');
+    paragrafo.id = 'textoValorPassagem';
+    paragrafo.textContent = 'R$ 00.000,00';
+
+    divInterno.appendChild(paragrafo);
+
+    divExterno.appendChild(divInterno);
+
+    valorPacote.appendChild(divExterno);
+}
+
+
+function criarFilhosSection(section) {
+    let pIda = document.createElement('p');
+    pIda.setAttribute('id', 'textoIda');
+    pIda.textContent = 'IDA';
+    section.appendChild(pIda);
+
+    let div1 = document.createElement('div');
+    div1.style.position = 'absolute';
+
+    let divOpcao1 = criarOpcaoAviao(1);
+    divOpcao1.setAttribute('id', 'opcao1Aviao');
+    divOpcao1.style.marginTop = '95px';
+    div1.appendChild(divOpcao1);
+
+    let divOpcao2 = criarOpcaoAviao(2);
+    divOpcao2.setAttribute('id', 'opcao2Aviao');
+    div1.appendChild(divOpcao2);
+
+    let divOpcao3 = criarOpcaoAviao(3);
+    divOpcao3.setAttribute('id', 'opcao3Aviao');
+    div1.appendChild(divOpcao3);
+
+    section.appendChild(div1);
+
+    let pVolta = document.createElement('p');
+    pVolta.setAttribute('id', 'textoVolta');
+    pVolta.textContent = 'VOLTA';
+    section.appendChild(pVolta);
+
+    let div2 = document.createElement('div');
+    div2.style.position = 'absolute';
+    div2.style.right = '80px';
+
+    let divOpcao4 = criarOpcaoAviao(4);
+    divOpcao4.setAttribute('id', 'opcao4Aviao');
+    divOpcao4.style.marginTop = '95px';
+    div2.appendChild(divOpcao4);
+
+    let divOpcao5 = criarOpcaoAviao(5);
+    divOpcao5.setAttribute('id', 'opcao5Aviao');
+    div2.appendChild(divOpcao5);
+
+    let divOpcao6 = criarOpcaoAviao(6);
+    divOpcao6.setAttribute('id', 'opcao6Aviao');
+    div2.appendChild(divOpcao6);
+
+    section.appendChild(div2);
+}
+
+function criaSectionDivGeral() {
+    let section = document.createElement('section');
+    let secaoId = 'secaoOpcoesPassagem' + contadorSecoes;
+    section.setAttribute('id', secaoId);
+    section.style.position = 'absolute';
+    section.style.width = '100vw';
+    section.style.height = '285px';
+    section.style.left = 0;
+    section.style.top = tamanhoOriginal + (tamanhoAcrescentar * contadorSecoes) + 'px';
+    section.style.background = '#FFFFFF';
+    contadorSecoes++;
+    return section;
+}
+
+function adicionarBotaoTela() {
+    let divBotaoConfirmar = document.getElementById('botaoDeConfirmar');
+
+    let divElementExistente = divBotaoConfirmar.querySelector('div');
+    if (divElementExistente) {
+        divBotaoConfirmar.removeChild(divElementExistente);
+    }
+
+    let divElement = document.createElement('div');
+    divElement.style.width = '100vw';
+    divElement.style.display = 'flex';
+    divElement.style.justifyContent = 'center';
+    divElement.style.position = 'absolute';
+    divElement.style.top = tamanhoOriginal + (tamanhoAcrescentar * contadorSecoes) + 'px';
+
+    let inputElement = document.createElement('input');
+    inputElement.type = 'button';
+    inputElement.value = 'Confirmar';
+    inputElement.id = 'botaoConfirmarPassagem';
+
+    divElement.appendChild(inputElement);
+
+    divBotaoConfirmar.appendChild(divElement);
+}
+
+function criarOpcaoAviao(index) {
+    let divOpcao = document.createElement('div');
+    divOpcao.setAttribute('class', 'opcaoAviao');
+    divOpcao.setAttribute('id', 'opcaoAviao' + index);
+
+    let checkbox = document.createElement('input');
+    checkbox.setAttribute('type', 'checkbox');
+    checkbox.setAttribute('class', 'checkboxAviao');
+    divOpcao.appendChild(checkbox);
+
+    let p1 = document.createElement('p');
+    p1.setAttribute('class', 'textosAviao');
+    p1.style.marginLeft = '12px';
+    p1.textContent = 'Companhia';
+    divOpcao.appendChild(p1);
+
+    let p2 = document.createElement('p');
+    p2.setAttribute('class', 'textosAviao');
+    p2.style.marginLeft = '87px';
+    p2.textContent = 'XXX';
+    divOpcao.appendChild(p2);
+
+    let p3 = document.createElement('p');
+    p3.setAttribute('class', 'textosAviao');
+    p3.style.marginLeft = '17px';
+    p3.textContent = '00:00';
+    divOpcao.appendChild(p3);
+
+    let div2 = document.createElement('div');
+    div2.style.textAlign = 'center';
+    div2.style.marginLeft = '82px';
+    div2.style.marginTop = '-11px';
+    div2.style.width = '70px';
+
+    let p4 = document.createElement('p');
+    p4.setAttribute('class', 'textosAviao');
+    p4.textContent = 'Direto';
+    div2.appendChild(p4);
+
+    let p5 = document.createElement('p');
+    p5.setAttribute('class', 'textosAviao');
+    p5.innerHTML = '01h&nbsp;20min';
+    div2.appendChild(p5);
+
+    divOpcao.appendChild(div2);
+
+    let p6 = document.createElement('p');
+    p6.setAttribute('class', 'textosAviao');
+    p6.style.marginLeft = '82px';
+    p6.textContent = '00:00';
+    divOpcao.appendChild(p6);
+
+    let p7 = document.createElement('p');
+    p7.setAttribute('class', 'textosAviao');
+    p7.style.marginLeft = '17px';
+    p7.textContent = 'XXX';
+    divOpcao.appendChild(p7);
+
+    return divOpcao;
+}
+
+function criarFooter() {
+
+    let oldFooter = document.getElementById("fimPacote");
+
+    if (oldFooter) {
+        oldFooter.remove();
+    }
+    let footer = document.createElement("footer");
+    footer.id = "fimPacote";
+    footer.style.position = "absolute";
+    footer.style.width = "100vw";
+    footer.style.height = "85px";
+    footer.style.left = "0";
+    footer.style.top = "1846px";
+    footer.style.background = "#252525";
+
+    let divCentralizaCreditos = document.createElement("div");
+    divCentralizaCreditos.id = "divCentralizaCreditos";
+
+    let pogViagensFooter = document.createElement("p");
+    pogViagensFooter.id = "pogViagensFooter";
+    pogViagensFooter.textContent = "POG VIAGENS";
+
+    let pogViagensCreditos = document.createElement("p");
+    pogViagensCreditos.id = "pogViagensCreditos";
+    pogViagensCreditos.textContent = "© 2023 POG Viagens";
+
+    let pogViagensCreditos2 = document.createElement("p");
+    pogViagensCreditos2.style.color = "#252525";
+    pogViagensCreditos2.textContent = "POG VIAGENS";
+
+    // Adicionar os elementos criados à estrutura
+    divCentralizaCreditos.appendChild(pogViagensFooter);
+    divCentralizaCreditos.appendChild(pogViagensCreditos);
+    divCentralizaCreditos.appendChild(pogViagensCreditos2);
+    footer.appendChild(divCentralizaCreditos);
+
+    document.getElementById('footerAqui').appendChild(footer);
+}

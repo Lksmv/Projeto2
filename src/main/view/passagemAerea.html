@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="./js/passagemAerea.js"></script>
+    <title>POG Viagens - Criar Pacote</title>
+</head>
+
+<body>
+    <div id="paginaInicial">
+        <header id="topoInicial">
+            <div id="divCentralizaTopo">
+                <h1 id="tituloPaginaInicial">POG&nbsp;<span>Viagens</span></h1>
+
+                <div id="elipsePerfilUsuario">
+                    <div id="bordaImagemPerfilUsuario">
+                        <div id="imagemPerfilUsuario"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <article>
+            <section id="secaoImagemInicialPacote">
+                <h2 id="tituloSecundario">Crie seu&nbsp;<span>pacote</span></h2>
+
+                <p id="textoSecundario">Deixe que suas viagens te levem a lugares que você nunca<br>
+                    imaginou!
+                </p>
+
+                <img id="imagemInicialPacote" src="../resources/images/ImagemPacote.png" alt="Viagem">
+            </section>
+
+            <section id="secaoPassagemAerea">
+                <h3>Selecione as passagens aéreas</h3>
+
+                <div style="position: absolute;
+                            width: 122px;
+                            left: 260px;
+                            top: 125px;
+                            border: 2px solid #D97128;"></div>
+
+                <p id="textoInputSaida">De onde você está saindo?</p>
+                <input type="text" id="inputSaida" class="inputPassagens">
+
+                <p id="textoInputDestino">Para onde você vai?</p>
+                <input type="text" id="inputDestino" class="inputPassagens">
+
+                <p id="textoInputDatas">Escolha as datas</p>
+                <input type="date" id="inputIda" class="inputPassagens">
+                <p id="textoInputIda">Ida</p>
+                <input type="date" id="inputVolta" class="inputPassagens">
+                <p id="textoInputVolta">Volta</p>
+
+                <p id="textoInputPassageiros">Número de passageiros</p>
+                <input type="text" id="inputPassageiros" class="inputPassagens">
+
+                <input type="button" value="Buscar" id="botaoBuscar" onclick="buscarPacotes()">
+            </section>
+
+            <div id="valorPacote"></div>
+
+            <div id="container">
+                <div id="divGeral"></div>
+
+                <div id="botaoDeConfirmar"></div>
+            </div>
+        </article>
+
+        <div id="footerAqui"></div>
+
+        <!-- <footer id="fimPacote">
+            <div id="divCentralizaCreditos">
+                <p id="pogViagensFooter">POG VIAGENS</p>
+                <p id="pogViagensCreditos">© 2023 POG Viagens</p>
+                <p style="color: #252525;">POG VIAGENS</p>
+            </div>
+        </footer> -->
+    </div>
+</body>
+
+</html>
