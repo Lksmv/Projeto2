@@ -3,7 +3,6 @@ let tamanhoOriginal = 750;
 let tamanhoAcrescentar = 350;
 
 function buscarPacotes() {
-    // Cria o elemento <div> externo
     setarValorTotalPacote();
 
     let section = criaSectionDivGeral();
@@ -21,10 +20,6 @@ function buscarPacotes() {
 function setarValorTotalPacote() {
     let valorPacote = document.getElementById('valorPacote');
 
-    if (valorPacote.firstChild) {
-        valorPacote.removeChild(valorPacote.firstChild);
-    }
-
     let divExterno = document.createElement('div');
     divExterno.style.display = 'flex';
     divExterno.style.width = '100vw';
@@ -35,7 +30,7 @@ function setarValorTotalPacote() {
     divInterno.style.alignItems = 'center';
     divInterno.style.position = 'absolute';
     divInterno.style.height = '54px';
-    divInterno.style.top = '1033px';
+    divInterno.style.top = tamanhoOriginal + (tamanhoAcrescentar * contadorSecoes) - 40 + 'px';
     divInterno.style.zIndex = '1';
     divInterno.style.background = '#FFFFFF';
     divInterno.style.boxShadow = '0px 1px 2px rgba(30, 30, 32, 0.2), 0px 12px 24px rgba(39, 45, 77, 0.2)';
@@ -233,7 +228,6 @@ function criarFooter() {
     pogViagensCreditos2.style.color = "#252525";
     pogViagensCreditos2.textContent = "POG VIAGENS";
 
-    // Adicionar os elementos criados à estrutura
     divCentralizaCreditos.appendChild(pogViagensFooter);
     divCentralizaCreditos.appendChild(pogViagensCreditos);
     divCentralizaCreditos.appendChild(pogViagensCreditos2);
