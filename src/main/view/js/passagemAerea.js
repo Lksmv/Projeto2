@@ -3,21 +3,33 @@ let tamanhoOriginal = 750;
 let tamanhoAcrescentar = 350;
 
 function buscarPacotes() {
-    setarValorTotalPacote();
+    valorTotal = 0;
+    axios.get('https://projetosoftware2.herokuapp.com/voo').then(response => {
+        let arrayFilter = response.data.filter(element => element.origem == document.getElementById('inputSaida').value &&
+        element.destino == document.getElementById('inputDestino').value)
+        arrayFilter.forEach(data => {
+            setarValorTotalPacote(data);
 
-    let section = criaSectionDivGeral();
-
-    criarFilhosSection(section);
-
-    let divGeral = document.getElementById('divGeral');
-    divGeral.appendChild(section);
-
-    adicionarBotaoTela();
-
-    document.getElementById('botaoConfirmarPassagem').scrollIntoView({ behavior: 'smooth', block: 'end' });
+            let section = criaSectionDivGeral();
+    
+            criarFilhosSection(section, data);
+    
+            let divGeral = document.getElementById('divGeral');
+            divGeral.appendChild(section);
+    
+            adicionarBotaoTela();
+    
+            document.getElementById('botaoConfirmarPassagem').scrollIntoView({ behavior: 'smooth', block: 'end' });
+        })
+    }).catch(() => {
+        alert('Erro!');
+    });
 }
 
-function setarValorTotalPacote() {
+function setarValorTotalPacote(data) {
+    let valorTotal = 0;
+    valorTotal += data.valor;
+
     let valorPacote = document.getElementById('valorPacote');
 
     let divExterno = document.createElement('div');
@@ -38,7 +50,7 @@ function setarValorTotalPacote() {
 
     let paragrafo = document.createElement('p');
     paragrafo.id = 'textoValorPassagem';
-    paragrafo.textContent = 'R$ 00.000,00';
+    paragrafo.textContent = 'R$ ' + valorTotal;
 
     divInterno.appendChild(paragrafo);
 
@@ -48,7 +60,8 @@ function setarValorTotalPacote() {
 }
 
 
-function criarFilhosSection(section) {
+function criarFilhosSection(section, data) {
+    //IDA
     let pIda = document.createElement('p');
     pIda.setAttribute('id', 'textoIda');
     pIda.textContent = 'IDA';
@@ -57,21 +70,22 @@ function criarFilhosSection(section) {
     let div1 = document.createElement('div');
     div1.style.position = 'absolute';
 
-    let divOpcao1 = criarOpcaoAviao(1);
+    let divOpcao1 = criarOpcaoAviao(1, data);
     divOpcao1.setAttribute('id', 'opcao1Aviao');
     divOpcao1.style.marginTop = '95px';
     div1.appendChild(divOpcao1);
 
-    let divOpcao2 = criarOpcaoAviao(2);
+    let divOpcao2 = criarOpcaoAviao(2, data);
     divOpcao2.setAttribute('id', 'opcao2Aviao');
     div1.appendChild(divOpcao2);
 
-    let divOpcao3 = criarOpcaoAviao(3);
+    let divOpcao3 = criarOpcaoAviao(3, data);
     divOpcao3.setAttribute('id', 'opcao3Aviao');
     div1.appendChild(divOpcao3);
 
     section.appendChild(div1);
 
+    //VOLTA
     let pVolta = document.createElement('p');
     pVolta.setAttribute('id', 'textoVolta');
     pVolta.textContent = 'VOLTA';
@@ -81,16 +95,16 @@ function criarFilhosSection(section) {
     div2.style.position = 'absolute';
     div2.style.right = '80px';
 
-    let divOpcao4 = criarOpcaoAviao(4);
+    let divOpcao4 = criarOpcaoAviao(4, data);
     divOpcao4.setAttribute('id', 'opcao4Aviao');
     divOpcao4.style.marginTop = '95px';
     div2.appendChild(divOpcao4);
 
-    let divOpcao5 = criarOpcaoAviao(5);
+    let divOpcao5 = criarOpcaoAviao(5, data);
     divOpcao5.setAttribute('id', 'opcao5Aviao');
     div2.appendChild(divOpcao5);
 
-    let divOpcao6 = criarOpcaoAviao(6);
+    let divOpcao6 = criarOpcaoAviao(6, data);
     divOpcao6.setAttribute('id', 'opcao6Aviao');
     div2.appendChild(divOpcao6);
 
@@ -136,7 +150,7 @@ function adicionarBotaoTela() {
     divBotaoConfirmar.appendChild(divElement);
 }
 
-function criarOpcaoAviao(index) {
+function criarOpcaoAviao(index, data) {
     let divOpcao = document.createElement('div');
     divOpcao.setAttribute('class', 'opcaoAviao');
     divOpcao.setAttribute('id', 'opcaoAviao' + index);
@@ -149,19 +163,19 @@ function criarOpcaoAviao(index) {
     let p1 = document.createElement('p');
     p1.setAttribute('class', 'textosAviao');
     p1.style.marginLeft = '12px';
-    p1.textContent = 'Companhia';
+    p1.textContent = data.companhiaAerea;
     divOpcao.appendChild(p1);
 
     let p2 = document.createElement('p');
     p2.setAttribute('class', 'textosAviao');
     p2.style.marginLeft = '87px';
-    p2.textContent = 'XXX';
+    p2.textContent = data.origem;
     divOpcao.appendChild(p2);
 
     let p3 = document.createElement('p');
     p3.setAttribute('class', 'textosAviao');
     p3.style.marginLeft = '17px';
-    p3.textContent = '00:00';
+    p3.textContent = data.dataPartida;
     divOpcao.appendChild(p3);
 
     let div2 = document.createElement('div');
@@ -175,9 +189,15 @@ function criarOpcaoAviao(index) {
     p4.textContent = 'Direto';
     div2.appendChild(p4);
 
+    const data1 = new Date(data.dataPartida);
+    const data2 = new Date(data.dataChegada);
+
+    const diffMilliseconds = data2 - data1;
+    const diffHours = diffMilliseconds / (1000 * 60 * 60);
+
     let p5 = document.createElement('p');
     p5.setAttribute('class', 'textosAviao');
-    p5.innerHTML = '01h&nbsp;20min';
+    p5.innerHTML = diffHours;
     div2.appendChild(p5);
 
     divOpcao.appendChild(div2);
@@ -185,13 +205,13 @@ function criarOpcaoAviao(index) {
     let p6 = document.createElement('p');
     p6.setAttribute('class', 'textosAviao');
     p6.style.marginLeft = '82px';
-    p6.textContent = '00:00';
+    p6.textContent = data.dataChegada;
     divOpcao.appendChild(p6);
 
     let p7 = document.createElement('p');
     p7.setAttribute('class', 'textosAviao');
     p7.style.marginLeft = '17px';
-    p7.textContent = 'XXX';
+    p7.textContent = data.destino;
     divOpcao.appendChild(p7);
 
     return divOpcao;
