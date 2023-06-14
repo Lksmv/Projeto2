@@ -3,6 +3,8 @@ let tamanhoOriginal = 750;
 let tamanhoAcrescentar = 350;
 
 function buscarPacotes() {
+    limparResultadoTela();
+    contadorSecoes = 1
     valorTotal = 0;
     axios.get('https://projetosoftware2.herokuapp.com/voo').then(response => {
         let arrayFilter = response.data.filter(element => element.origem == document.getElementById('inputSaida').value &&
@@ -189,15 +191,26 @@ function criarOpcaoAviao(index, data) {
     p4.textContent = 'Direto';
     div2.appendChild(p4);
 
-    const data1 = new Date(data.dataPartida);
-    const data2 = new Date(data.dataChegada);
+    const partida = new Date(data.dataPartida);
+    const chegada = new Date(data.dataChegada);
 
-    const diffMilliseconds = data2 - data1;
-    const diffHours = diffMilliseconds / (1000 * 60 * 60);
+    // Calcula a diferença em milissegundos
+    const diferencaEmMilissegundos = chegada - partida;
+
+    // Calcula as horas e minutos
+    const horas = Math.floor(diferencaEmMilissegundos / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencaEmMilissegundos % (1000 * 60 * 60)) / (1000 * 60));
+
+    let diferencaFormatada;
+    if (minutos <= 0) {
+        diferencaFormatada = `${horas}h`;
+    } else {
+        diferencaFormatada = `${horas}h ${minutos}min`;
+    }
 
     let p5 = document.createElement('p');
     p5.setAttribute('class', 'textosAviao');
-    p5.innerHTML = diffHours;
+    p5.innerHTML = diferencaFormatada;
     div2.appendChild(p5);
 
     divOpcao.appendChild(div2);
@@ -254,4 +267,9 @@ function criarFooter() {
     footer.appendChild(divCentralizaCreditos);
 
     document.getElementById('footerAqui').appendChild(footer);
+}
+
+function limparResultadoTela() {
+    document.getElementById('divGeral').innerHTML = '';
+    document.getElementById('valorPacote').innerHTML = '';
 }
