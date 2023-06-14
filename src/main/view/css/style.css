@@ -812,7 +812,7 @@
     position: absolute;
     width: 39px;
     height: 25px;
-    left: 527px;
+    left: 512px;
     top: 425px;
 
     font-style: normal;
@@ -828,7 +828,7 @@
     padding: 0 15px;
     outline: none;
     position: absolute;
-    left: 527px;
+    left: 512px;
     width: 199px;
     height: 58px;
     top: 356px;
@@ -1018,6 +1018,146 @@
     background: #252525;
 }
 
+/* Seção para Escolher a Cidade de Destino */
+#secaoEscolherCidadeDestino {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+
+    background: linear-gradient(90deg, #000B02 6.34%, #2F2E36 37.81%);
+}
+
+/* Imagem da Secao de Escolher Cidade */
+#imagemCidade {
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    left: 796px;
+    right: 0;
+}
+
+/* Título da Página para Escolher a Cidade de Destino */
+#tituloPaginaCidade {
+    position: absolute;
+    width: 643px;
+    height: 56px;
+    left: 260px;
+    top: 124px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 56px;
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+/* Muda a cor da palavra 'Cidade' na Página de Escolha do Destino */
+#tituloPaginaCidade span {
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 56px;
+    color: #85E6C0;
+}
+
+/* Texto da Página de Escolher Destino */
+#textoSecaoCidade {
+    position: absolute;
+    width: 544px;
+    height: 84px;
+    left: 260px;
+    top: 216px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+/* Texto do Input Escolher Estado */
+#textoEstado {
+    position: absolute;
+    width: 451px;
+    height: 28px;
+    left: 260px;
+    top: 399px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+/* Input de Escolher Estado */
+#inputEstado {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    width: 421px;
+    height: 58px;
+    left: 260px;
+    top: 450px;
+
+    background: #FFFFFF;
+    border-radius: 4px;
+}
+
+/* Texto do Input Escolher Cidade */
+#textoCidade {
+    position: absolute;
+    width: 451px;
+    height: 28px;
+    right: 260px;
+    top: 399px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+/* Input de Escolher Cidade */
+#inputCidade {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    width: 421px;
+    height: 58px;
+    right: 260px;
+    top: 450px;
+
+    border-radius: 4px;
+}
+
+/* Botao para Confirmar Cidade de Destino */
+#botaoConfirmarCidade {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    position: absolute;
+    width: 199px;
+    height: 58px;
+    right: 260px;
+    top: 595px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
 /* Hovers */
 
 /* Botão para Criar um Pacote ao Passar o Mouse */
@@ -1035,7 +1175,8 @@
 
 /* Botão de Buscar e Confirmar ao Passar o Mouse*/
 #botaoBuscar:hover,
-#botaoConfirmarPassagem:hover {
+#botaoConfirmarPassagem:hover,
+#botaoConfirmarCidade:hover {
     cursor: pointer;
     background: #8adfc2;
     border: 1px solid #8adfc2;
@@ -1047,11 +1188,13 @@
 
 /* Focus */
 
-/* Focus Inputs Passagens */
+/* Focus Inputs */
 #inputSaida:focus,
 #inputDestino:focus,
 #inputIda:focus,
 #inputVolta:focus,
-#inputPassageiros:focus {
+#inputPassageiros:focus,
+#inputEstado:focus,
+#inputCidade:focus {
     border: 1px solid #437963;
 }
