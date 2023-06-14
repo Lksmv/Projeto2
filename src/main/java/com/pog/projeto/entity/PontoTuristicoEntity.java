@@ -32,6 +32,6 @@ public class PontoTuristicoEntity {
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(name = "PACOTE_PONTO_TURISTCO", joinColumns = @JoinColumn(name = "ID_PONTO_TURISTICO"), inverseJoinColumns = @JoinColumn(name = "ID_PACOTE"))
+    @JoinTable(name = "PACOTE_PONTO_TURISTCO", joinColumns = @JoinColumn(name = "ID_PONTO"), inverseJoinColumns = @JoinColumn(name = "ID_PACOTE"))
     private Set<PacoteEntity> pacoteEntities;
 }

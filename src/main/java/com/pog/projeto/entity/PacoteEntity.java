@@ -80,7 +80,7 @@ public class PacoteEntity {
     @JoinTable(
             name = "PACOTE_PONTO_TURISTICO",
             joinColumns = @JoinColumn(name = "ID_PACOTE"),
-            inverseJoinColumns = @JoinColumn(name = "ID_PONTO_TURISTICO")
+            inverseJoinColumns = @JoinColumn(name = "ID_PONTO")
     )
     private Set<PontoTuristicoEntity> pontoTuristicoEntities;
 }

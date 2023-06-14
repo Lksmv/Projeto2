@@ -11,7 +11,10 @@ import com.pog.projeto.repository.PacoteRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import java.util.List;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
+import java.util.*;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -19,15 +22,13 @@ import java.util.stream.Collectors;
 public class HotelService {
 
     private final ObjectMapper objectMapper;
-
-    private final PacoteRepository pacoteRepository;
     private final HotelRepositoy hotelRepositoy;
 
-    public HotelDTO create(HotelCreateDTO hotel, Integer idPacote) {
-        HotelEntity hotel1 = hotelRepositoy.save(toEntity(hotel));
-        PacoteEntity pacoteEntity = pacoteRepository.findById(idPacote).get();
-        pacoteEntity.getHoteis().add(hotel1);
-        pacoteRepository.save(pacoteEntity);
+    public HotelDTO create(HotelCreateDTO hotel) throws BusinessException, ParseException {
+        HotelEntity hotel1 = toEntity(hotel);
+        Set<PacoteEntity> pacoteEntitySet = new HashSet<PacoteEntity>();
+        hotel1.setPacoteEntities(pacoteEntitySet);
+        hotel1 = hotelRepositoy.save(hotel1);
         return toDTO(hotel1);
     }
 
@@ -42,7 +43,7 @@ public class HotelService {
                 .orElseThrow(() -> new BusinessException("Não Encontrado hotel")));
     }
 
-    private HotelEntity findEntityById(Integer id) throws BusinessException {
+    public HotelEntity findEntityById(Integer id) throws BusinessException {
         return hotelRepositoy.findById(id)
                 .orElseThrow(() -> new BusinessException("Não Encontrado hotel"));
     }

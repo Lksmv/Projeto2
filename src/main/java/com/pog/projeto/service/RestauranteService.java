@@ -24,7 +24,7 @@ public class RestauranteService {
     private final RestauranteRepository repository;
 
     public RestauranteDTO create(RestauranteCreateDTO dto) {
-        return toDTO(toEntity(dto));
+        return toDTO(repository.save(toEntity(dto)));
     }
 
     public List<RestauranteDTO> list() {
@@ -38,7 +38,7 @@ public class RestauranteService {
                 .orElseThrow(() -> new BusinessException("Não Encontrado restaurante")));
     }
 
-    private RestauranteEntity findEntityById(Integer id) throws BusinessException {
+    public RestauranteEntity findEntityById(Integer id) throws BusinessException {
         return repository.findById(id)
                 .orElseThrow(() -> new BusinessException("Não Encontrado restaurante"));
     }
