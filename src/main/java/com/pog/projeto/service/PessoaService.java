@@ -41,7 +41,7 @@ public class PessoaService {
     public List<PessoaDTO> list() {
         return pessoaRepository.findAll().stream()
                 .map(pessoaEntity -> toDTO(pessoaEntity))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public Integer getIdLoggedUser() {
@@ -66,9 +66,6 @@ public class PessoaService {
     public PessoaDTO toDTO(PessoaEntity entity) {
         PessoaDTO pessoaDTO = objectMapper.convertValue(entity, PessoaDTO.class);
         pessoaDTO.setCargo(objectMapper.convertValue(entity.getCargoEntity(), CargoDTO.class));
-        pessoaDTO.setPacoteDTOSet(entity.getPacoteEntities().stream()
-                .map(pacoteEntity -> pacoteService.toDTO(pacoteEntity))
-                .collect(Collectors.toSet()));
         return pessoaDTO;
     }
 

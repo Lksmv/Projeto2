@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.Date;
 import java.util.List;
 import java.util.Set;
 
@@ -28,6 +29,21 @@ public class HotelEntity {
 
     @Column(name = "ENDERECO")
     private String endereco;
+
+    @Column(name = "DATA_PARTIDA")
+    private Date dataPartida;
+
+    @Column(name = "DATA_CHEGADA")
+    private Date dataChegada;
+
+    @Column(name = "NUMERO")
+    private Integer numero;
+
+    @Column(name = "TELEFONE")
+    private Integer telefone;
+
+    @Column(name = "DIARIA")
+    private Integer diaria;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)

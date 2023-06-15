@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -23,13 +24,13 @@ public class PontoTuristicoService {
     private final PontoTuristicoRepository repository;
 
     public PontoTuristicoDTO create(PontoTuristicoCreateDTO dto) {
-        return toDTO(toEntity(dto));
+        return toDTO(repository.save(toEntity(dto)));
     }
 
     public List<PontoTuristicoDTO> list() {
         return repository.findAll().stream()
                 .map(restaurante -> toDTO(restaurante))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public PontoTuristicoDTO findById(Integer id) throws BusinessException {
@@ -37,7 +38,7 @@ public class PontoTuristicoService {
                 .orElseThrow(() -> new BusinessException("Não Encontrado ponto turistico")));
     }
 
-    private PontoTuristicoEntity findEntityById(Integer id) throws BusinessException {
+    public PontoTuristicoEntity findEntityById(Integer id) throws BusinessException {
         return repository.findById(id)
                 .orElseThrow(() -> new BusinessException("Não Encontrado ponto turistico"));
     }

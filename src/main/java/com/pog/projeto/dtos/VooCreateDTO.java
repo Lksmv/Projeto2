@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.Column;
 import javax.validation.constraints.NotNull;
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Data
@@ -15,9 +17,9 @@ public class VooCreateDTO {
 
     private String destino;
 
-    private Date dataPartida;
+    private LocalDateTime dataPartida;
 
-    private Date dataChegada;
+    private LocalDateTime dataChegada;
 
     private Double valor;
 

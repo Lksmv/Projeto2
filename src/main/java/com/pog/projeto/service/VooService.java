@@ -14,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -23,13 +24,13 @@ public class VooService {
     private final VooRepository vooRepository;
 
     public VooDTO create(VooCreateDTO voo) {
-        return toDTO(toEntity(voo));
+        return toDTO(vooRepository.save(toEntity(voo)));
     }
 
     public List<VooDTO> list() {
         return vooRepository.findAll().stream()
                 .map(voo -> toDTO(voo))
-                .toList();
+                .collect(Collectors.toList());
     }
 
     public VooDTO findById(Integer id) throws BusinessException {
@@ -37,7 +38,7 @@ public class VooService {
                 .orElseThrow(() -> new BusinessException("Não Encontrado voo")));
     }
 
-    private VooEntity findEntityById(Integer id) throws BusinessException {
+    public VooEntity findEntityById(Integer id) throws BusinessException {
         return vooRepository.findById(id)
                 .orElseThrow(() -> new BusinessException("Não Encontrado voo"));
     }

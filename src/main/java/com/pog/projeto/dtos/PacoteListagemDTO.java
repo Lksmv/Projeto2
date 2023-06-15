@@ -9,5 +9,7 @@ public class PacoteListagemDTO {
 
     private Integer idPacote;
 
+    private String nome;
+
     private String promocional;
 }

@@ -3,6 +3,7 @@ package com.pog.projeto.controller;
 import com.pog.projeto.dtos.HotelCreateDTO;
 import com.pog.projeto.dtos.HotelDTO;
 import com.pog.projeto.entity.HotelEntity;
+import com.pog.projeto.exception.BusinessException;
 import com.pog.projeto.service.HotelService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -11,6 +12,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.text.ParseException;
 import java.util.List;
 
 
@@ -30,8 +32,8 @@ public class HotelController {
     }
 
     @PostMapping
-    public ResponseEntity<HotelDTO> create(@RequestBody HotelCreateDTO hotel, @RequestParam Integer idPacote) {
-        return new ResponseEntity<>(hotelService.create(hotel, idPacote), HttpStatus.OK);
+    public ResponseEntity<HotelDTO> create(@RequestBody HotelCreateDTO hotel) throws BusinessException, ParseException {
+        return new ResponseEntity<>(hotelService.create(hotel), HttpStatus.OK);
     }
 
 }
