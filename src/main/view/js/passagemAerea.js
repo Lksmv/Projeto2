@@ -8,19 +8,22 @@ function buscarPacotes() {
     valorTotal = 0;
     axios.get('https://projetosoftware2.herokuapp.com/voo').then(response => {
         let arrayFilter = response.data.filter(element => element.origem == document.getElementById('inputSaida').value &&
-        element.destino == document.getElementById('inputDestino').value)
-        arrayFilter.forEach(data => {
+            element.destino == document.getElementById('inputDestino').value)
+        let arrayFilterDatas = arrayFilter.filter(element => element.dataPartida == filtrarDatasTela(element.dataPartida, 'I') &&
+            element.dataPartida == filtrarDatasTela(element.dataChegada, 'V'));
+
+        arrayFilterDatas.forEach(data => {
             setarValorTotalPacote(data);
 
             let section = criaSectionDivGeral();
-    
+
             criarFilhosSection(section, data);
-    
+
             let divGeral = document.getElementById('divGeral');
             divGeral.appendChild(section);
-    
+
             adicionarBotaoTela();
-    
+
             document.getElementById('botaoConfirmarPassagem').scrollIntoView({ behavior: 'smooth', block: 'end' });
         })
     }).catch(() => {
@@ -153,6 +156,9 @@ function adicionarBotaoTela() {
 }
 
 function criarOpcaoAviao(index, data) {
+
+    let { horaFormatada1, diferencaFormatada, horaFormatada2 } = getDatas(data);
+
     let divOpcao = document.createElement('div');
     divOpcao.setAttribute('class', 'opcaoAviao');
     divOpcao.setAttribute('id', 'opcaoAviao' + index);
@@ -177,7 +183,7 @@ function criarOpcaoAviao(index, data) {
     let p3 = document.createElement('p');
     p3.setAttribute('class', 'textosAviao');
     p3.style.marginLeft = '17px';
-    p3.textContent = data.dataPartida;
+    p3.textContent = horaFormatada1;
     divOpcao.appendChild(p3);
 
     let div2 = document.createElement('div');
@@ -191,23 +197,6 @@ function criarOpcaoAviao(index, data) {
     p4.textContent = 'Direto';
     div2.appendChild(p4);
 
-    const partida = new Date(data.dataPartida);
-    const chegada = new Date(data.dataChegada);
-
-    // Calcula a diferença em milissegundos
-    const diferencaEmMilissegundos = chegada - partida;
-
-    // Calcula as horas e minutos
-    const horas = Math.floor(diferencaEmMilissegundos / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencaEmMilissegundos % (1000 * 60 * 60)) / (1000 * 60));
-
-    let diferencaFormatada;
-    if (minutos <= 0) {
-        diferencaFormatada = `${horas}h`;
-    } else {
-        diferencaFormatada = `${horas}h ${minutos}min`;
-    }
-
     let p5 = document.createElement('p');
     p5.setAttribute('class', 'textosAviao');
     p5.innerHTML = diferencaFormatada;
@@ -218,7 +207,7 @@ function criarOpcaoAviao(index, data) {
     let p6 = document.createElement('p');
     p6.setAttribute('class', 'textosAviao');
     p6.style.marginLeft = '82px';
-    p6.textContent = data.dataChegada;
+    p6.textContent = horaFormatada2;
     divOpcao.appendChild(p6);
 
     let p7 = document.createElement('p');
@@ -228,6 +217,32 @@ function criarOpcaoAviao(index, data) {
     divOpcao.appendChild(p7);
 
     return divOpcao;
+}
+
+function getDatas(data) {
+    const partida = new Date(data.dataPartida);
+    const chegada = new Date(data.dataChegada);
+
+    const diferencaEmMilissegundos = chegada - partida;
+
+    const horas = Math.floor(diferencaEmMilissegundos / (1000 * 60 * 60));
+    const minutos = Math.floor((diferencaEmMilissegundos % (1000 * 60 * 60)) / (1000 * 60));
+
+    let diferencaFormatada;
+    if (minutos <= 0) {
+        diferencaFormatada = `${horas}h`;
+    } else {
+        diferencaFormatada = `${horas}h ${minutos}min`;
+    }
+
+    const horas1 = ("0" + partida.getHours()).slice(-2);
+    const minutos1 = ("0" + partida.getMinutes()).slice(-2);
+    const horaFormatada1 = `${horas1}:${minutos1}`;
+
+    const horas2 = ("0" + chegada.getHours()).slice(-2);
+    const minutos2 = ("0" + chegada.getMinutes()).slice(-2);
+    const horaFormatada2 = `${horas2}:${minutos2}`;
+    return { horaFormatada1, diferencaFormatada, horaFormatada2 };
 }
 
 function criarFooter() {
@@ -272,4 +287,18 @@ function criarFooter() {
 function limparResultadoTela() {
     document.getElementById('divGeral').innerHTML = '';
     document.getElementById('valorPacote').innerHTML = '';
+}
+
+function filtrarDatasTela(data, ehIdaVolta) {
+    //Data Ida
+    if (ehIdaVolta == 'I') {
+        const dataIda1 = document.getElementById('inputIda').value;
+        const dataIda2 = data;
+        return dataIda1 == dataIda2
+    } else {
+        //Data Volta
+        const dataVolta1 = document.getElementById('inputVolta').value;
+        const dataVolta2 = data;
+        return dataVolta1 == dataVolta2;
+    }
 }
