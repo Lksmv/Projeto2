@@ -1,3 +1,3 @@
 function criarPacote() {
-    window.location.href = '../view/pacote.html';
+    window.location.href = '../view/passagemAerea.html';
 }
