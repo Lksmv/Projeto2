@@ -8,9 +8,9 @@ function buscarPacotes() {
     valorTotal = 0;
     axios.get('https://projetosoftware2.herokuapp.com/voo').then(response => {
         let arrayFilter = response.data.filter(element => element.origem == document.getElementById('inputSaida').value &&
-            element.destino == document.getElementById('inputDestino').value)
-        let arrayFilterDatas = arrayFilter.filter(element => element.dataPartida == filtrarDatasTela(element.dataPartida, 'I') &&
-            element.dataPartida == filtrarDatasTela(element.dataChegada, 'V'));
+            element.destino == document.getElementById('inputDestino').value);
+
+        let arrayFilterDatas = arrayFilter.filter(element => filtrarDatasTela(element.dataPartida, 'I') || filtrarDatasTela(element.dataChegada, 'V'));
 
         arrayFilterDatas.forEach(data => {
             setarValorTotalPacote(data);
@@ -293,12 +293,12 @@ function filtrarDatasTela(data, ehIdaVolta) {
     //Data Ida
     if (ehIdaVolta == 'I') {
         const dataIda1 = document.getElementById('inputIda').value;
-        const dataIda2 = data;
+        const dataIda2 = data.substring(0, 10);
         return dataIda1 == dataIda2
     } else {
         //Data Volta
         const dataVolta1 = document.getElementById('inputVolta').value;
-        const dataVolta2 = data;
+        const dataVolta2 = data.substring(0, 10);
         return dataVolta1 == dataVolta2;
     }
 }
