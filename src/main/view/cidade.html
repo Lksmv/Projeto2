@@ -6,6 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="./js/cidade.js"></script>
     <title>POG Viagens - Escolher Cidade</title>
 </head>
 
@@ -19,10 +21,12 @@
             possamos procurar os melhores hotéis e pontos turíticos próximos.</p>
 
         <p id="textoEstado">Informe o Estado</p>
-        <input type="text" id="inputEstado">
+        <select id="inputEstado">
+        </select>
 
         <p id="textoCidade">Informe a Cidade</p>
-        <input type="text" id="inputCidade">
+        <select id="inputCidade" disabled>
+        </select>
 
         <input type="button" value="Confirmar" id="botaoConfirmarCidade">
     </section>
