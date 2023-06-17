@@ -1420,6 +1420,65 @@
     border-radius: 4px;
 }
 
+/* Seção de Pacote Criado */
+#secaoPacoteCriado {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: url(../../resources/images/ImagemPacoteCriado.png);
+    background-size: cover;
+}
+
+/* Título da Tela de pacote Criado */
+#tituloPacoteCriado {
+    position: absolute;
+    width: 412px;
+    height: 108px;
+    right: 260px;
+    top: 146px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 54px;
+
+    color: #0B0B0D;
+    z-index: 1;
+}
+
+/* Texto da Tela de Pacote Criado */
+#textoPacoteCriado {
+    position: absolute;
+    width: 419px;
+    height: 120px;
+    right: 260px;
+    top: 350px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    color: #0B0B0D;
+}
+
+/* Botão de Continuar Pacote Criado */
+#botaoContinuarPacoteCriado {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    position: absolute;
+    width: 199px;
+    height: 58px;
+    right: 260px;
+    bottom: 146px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
 /* Hovers */
 
 /* Botão para Criar um Pacote ao Passar o Mouse */
@@ -1439,7 +1498,8 @@
 #botaoBuscar:hover,
 #botaoConfirmarPassagem:hover,
 #botaoConfirmarCidade:hover,
-#botaoConfirmarHotel:hover {
+#botaoConfirmarHotel:hover,
+#botaoContinuarPacoteCriado:hover {
     cursor: pointer;
     background: #8adfc2;
     border: 1px solid #8adfc2;
