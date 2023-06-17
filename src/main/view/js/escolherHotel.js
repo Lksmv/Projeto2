@@ -3,7 +3,7 @@ let markers = [];
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("mapaHotel"), {
-        center: { lat: -34.397, lng: 150.644 },
+        center: { lat: -23.5505, lng: -46.6333 },
         zoom: 8,
     });
 }
@@ -15,10 +15,10 @@ function searchHotels() {
     }
     markers = [];
 
-    const city = document.getElementById("cityInput").value;
+    const cidade = localStorage.getItem('cidade');
     const service = new google.maps.places.PlacesService(document.createElement('div'));
     const request = {
-        query: `hotels in ${city}`,
+        query: `hotels in ${cidade}`,
         type: 'lodging'
     };
 
@@ -30,12 +30,39 @@ function searchHotels() {
                 let marker = new google.maps.Marker({
                     position: hotel.geometry.location,
                     map: map,
-                    title: hotel.name
+                    title: hotel.name,
+                    hotelId: hotel.place_id
                 });
 
                 markers.push(marker);
 
                 bounds.extend(marker.getPosition());
+
+                google.maps.event.addListener(marker, 'click', function() {
+                    const service = new google.maps.places.PlacesService(document.createElement('div'));
+                    const request = {
+                        placeId: marker.hotelId,
+                        fields: ['name', 'price_level', 'rating', 'photos']
+                    };
+            
+                    service.getDetails(request, function (place, status) {
+                        if (status === google.maps.places.PlacesServiceStatus.OK) {
+                            const content = `<div style="background-color: #f2f2f2; padding: 10px;">
+                            <h3>${place.name}</h3>
+                            <p>Avaliação: ${place.rating}</p>
+                            <img src="${place.photos[0].getUrl()}" alt="Imagem do hotel" style="max-width: 200px;" />
+                            </div>`;
+
+                            const infoWindow = new google.maps.InfoWindow({
+                                content: content
+                            });
+            
+                            infoWindow.open(map, marker);
+                        } else {
+                            console.error(status);
+                        }
+                    });
+                });
             }
 
             map.fitBounds(bounds);
