@@ -12,6 +12,11 @@ function buscarPacotes() {
 
         let arrayFilterDatas = arrayFilter.filter(element => filtrarDatasTela(element.dataPartida, 'I') || filtrarDatasTela(element.dataChegada, 'V'));
 
+        if (arrayFilterDatas.length == 0) {
+            alert('Não foram encontrados dados para esses filtros, tente utilizar outros filtros');
+            return;
+        }
+
         arrayFilterDatas.forEach(data => {
             setarValorTotalPacote(data);
 
@@ -24,10 +29,12 @@ function buscarPacotes() {
 
             adicionarBotaoTela();
 
+            criarEventoChangeCheckbox();
+
             document.getElementById('botaoConfirmarPassagem').scrollIntoView({ behavior: 'smooth', block: 'end' });
         })
-    }).catch(() => {
-        alert('Erro!');
+    }).catch(err => {
+        alert('Erro! ' + err);
     });
 }
 
@@ -301,4 +308,26 @@ function filtrarDatasTela(data, ehIdaVolta) {
         const dataVolta2 = data.substring(0, 10);
         return dataVolta1 == dataVolta2;
     }
+}
+
+function criarEventoChangeCheckbox() {
+    const checkboxes = document.querySelectorAll('.opcaoAviao input[type="checkbox"]');
+
+    checkboxes.forEach((checkbox) => {
+        checkbox.addEventListener('click', (event) => {
+            const clickedCheckbox = event.target;
+
+            const elementosP = Array.from(clickedCheckbox.parentNode.getElementsByTagName('p'));
+
+            const valores = elementosP.map((pElement) => pElement.textContent);
+
+            localStorage.setItem('checkboxValues', JSON.stringify(valores));
+
+            checkboxes.forEach((cb) => {
+                if (cb !== clickedCheckbox) {
+                    cb.checked = false;
+                }
+            });
+        });
+    });
 }
