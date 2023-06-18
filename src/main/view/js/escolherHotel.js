@@ -38,17 +38,18 @@ function searchHotels() {
 
                 bounds.extend(marker.getPosition());
 
-                google.maps.event.addListener(marker, 'click', function() {
+                google.maps.event.addListener(marker, 'click', function () {
                     const service = new google.maps.places.PlacesService(document.createElement('div'));
                     const request = {
                         placeId: marker.hotelId,
                         fields: ['name', 'price_level', 'rating', 'photos']
                     };
-            
+
                     service.getDetails(request, function (place, status) {
                         if (status === google.maps.places.PlacesServiceStatus.OK) {
                             const content = `<div style="background-color: #f2f2f2; padding: 10px;">
                             <h3>${place.name}</h3>
+                            <p>Preço diária: R$${getValorHotelAleatorio().toLocaleString('pt-BR')}</p>
                             <p>Avaliação: ${place.rating}</p>
                             <img src="${place.photos[0].getUrl()}" alt="Imagem do hotel" style="max-width: 200px;" />
                             </div>`;
@@ -56,7 +57,7 @@ function searchHotels() {
                             const infoWindow = new google.maps.InfoWindow({
                                 content: content
                             });
-            
+
                             infoWindow.open(map, marker);
                         } else {
                             console.error(status);
@@ -70,4 +71,11 @@ function searchHotels() {
             console.error(status);
         }
     });
+}
+
+function getValorHotelAleatorio() {
+    const min = 101;
+    const max = 3000;
+
+    return Math.floor(Math.random() * (max - min)) + min;
 }

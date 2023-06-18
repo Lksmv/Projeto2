@@ -316,18 +316,23 @@ function criarEventoChangeCheckbox() {
     checkboxes.forEach((checkbox) => {
         checkbox.addEventListener('click', (event) => {
             const clickedCheckbox = event.target;
+            const parentSection = clickedCheckbox.parentNode.parentNode;
+            const checkboxesInSection = parentSection.querySelectorAll('.opcaoAviao input[type="checkbox"]');
 
-            const elementosP = Array.from(clickedCheckbox.parentNode.getElementsByTagName('p'));
-
-            const valores = elementosP.map((pElement) => pElement.textContent);
-
-            localStorage.setItem('checkboxValues', JSON.stringify(valores));
-
-            checkboxes.forEach((cb) => {
+            checkboxesInSection.forEach((cb) => {
                 if (cb !== clickedCheckbox) {
                     cb.checked = false;
                 }
             });
+
+            const elementosP = Array.from(clickedCheckbox.parentNode.getElementsByTagName('p'));
+            const valores = elementosP.map((pElement) => pElement.textContent);
+
+            if (parentSection.previousElementSibling.textContent == 'IDA') {
+                localStorage.setItem('valoresIda', JSON.stringify(valores));
+            } else {
+                localStorage.setItem('valoresVolta', JSON.stringify(valores));
+            }
         });
     });
 }
