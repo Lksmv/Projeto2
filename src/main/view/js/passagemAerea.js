@@ -184,7 +184,7 @@ function criarOpcaoAviao(index, data) {
     let p2 = document.createElement('p');
     p2.setAttribute('class', 'textosAviao');
     p2.style.marginLeft = '87px';
-    p2.textContent = data.origem;
+    p2.textContent = index >= 4 ? data.destino : data.origem;
     divOpcao.appendChild(p2);
 
     let p3 = document.createElement('p');
@@ -220,7 +220,7 @@ function criarOpcaoAviao(index, data) {
     let p7 = document.createElement('p');
     p7.setAttribute('class', 'textosAviao');
     p7.style.marginLeft = '17px';
-    p7.textContent = data.destino;
+    p7.textContent = index >= 4 ? data.origem : data.destino;
     divOpcao.appendChild(p7);
 
     return divOpcao;
