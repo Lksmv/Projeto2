@@ -1214,36 +1214,26 @@
     font-size: 44px;
 }
 
-/* Imagem da Tela de Login */
-#imagemLogin {
-    position: absolute;
-    width: 50%;
-    height: 100vh;
-    left: 796px;
-    right: 0;
-
-    background: linear-gradient(90deg, #6BB39B 21.55%, rgba(107, 179, 155, 0) 42.18%), url(Numerologia-do-Destino[1].jpg);
-}
-
 /* Centraliza os Inputs da Tela de Login*/
 #centralizaInputsLogin {
-    position: absolute;
-    left: 796px;
-    width: 100vw;
-    height: 100vh;
     display: flex;
-    right: 0;
-    flex-direction: column;
     justify-content: center;
-    align-items: flex-start;
+    position: absolute;
+    min-width: 50%;
+    max-width: 50%;
+    height: 100vh;
+    right: 0;
+    top: 0;
+
+    background: linear-gradient(90deg, #6BB39B 21.55%, rgba(107, 179, 155, 0) 42.18%), url(../../resources/images/imagemLoginCidade.png);
+    background-size: cover;
 }
 
 /* Texto do Input de Email na Tela de Login */
 #textoEmailLogin {
-    position: absolute;
-    width: 53px;
+    width: 451px;
     height: 28px;
-    top: 112px;
+    margin-top: 112px;
 
     font-style: normal;
     font-weight: 400;
@@ -1254,14 +1244,11 @@
 
 /* Input de Email na Tela de Login */
 #inputEmailLogin {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    position: absolute;
-    width: 451px;
+    padding: 0 15px;
+    outline: none;
+    width: 421px;
     height: 58px;
-    top: 163px;
+    margin-top: 23px;
 
     background: #FFFFFF;
     border-radius: 4px;
@@ -1270,10 +1257,9 @@
 
 /* Texto do Input de Senha na Tela de Login */
 #textoSenhaLogin {
-    position: absolute;
-    width: 51px;
+    width: 451px;
     height: 28px;
-    top: 269px;
+    margin-top: 48px;
 
     font-style: normal;
     font-weight: 400;
@@ -1284,14 +1270,11 @@
 
 /* Input de Senha na Tela de Login */
 #inputSenhaLogin {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-start;
-
-    position: absolute;
-    width: 451px;
+    padding: 0 15px;
+    outline: none;
+    width: 421px;
     height: 58px;
-    top: 320px;
+    margin-top: 23px;
 
     background: #FFFFFF;
     border-radius: 4px;
@@ -1300,10 +1283,9 @@
 
 /* Texto Esqueceu Senha na Tela de Login */
 #textoEsqueceuSenhaLogin {
-    position: absolute;
-    width: 200px;
+    width: 451px;
     height: 28px;
-    top: 401px;
+    margin-top: 23px;
 
     font-style: normal;
     font-weight: 400;
@@ -1315,10 +1297,10 @@
 
 /* Botão Entrar na Tela de Login */
 #botaoEntrar {
-    position: absolute;
+    color: #FFFFFF;
     width: 199px;
     height: 58px;
-    top: 503px;
+    margin-top: 74px;
 
     background: #6BB39B;
     border: 1px solid #6BB39B;
@@ -1327,10 +1309,8 @@
 
 /* texto da tela de Login Caso Ainda não Teha Cadastro */
 #textoSemCadastroTelaLogin {
-    position: absolute;
-    width: 249px;
     height: 28px;
-    top: 601px;
+    margin-top: 40px;
 
     font-style: normal;
     font-weight: 400;
@@ -1508,6 +1488,7 @@
 
 /* Botão de Buscar e Confirmar ao Passar o Mouse*/
 #botaoBuscar:hover,
+#botaoEntrar:hover,
 #botaoConfirmarPassagem:hover,
 #botaoConfirmarCidade:hover,
 #botaoConfirmarHotel:hover,
@@ -1539,6 +1520,8 @@
 #inputVolta:focus,
 #inputPassageiros:focus,
 #inputEstado:focus,
-#inputCidade:focus {
+#inputCidade:focus,
+#inputEmailLogin:focus,
+#inputSenhaLogin:focus {
     border: 1px solid #437963;
 }
