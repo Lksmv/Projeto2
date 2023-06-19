@@ -721,7 +721,7 @@
     padding: 0 15px;
     outline: none;
     position: absolute;
-    width: 451px;
+    width: 431px;
     height: 58px;
     left: 260px;
     top: 199px;
@@ -734,7 +734,7 @@
 /* Texto do Input Local de Destino */
 #textoInputDestino {
     position: absolute;
-    width: 451px;
+    width: 447px;
     height: 28px;
     right: 275px;
     top: 148px;
@@ -751,7 +751,7 @@
     padding: 0 15px;
     outline: none;
     position: absolute;
-    width: 451px;
+    width: 431px;
     height: 58px;
     right: 260px;
     top: 199px;
@@ -797,7 +797,7 @@
     outline: none;
     position: absolute;
     margin-right: 49px;
-    width: 199px;
+    width: 179px;
     height: 58px;
     left: 260px;
     top: 356px;
@@ -829,7 +829,7 @@
     outline: none;
     position: absolute;
     left: 512px;
-    width: 199px;
+    width: 179px;
     height: 58px;
     top: 356px;
 
@@ -841,7 +841,7 @@
 /* Texto do Input Passageiros */
 #textoInputPassageiros {
     position: absolute;
-    width: 451px;
+    width: 447px;
     height: 28px;
     right: 275px;
     top: 305px;
@@ -859,7 +859,7 @@
     outline: none;
     position: absolute;
     right: 512px;
-    width: 199px;
+    width: 179px;
     height: 58px;
     top: 356px;
 
