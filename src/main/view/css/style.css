@@ -1542,3 +1542,8 @@
 #inputCidade:focus {
     border: 1px solid #437963;
 }
+
+.botao-desabilitado {
+    pointer-events: none;
+    opacity: 0.5;
+}

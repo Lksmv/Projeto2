@@ -3,7 +3,7 @@ let markers = [];
 let infoWindowAtual = null;
 
 function initMap() {
-    map = new google.maps.Map(document.getElementById("mapaHotel"), {
+    map = new google.maps.Map(document.getElementById("mapaPontosTuristicos"), {
         center: { lat: -23.5505, lng: -46.6333 },
         zoom: 8,
     });
@@ -11,7 +11,7 @@ function initMap() {
     adicionarEventoChangeBotao();
 }
 
-function searchHotels() {
+function buscarPontosTuristicos() {
 
     for (let i = 0; i < markers.length; i++) {
         markers[i].setMap(null);
@@ -21,20 +21,20 @@ function searchHotels() {
     const cidade = localStorage.getItem('cidade');
     const service = new google.maps.places.PlacesService(document.createElement('div'));
     const request = {
-        query: `hotels in ${cidade}`,
-        type: 'lodging'
+        query: `tourist spots in ${cidade}`,
+        type: 'tourist_attraction'
     };
 
     service.textSearch(request, function (results, status) {
         if (status === google.maps.places.PlacesServiceStatus.OK) {
             let bounds = new google.maps.LatLngBounds();
 
-            for (let hotel of results) {
+            for (let spot of results) {
                 let marker = new google.maps.Marker({
-                    position: hotel.geometry.location,
+                    position: spot.geometry.location,
                     map: map,
-                    title: hotel.name,
-                    hotelId: hotel.place_id
+                    title: spot.name,
+                    spotId: spot.place_id
                 });
 
                 markers.push(marker);
@@ -42,11 +42,11 @@ function searchHotels() {
                 bounds.extend(marker.getPosition());
 
                 google.maps.event.addListener(marker, 'click', function () {
-                    if (!document.getElementById('checkboxHotel').checked) {
+                    if (!document.getElementById('checkboxPontosTuristicos').checked) {
                         const service = new google.maps.places.PlacesService(document.createElement('div'));
                         const request = {
-                            placeId: marker.hotelId,
-                            fields: ['name', 'price_level', 'rating', 'photos']
+                            placeId: marker.spotId,
+                            fields: ['name', 'rating', 'photos']
                         };
 
                         service.getDetails(request, function (place, status) {
@@ -56,9 +56,8 @@ function searchHotels() {
                                 }
                                 const content = `<div style="background-color: #f2f2f2; padding: 10px;">
                                 <h3>${place.name}</h3>
-                                <p>Preço diária: R$${getValorHotelAleatorio().toLocaleString('pt-BR')}</p>
                                 <p>Avaliação: ${place.rating}</p>
-                                <img src="${place.photos[0].getUrl()}" alt="Imagem do hotel" style="max-width: 200px;" />
+                                <img src="${place.photos[0].getUrl()}" alt="Imagem do ponto turístico" style="max-width: 200px;" />
                                 </div>`;
 
                                 const infoWindow = new google.maps.InfoWindow({
@@ -68,8 +67,8 @@ function searchHotels() {
                                 infoWindowAtual = infoWindow;
 
                                 infoWindow.open(map, marker);
-                                document.getElementById('botaoConfirmarHotel').classList.remove('botao-desabilitado');
-                                document.getElementById('botaoConfirmarHotel').disabled = false;
+                                document.getElementById('botaoFinalizarPontosTuristicos').classList.remove('botao-desabilitado');
+                                document.getElementById('botaoFinalizarPontosTuristicos').disabled = false;
                             } else {
                                 console.error(status);
                             }
@@ -87,16 +86,9 @@ function searchHotels() {
     });
 }
 
-function getValorHotelAleatorio() {
-    const min = 101;
-    const max = 3000;
-
-    return Math.floor(Math.random() * (max - min)) + min;
-}
-
 function adicionarEventoChangeBotao() {
-    const botaoFinalizar = document.getElementById('botaoConfirmarHotel');
-    const checkbox = document.getElementById('checkboxHotel');
+    const botaoFinalizar = document.getElementById('botaoFinalizarPontosTuristicos');
+    const checkbox = document.getElementById('checkboxPontosTuristicos');
     checkbox.addEventListener('click', () => {
         if (infoWindowAtual) {
             infoWindowAtual.close();
