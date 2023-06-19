@@ -1341,24 +1341,27 @@
 }
 
 /* Seção para Escolher o Hotel de Destino */
-#secaoEscolherHotel {
+#secaoEscolherHotel,
+#secaoEscolherPontosTuristicos {
     position: relative;
     width: 100vw;
     height: 100vh;
 }
 
 /* Div com o Mapa de Hotéis */
-#mapaHotel {
+#mapaHotel,
+#mapaPontosTuristicos {
     position: absolute;
     width: 100vw;
     height: calc(100% - 158px);
     left: 0;
     top: 0;
-    background-color: #000000;
+    background-color: #FFFFFF;
 }
 
 /* Texto da Tela de Escolha de Hotel */
-#textoEscolherHotel {
+#textoEscolherHotel,
+#textoEscolherPontosTuristicos {
     position: absolute;
     width: 544px;
     height: 56px;
@@ -1376,7 +1379,8 @@
 }
 
 /* Checkbox para não Escolher Hotel */
-.checkboxHotel {
+.checkboxHotel,
+.checkboxPontosTuristicos {
     position: absolute;
     width: 26px;
     height: 22px;
@@ -1386,7 +1390,8 @@
 }
 
 /* Texto Pular Escolha de Hotel */
-#textoPularHotel {
+#textoPularHotel,
+#textoPularPontosTuristicos {
     position: absolute;
     width: 203px;
     height: 26px;
@@ -1404,7 +1409,8 @@
 }
 
 /* Botão para Confirmar Hotel */
-#botaoConfirmarHotel {
+#botaoConfirmarHotel,
+#botaoFinalizarPontosTuristicos {
     display: flex;
     align-items: flex-start;
     justify-content: center;
@@ -1418,6 +1424,12 @@
     background: #6BB39B;
     border: 1px solid #6BB39B;
     border-radius: 4px;
+}
+
+#botaoFinalizarPontosTuristicos {
+    background: #59361D;
+    border: 1px solid #59361D;
+    color: #FFFFFF;
 }
 
 /* Seção de Pacote Criado */
@@ -1505,9 +1517,16 @@
     border: 1px solid #8adfc2;
 }
 
+#botaoFinalizarPontosTuristicos:hover {
+    cursor: pointer;
+    background: #7e5336;
+    border: 1px solid #7e5336;
+}
+
 /* Checkboxes ao Passar o Mouse */
 .checkboxAviao:hover,
-.checkboxHotel:hover {
+.checkboxHotel:hover,
+.checkboxPontosTuristicos:hover {
     cursor: pointer;
 }
 
