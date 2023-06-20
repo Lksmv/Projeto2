@@ -11,5 +11,7 @@ public class PacoteListagemDTO {
 
     private String nome;
 
+    private String cidade;
+
     private String promocional;
 }
