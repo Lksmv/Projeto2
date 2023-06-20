@@ -23,6 +23,8 @@ public class PacoteDTO {
 
     private Double valor;
 
+    private String cidade;
+
     private Set<HotelDTO> hoteis;
 
     private Set<RestauranteDTO> restauranteDTOS;

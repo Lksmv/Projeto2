@@ -9,6 +9,7 @@ import com.pog.projeto.repository.PessoaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -45,6 +46,20 @@ public class PacoteService {
         pacoteEntity.setNome("Pacote " + (pessoaEntity.getPacoteEntities().size() + 1));
         pacoteEntity.setValor(0.0);
         pacoteEntity.setPessoas(Collections.singleton(pessoaEntity));
+        return toDTO(repository.save(pacoteEntity));
+    }
+
+    public PacoteDTO atualizar(Integer idPacote, String nome, Date dataPartida, Date dataChegada, String cidade) throws BusinessException {
+        PacoteEntity pacoteEntity = repository.findById(idPacote).orElseThrow(() -> new BusinessException("Id invalido"));
+        pacoteEntity.setCidade(cidade == null ? pacoteEntity.getCidade() : cidade);
+        pacoteEntity.setNome(nome == null ? pacoteEntity.getNome() : nome);
+        pacoteEntity.setDataChegada(dataChegada == null ? pacoteEntity.getDataChegada() : dataChegada);
+        pacoteEntity.setDataPartida(dataPartida == null ? pacoteEntity.getDataPartida() : dataPartida);
+        return toDTO(repository.save(pacoteEntity));
+    }
+
+    public PacoteDTO getById(Integer idPacote) {
+        PacoteEntity pacoteEntity = repository.findById(idPacote).get();
         return toDTO(repository.save(pacoteEntity));
     }
 

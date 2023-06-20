@@ -32,6 +32,9 @@ public class PacoteEntity {
     @Column(name = "PROMOCIONAL")
     private String promocional;
 
+    @Column(name = "CIDADE")
+    private String cidade;
+
     @Column(name = "VALOR")
     private Double valor;
 
