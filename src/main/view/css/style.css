@@ -81,6 +81,7 @@
 
 /* Menu de Perfil do Usuário */
 #menuUsuario {
+    display: none;
     position: absolute;
     z-index: 2;
     width: 200px;

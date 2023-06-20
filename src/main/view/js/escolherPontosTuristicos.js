@@ -1,6 +1,6 @@
 let map;
 let markers = [];
-let infoWindowAtual = null;
+let infoWindows = [];
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("mapaPontosTuristicos"), {
@@ -51,9 +51,6 @@ function buscarPontosTuristicos() {
 
                         service.getDetails(request, function (place, status) {
                             if (status === google.maps.places.PlacesServiceStatus.OK) {
-                                if (infoWindowAtual) {
-                                    infoWindowAtual.close();
-                                }
                                 const content = `<div style="background-color: #f2f2f2; padding: 10px;">
                                 <h3>${place.name}</h3>
                                 <p>Avaliação: ${place.rating}</p>
@@ -64,7 +61,15 @@ function buscarPontosTuristicos() {
                                     content: content
                                 });
 
-                                infoWindowAtual = infoWindow;
+                                infoWindows.push(infoWindow);
+
+                                google.maps.event.addListener(infoWindow, 'closeclick', function (event) {
+                                    const index = infoWindows.indexOf(infoWindow);
+
+                                    if (index > -1) {
+                                        infoWindows.splice(index, 1);
+                                    }
+                                });
 
                                 infoWindow.open(map, marker);
                                 document.getElementById('botaoFinalizarPontosTuristicos').classList.remove('botao-desabilitado');
@@ -100,5 +105,17 @@ function adicionarEventoChangeBotao() {
             botaoFinalizar.classList.add('botao-desabilitado');
             botaoFinalizar.disabled = true;
         }
+    });
+
+    botaoFinalizar.addEventListener('click', () => {
+        infoWindows.forEach(element => {
+            const regex = /<h3>(.*?)<\/h3>/;
+            const match = element.content.match(regex);
+
+            if (match && match.length >= 2) {
+                const conteudoH3 = match[1];
+                //Requisição para enviar pro banco
+            }
+        })
     });
 }

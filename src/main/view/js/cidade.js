@@ -3,14 +3,7 @@ $(document).ready(function() {
 
     $('#inputEstado').change(function() {
         let estadoID = $(this).val();
-        let estadoText = $(this).find('option:selected').text();
-        localStorage.setItem('estado', estadoText);
         carregarCidades(estadoID);
-    });
-
-    $('#inputCidade').change(function() {
-        let cidadeText = $(this).find('option:selected').text();
-        localStorage.setItem('cidade', cidadeText);
     });
 
     function carregarEstados() {
@@ -56,3 +49,17 @@ $(document).ready(function() {
         });
     }
 });
+
+function confirmarCidade() {
+    axios.post(`https://projetosoftware2.herokuapp.com/pacote/atualizar?idPacote=${localStorage.getItem('idPacoteAtual')}&cidade=${localStorage.getItem('cidade')}`).then(() => {
+        window.location.href = '../view/escolherHotel.html';
+    }).catch(erro => {
+        alert(erro);
+    });
+}
+
+function obterValorOpcao() {
+    const selectElement = document.getElementById('inputCidade');
+    const opcaoSelecionada = selectElement.options[selectElement.selectedIndex];
+    localStorage.setItem('cidade', opcaoSelecionada.text);
+}

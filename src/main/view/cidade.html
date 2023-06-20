@@ -7,6 +7,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/cidade.js"></script>
     <title>POG Viagens - Escolher Cidade</title>
 </head>
@@ -25,10 +26,10 @@
         </select>
 
         <p id="textoCidade">Informe a Cidade</p>
-        <select id="inputCidade" disabled>
+        <select id="inputCidade" onchange="obterValorOpcao()" disabled >
         </select>
 
-        <input type="button" value="Confirmar" id="botaoConfirmarCidade">
+        <input type="button" value="Confirmar" id="botaoConfirmarCidade" onclick="confirmarCidade()">
     </section>
 </body>
 

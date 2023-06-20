@@ -74,6 +74,10 @@ function setarValorTotalPacote(data) {
 
 function criarFilhosSection(section, data) {
     //IDA
+    let divIdIda = document.createElement('div');
+    divIdIda.setAttribute('id', data.idVoo);
+    section.appendChild(divIdIda);
+
     let pIda = document.createElement('p');
     pIda.setAttribute('id', 'textoIda');
     pIda.textContent = 'IDA';
@@ -98,6 +102,10 @@ function criarFilhosSection(section, data) {
     section.appendChild(div1);
 
     //VOLTA
+    let divIdVolta = document.createElement('div');
+    divIdVolta.setAttribute('id', data.idVoo);
+    section.appendChild(divIdVolta);
+
     let pVolta = document.createElement('p');
     pVolta.setAttribute('id', 'textoVolta');
     pVolta.textContent = 'VOLTA';
@@ -325,14 +333,15 @@ function criarEventoChangeCheckbox() {
                 }
             });
 
-            const elementosP = Array.from(clickedCheckbox.parentNode.getElementsByTagName('p'));
-            const valores = elementosP.map((pElement) => pElement.textContent);
-
-            if (parentSection.previousElementSibling.textContent == 'IDA') {
-                localStorage.setItem('valoresIda', JSON.stringify(valores));
-            } else {
-                localStorage.setItem('valoresVolta', JSON.stringify(valores));
-            }
+            localStorage.setItem('idVooClicado', parentSection.parentNode.childNodes[0].id);
         });
     });
+}
+
+function redirecionarInformacoesPassagem() {
+    axios.post(`https://projetosoftware2.herokuapp.com/pacote/add-voo?idVoo=${localStorage.getItem('idVooClicado')}&idPacote=${localStorage.getItem('idPacoteAtual')}`).then(() => {
+        window.location.href = '../view/cidade.html';
+    }).catch(erro => {
+        alert(erro);
+    });   
 }

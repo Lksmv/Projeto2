@@ -6,6 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="./js/home.js"></script>
     <title>POG Viagens</title>
 </head>
@@ -18,7 +19,7 @@
 
                 <div id="elipsePerfilUsuario">
                     <div id="bordaImagemPerfilUsuario">
-                        <img src="../resources/images/ImagemPerfilUsuario.png" alt="Perfil" id="botaoImagemPerfilUsuario">
+                        <img src="../resources/images/ImagemPerfilUsuario.png" alt="Perfil" id="botaoImagemPerfilUsuario" onclick="ajustarVisibilidadePerfil()">
                     </div>
                 </div>
             </div>
@@ -72,53 +73,6 @@
 
                 <div style="display: flex; justify-content: center;">
                     <div id="divCentralizaPacotes">
-                        <div class="pacotes">
-                            <img class="imagemPacote" src="../resources/images/ImagemInicio.png" alt="Cidade Destino">
-                            <div class="textoDentroPacote">
-                                <p id="texto1Pacote">cidade · país</p>
-                                <div id="posicaoTexto2e3">
-                                    <p id="texto2Pacote">Hotel</p>
-                                    <p id="texto3Pacote">R$ 00.000,00 IDA à VOLTA</p>
-                                </div>
-                                <p id="texto4Pacote">Descrição do hotel, lugar, etc.</p>
-                            </div>
-                        </div>
-
-                        <div class="pacotes">
-                            <img class="imagemPacote" src="../resources/images/ImagemInicio.png" alt="Cidade Destino">
-                            <div class="textoDentroPacote">
-                                <p id="texto1Pacote">cidade · país</p>
-                                <div id="posicaoTexto2e3">
-                                    <p id="texto2Pacote">Hotel</p>
-                                    <p id="texto3Pacote">R$ 00.000,00 IDA à VOLTA</p>
-                                </div>
-                                <p id="texto4Pacote">Descrição do hotel, lugar, etc.</p>
-                            </div>
-                        </div>
-
-                        <div class="pacotes">
-                            <img class="imagemPacote" src="../resources/images/ImagemInicio.png" alt="Cidade Destino">
-                            <div class="textoDentroPacote">
-                                <p id="texto1Pacote">cidade · país</p>
-                                <div id="posicaoTexto2e3">
-                                    <p id="texto2Pacote">Hotel</p>
-                                    <p id="texto3Pacote">R$ 00.000,00 IDA à VOLTA</p>
-                                </div>
-                                <p id="texto4Pacote">Descrição do hotel, lugar, etc.</p>
-                            </div>
-                        </div>
-
-                        <div class="pacotes">
-                            <img class="imagemPacote" src="../resources/images/ImagemInicio.png" alt="Cidade Destino">
-                            <div class="textoDentroPacote">
-                                <p id="texto1Pacote">cidade · país</p>
-                                <div id="posicaoTexto2e3">
-                                    <p id="texto2Pacote">Hotel</p>
-                                    <p id="texto3Pacote">R$ 00.000,00 IDA à VOLTA</p>
-                                </div>
-                                <p id="texto4Pacote">Descrição do hotel, lugar, etc.</p>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </section>
