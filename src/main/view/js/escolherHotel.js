@@ -1,6 +1,7 @@
 let map;
 let markers = [];
 let infoWindowAtual = null;
+let paramsHotel = {};
 
 function initMap() {
     map = new google.maps.Map(document.getElementById("mapaHotel"), {
@@ -55,19 +56,31 @@ function searchHotels() {
                                 if (infoWindowAtual) {
                                     infoWindowAtual.close();
                                 }
-                                const enderecoArray = place.formatted_address.split(',');
-                                const [endereco, rua, cidade, cep, pais] = enderecoArray;
-                                const enderecoFormatado = `${endereco}<br>${rua}<br>${cidade}<br>${cep}<br>${pais}`;
+                                let enderecoString = '';
+                                let enderecoFormatado = place.formatted_address.split(',');
+                                for (let i = 0; i < enderecoFormatado.length; i++) {
+                                    enderecoString += `${enderecoFormatado[i]}<br>`;
+                                }
+                                const valorRandom = getValorHotelAleatorio().toLocaleString('pt-BR');
                                 const content = `<div style="background-color: #f2f2f2; padding: 10px;">
                                 <h3>${place.name}</h3>
-                                <p>Preço diária: R$${getValorHotelAleatorio().toLocaleString('pt-BR')}</p>
+                                <p>Preço diária: R$${valorRandom}</p>
                                 <p>Avaliação: ${place.rating}</p>
                                 <img src="${place.photos[0].getUrl()}" alt="Imagem do hotel" style="max-width: 200px;" />
-                                <p>${enderecoFormatado}</p>
+                                <p>${enderecoString}</p>
                                 </div>`;
+
+                                paramsHotel.NOME = place.name;
+                                paramsHotel.VALOR = valorRandom;
+                                paramsHotel.ENDERECO = enderecoString;
 
                                 const infoWindow = new google.maps.InfoWindow({
                                     content: content
+                                });
+
+                                google.maps.event.addListener(infoWindow, 'closeclick', function (event) {
+                                    document.getElementById('botaoConfirmarHotel').classList.add('botao-desabilitado');
+                                    document.getElementById('botaoConfirmarHotel').disabled = true;
                                 });
 
                                 infoWindowAtual = infoWindow;
@@ -118,16 +131,25 @@ function adicionarEventoChangeBotao() {
 
 function confirmarHotel() {
     const params = {
-        "nome": "string",
-        "endereco": "string",
-        "dataPartida": "2023-06-20T01:28:45.134Z",
-        "dataChegada": "2023-06-20T01:28:45.134Z",
+        "nome": paramsHotel.NOME,
+        "endereco": paramsHotel.ENDERECO.replace('<br>', ''),
+        "dataPartida": new Date().toISOString(),
+        "dataChegada": new Date().toISOString(),
         "numero": 0,
         "telefone": 0,
-        "diaria": 0
+        "diaria": paramsHotel.VALOR.replace('.', '').replace(',', '')
     }
-    axios.post(`https://projetosoftware2.herokuapp.com/hotel`, params).then(() => {
-        window.location.href = '../view/escolherPontosTuristicos.html';
+    axios.post(`https://projetosoftware2.herokuapp.com/hotel`, params).then(response => {
+        if (response.status == 200) {
+            localStorage.setItem('idHotel', response.data.idHotel);
+            axios.post(`https://projetosoftware2.herokuapp.com/pacote/add-hotel?idHotel=${localStorage.getItem('idHotel')}&idPacote=${localStorage.getItem('idPacoteAtual')}`).then(() => {
+                if (response.status == 200) {
+                    window.location.href = '../view/escolherPontosTuristicos.html';
+                }
+            }).catch(erro => {
+                alert(erro);
+            });
+        }
     }).catch(erro => {
         alert(erro);
     });
