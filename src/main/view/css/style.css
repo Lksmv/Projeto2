@@ -1487,7 +1487,88 @@
     border-radius: 4px;
 }
 
+/* Seção de Perfil do Usuário */
+#secaoPerfil {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(90deg, #6BB39B 7.37%, #2E2E31 101.56%);
+}
+
+/* Quadro com Informações do Perfil */
+#quadroPerfil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 95%;
+    width: 95%;
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 2px rgba(18, 18, 20, 0.2), 0px 12px 24px rgba(39, 45, 77, 0.2);
+    border-radius: 10px;
+}
+
+/* Texto de Informações do Usuário */
+#informacoesUsuario {
+    margin-top: 100px;
+    margin-left: 230px;
+}
+
+/* Inputs das Seções de Informação e Conta do Usuário */
+#inputNomeUsuario,
+#inputCpfUsuario,
+#inputTelefoneUsuario,
+#inputEmailUsuario,
+#inputSenhaUsuario,
+#inputConfirmarSenhaUsuario {
+    padding: 0 15px;
+    outline: none;
+    width: 451px;
+    height: 28px;
+    margin-left: 15px;
+
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #2B3030;
+}
+
+/* Texto de Informações da Conta */
+#informacoesConta {
+    margin-top: 50px;
+    margin-left: 230px;
+}
+
+/* Botão de Editar Perfil do Usuário */
+#botaoEditarNomeUsuario,
+#botaoEditarCpfUsuario,
+#botaoEditarTelefoneUsuario,
+#botaoEditarEmailUsuario,
+#botaoEditarSenhaUsuario {
+    width: 20px;
+    height: 20px;
+    background-color: #6BB39B;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+/* Imagem da Logo */
+#imagemLogoViagem {
+    position: absolute;
+    width: 256px;
+    height: 256px;
+    right: 230px;
+    margin-top: 100px;
+}
+
 /* Hovers */
+
+/* Título da Página Inicial ao Passar o Mouse */
+#tituloPaginaInicial:hover {
+    cursor: pointer;
+    opacity: 80%;
+}
 
 /* Botão da Imagem de Perfil ao Passar o Mouse */
 #botaoImagemPerfilUsuario:hover {
@@ -1536,6 +1617,16 @@
 .checkboxHotel:hover,
 .checkboxPontosTuristicos:hover {
     cursor: pointer;
+}
+
+/* Botões de Editar Usuário ao Passar o Mouse */
+#botaoEditarNomeUsuario:hover,
+#botaoEditarCpfUsuario:hover,
+#botaoEditarTelefoneUsuario:hover,
+#botaoEditarEmailUsuario:hover,
+#botaoEditarSenhaUsuario:hover {
+    cursor: pointer;
+    background: #8adfc2;
 }
 
 /* Focus */
