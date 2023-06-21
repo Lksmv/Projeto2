@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/home.js"></script>
+    <title>POG Viagens - Perfil</title>
+</head>
+
+<body>
+    <div id="paginaInicial">
+        <header id="topoInicial">
+            <div id="divCentralizaTopo">
+                <h1 id="tituloPaginaInicial">POG&nbsp;<span>Viagens</span></h1>
+
+                <div id="elipsePerfilUsuario">
+                    <div id="bordaImagemPerfilUsuario">
+                        <img src="../resources/images/ImagemPerfilUsuario.png" alt="Perfil"
+                            id="botaoImagemPerfilUsuario" onclick="ajustarVisibilidadePerfil()">
+                    </div>
+                </div>
+            </div>
+
+            <div id="menuUsuario">
+                <p id="nomeMenuUsuario">Nome Usuário</p>
+
+                <div class="opcoesMenuUsuario">
+                    <p>Perfil</p>
+                </div>
+
+                <div class="opcoesMenuUsuario">
+                    <p>Meus Pacotes</p>
+                </div>
+
+                <div class="opcoesMenuUsuario"
+                    style="border-bottom-left-radius: 2%; border-bottom-right-radius: 2%; display: flex; flex-direction: row;">
+                    <p style="padding-right: 5px;">Sair</p>
+                </div>
+            </div>
+        </header>
+
+        <section id="secaoPacotes">
+            <div id="quadroPacotes">
+                <div id="meusPacotes">
+                    <div id="pacoteCriado">
+                        <div style="display: flex; flex-direction: row; width: 970px; justify-content: space-between;">
+                            <input type="checkbox" class="checkboxSelecionarPacote">
+                            <p style="margin: 10px; color: #F5B963;">Nome do Pacote</p>
+                        </div>
+
+                        <div id="conteudoPacote">
+                            <div id="passagemEscolhidaPacote">
+                                <div>
+                                    <p style="width: 200px;">Companhia Aérea:</p>
+                                    <p style="width: 200px;">GOL</p>
+                                </div>
+                                <div>
+                                    <p style="width: 200px;">Origem:</p>
+                                    <p style="width: 200px;">São Paulo - Presidente Prudente (XXX)</p>
+                                </div>
+                                <div>
+                                    <p style="width: 200px;">Destino:</p>
+                                    <p style="width: 200px;">São Paulo - Presidente Prudente (XXX)</p>
+                                </div>
+                                <div>
+                                    <p style="width: 200px;">Valor:</p>
+                                    <p style="width: 200px;">R$ 00.000,00</p>
+                                </div>
+                            </div>
+                            <div id="passagemEscolhidaPacote">
+                                <div>
+                                    <p style="width: 200px;">Ida</p>
+                                    <p style="width: 200px;">00/00/0000 00:00</p>
+                                </div>
+                                <div>
+                                    <p style="width: 200px;">Volta</p>
+                                    <p style="width: 200px;">00/00/0000 00:00</p>
+                                </div>
+                                <div>
+                                    <p style="width: 200px;">Número de Passageiros</p>
+                                    <p style="width: 200px;">2</p>
+                                </div>
+                                <div>
+                                    <p style="width: 200px;">Duração:</p>
+                                    <p style="width: 200px;">24h 06min</p>
+                                </div>
+                            </div>
+
+                            <div id="hotelEscolhidoPacote">
+                                <div>
+                                    <p style="width: 200px;">Nome do Hotel:</p>
+                                    <p style="width: 200px;">Hotel Gran Vivenzo Belo Horizonte</p>
+                                </div>
+                                <div>
+                                    <p style="width: 200px;">Valor Diária:</p>
+                                    <p style="width: 200px;">R$ 0.000,00</p>
+                                </div>
+                                <div>
+                                    <p style="width: 440px;">Endereço:</p>
+                                    <p style="width: 440px;">Avenida Cristiano Machado, 3030, Belo Horizonte, MG,
+                                        CEP 31160-342</p>
+                                </div>
+                            </div>
+
+                            <div id="pontosTuristicosPacote">
+                                <div>
+                                    <p style="width: 840px;">Pontos Turísticos:</p>
+                                    <p style="width: 840px;">Pão de Açúcar, Estátua da Liberdade, Parque Ibirapuera,
+                                        Ponto Turístico 4, Ponto Turístico 4, Ponto Turístico 4, Ponto Turístico 4,
+                                        Ponto Turístico 4, Ponto Turístico 4.</p>
+                                </div>
+                            </div>
+
+                            <p>Clique <a href="https://123milhas.com" style="color: #6BB39B;" target="_blank">aqui</a>
+                                comprar a passagem e reservar o hotel do pacote!</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="botoesPacotes">
+                    <input type="button" value="Criar Pacote" id="botaoAdicionarPacote">
+                    <input type="button" value="Remover" id="botaoRemoverPacote" disabled>
+                </div>
+        </section>
+</body>
+
+</html>
