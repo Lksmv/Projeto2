@@ -51,6 +51,7 @@ public class VooService {
                 605, 489, 449, 462, 412,
                 504, 600, 575, 586, 532,
                 501, 458, 490};
+        String[] vetor2 = {"TAM", "AZU", "GOL", "AVA"};
         Random random = new Random();
         int indiceAleatorio = random.nextInt(vetor.length);
         ZoneId zone = ZoneId.systemDefault();
@@ -59,6 +60,15 @@ public class VooService {
         LocalDateTime dataInicio = LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 0, 0, 0);
         LocalDateTime dataFinal = LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 23, 59, 59);
         List<VooEntity> vooEntities = vooRepository.findVooEntitiesByDataPartidaBetweenAndOrigemAndDestino(dataInicio, dataFinal, origem, destino);
+        if (vooEntities.isEmpty()) {
+            VooEntity voo = new VooEntity();
+            voo.setDataPartida(data);
+            voo.setCompanhiaAerea(vetor2[random.nextInt(vetor2.length)]);
+            voo.setOrigem(origem);
+            voo.setDestino(destino);
+            voo.setValor(400.0);
+            vooEntities.add(vooRepository.save(voo));
+        }
         for (VooEntity voo : vooEntities) {
             voo.setCompanhiaAerea(voo.getCompanhiaAerea().toUpperCase());
             String companhia = voo.getCompanhiaAerea().trim();
