@@ -70,7 +70,7 @@ public class VooService {
             } else if (companhia.equals("AVIANCA")) {
                 voo.setCompanhiaAerea("AVA");
             }
-            voo.setDataPartida(voo.getDataPartida().plusHours(random.nextInt(15)));
+            voo.setDataPartida(voo.getDataPartida().plusHours(random.nextInt(15)).plusMinutes(random.nextInt(40)));
             vooRepository.save(voo);
         }
         return vooEntities.stream()
