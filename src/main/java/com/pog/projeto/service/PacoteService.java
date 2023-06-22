@@ -110,10 +110,10 @@ public class PacoteService {
         return pacoteDTO;
     }
 
-    public List<PacoteListagemDTO> pacotesUsuarioLogado() {
+    public List<PacoteDTO> pacotesUsuarioLogado() {
         PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString())).get();
         return pessoaEntity.getPacoteEntities().stream()
-                .map(pacoteEntity -> objectMapper.convertValue(pacoteEntity, PacoteListagemDTO.class))
+                .map(this::toDTO)
                 .collect(Collectors.toList());
     }
 

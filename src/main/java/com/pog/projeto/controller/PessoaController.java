@@ -1,5 +1,6 @@
 package com.pog.projeto.controller;
 
+import com.pog.projeto.dtos.PacoteDTO;
 import com.pog.projeto.dtos.PacoteListagemDTO;
 import com.pog.projeto.dtos.PessoaCreateDTO;
 import com.pog.projeto.dtos.PessoaDTO;
@@ -73,7 +74,7 @@ public class PessoaController {
     }
 
     @GetMapping("/pacotes")
-    public ResponseEntity<List<PacoteListagemDTO>> pacotesUsuarioLogado() {
+    public ResponseEntity<List<PacoteDTO>> pacotesUsuarioLogado() {
         return new ResponseEntity<>(pacoteService.pacotesUsuarioLogado(), HttpStatus.OK);
     }
 
