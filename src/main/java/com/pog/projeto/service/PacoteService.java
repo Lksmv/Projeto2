@@ -84,7 +84,7 @@ public class PacoteService {
 
     public void deletePacote(Integer idPacote) throws BusinessException {
         PacoteEntity pacoteEntity = getEntityById(idPacote);
-        if (pacoteEntity.getPromocional() == "S") {
+        if (pacoteEntity.getPromocional().equals("S")) {
             String idPessoa = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
             PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(idPessoa)).get();
             Set<PacoteEntity> pacoteEntities = pessoaEntity.getPacoteEntities();
