@@ -31,7 +31,7 @@ public class SecurityConfiguration {
                 .frameOptions().disable()
                 .and().cors()
                 .and().csrf().disable()
-                .authorizeHttpRequests((auth) -> auth.antMatchers("/", "/auth/**", "/auth").permitAll()
+                .authorizeHttpRequests((auth) -> auth.antMatchers("/", "/auth/**", "/auth","/pessoa/cadastro").permitAll()
                         .antMatchers(HttpMethod.POST).hasAnyRole("USUARIO","ADMIN")
                         .antMatchers(HttpMethod.DELETE).hasAnyRole("USUARIO","ADMIN")
                         .antMatchers(HttpMethod.PUT).hasAnyRole("USUARIO","ADMIN")
