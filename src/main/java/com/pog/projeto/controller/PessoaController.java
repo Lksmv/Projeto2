@@ -31,6 +31,11 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.list(), HttpStatus.OK);
     }
 
+    @GetMapping
+    public ResponseEntity<PessoaDTO> getUsuarioLogado() {
+        return new ResponseEntity<>(pessoaService.getUsuarioLogado(), HttpStatus.OK);
+    }
+
     @PutMapping("/update-nome")
     public void updateNome(@RequestParam String nome) {
         pessoaService.updateNome(nome);

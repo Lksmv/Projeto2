@@ -86,6 +86,12 @@ public class PessoaService {
         pessoaRepository.save(pessoaEntity);
     }
 
+    public PessoaDTO getUsuarioLogado() {
+        String idPessoa = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(idPessoa)).get();
+        return toDTO(pessoaEntity);
+    }
+
     public void updateSenha(String senha) throws BusinessException {
         String idPessoa = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
         PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(idPessoa)).get();
