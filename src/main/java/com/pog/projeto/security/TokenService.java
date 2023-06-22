@@ -45,7 +45,7 @@ public class TokenService {
                 .signWith(SignatureAlgorithm.HS256, secret)
                 .compact();
 
-        return new TokenDTO(token, pessoaEntity.getIdPessoa(), pessoaEntity.getCargoEntity().getNome());
+        return new TokenDTO(token, pessoaEntity.getIdPessoa(), pessoaEntity.getCargoEntity().getNome(), pessoaEntity.getNome());
     }
 
     public UsernamePasswordAuthenticationToken isValid(String token) {

@@ -12,4 +12,5 @@ public class TokenDTO {
     private String token;
     private Integer idGestor;
     private String cargo;
+    private String usuario;
 }
