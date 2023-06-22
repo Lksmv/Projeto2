@@ -27,11 +27,6 @@ public class VooController {
     private final VooService vooService;
 
 
-    @GetMapping
-    public ResponseEntity<List<VooDTO>> listar() {
-        return new ResponseEntity<>(vooService.list(), HttpStatus.OK);
-    }
-
     @PostMapping("/cadastro")
     public ResponseEntity<VooDTO> cadastrar(@Valid @RequestBody VooCreateDTO createDto) throws BusinessException {
         VooDTO dto = vooService.create(createDto);

@@ -32,12 +32,6 @@ public class VooService {
         return toDTO(vooRepository.save(toEntity(voo)));
     }
 
-    public List<VooDTO> list() {
-        return vooRepository.findAll().stream()
-                .map(voo -> toDTO(voo))
-                .collect(Collectors.toList());
-    }
-
     public void delete(Integer id) throws BusinessException {
         VooEntity entity = findEntityById(id);
         vooRepository.delete(entity);
