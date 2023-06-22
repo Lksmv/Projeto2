@@ -63,11 +63,11 @@ public class VooService {
             voo.setCompanhiaAerea(voo.getCompanhiaAerea().toUpperCase());
             String companhia = voo.getCompanhiaAerea().trim();
             voo.setValor((double) vetor[indiceAleatorio]);
-            if (companhia == "LATAM") {
+            if (companhia.equals("LATAM")) {
                 voo.setCompanhiaAerea("TAM");
-            } else if (companhia == "AZUL") {
+            } else if (companhia.equals("AZUL")) {
                 voo.setCompanhiaAerea("AZU");
-            } else if (companhia == "AVIANCA") {
+            } else if (companhia.equals("AVIANCA")) {
                 voo.setCompanhiaAerea("AVA");
             }
             vooRepository.save(voo);
