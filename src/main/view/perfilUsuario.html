@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/perfilUsuario.js"></script>
+    <title>POG Viagens - Perfil</title>
+</head>
+
+<body onload="habilitarEventoChange()">
+    <div id="paginaInicial">
+        <header id="topoInicial">
+            <div id="divCentralizaTopo">
+                <h1 onclick="window.location.href='../view/inicio.html'" id="tituloPaginaInicial">POG&nbsp;<span>Viagens</span></h1>
+
+                <div id="elipsePerfilUsuario">
+                    <div id="bordaImagemPerfilUsuario">
+                        <img src="../resources/images/ImagemPerfilUsuario.png" alt="Perfil"
+                            id="botaoImagemPerfilUsuario" onclick="ajustarVisibilidadePerfil()">
+                    </div>
+                </div>
+            </div>
+
+            <div id="menuUsuario">
+                <p id="nomeMenuUsuario">Nome Usuário</p>
+
+                <div class="opcoesMenuUsuario">
+                    <p onclick="window.location.href='../view/perfilUsuario.html'">Perfil</p>
+                </div>
+
+                <div class="opcoesMenuUsuario">
+                    <p onclick="window.location.href='../view/pacotesPerfil.html'">Meus Pacotes</p>
+                </div>
+
+                <div class="opcoesMenuUsuario"
+                    style="border-bottom-left-radius: 2%; border-bottom-right-radius: 2%; display: flex; flex-direction: row;">
+                    <p onclick="window.location.href='../view/login.html'" style="padding-right: 5px;">Sair</p>
+                </div>
+            </div>
+        </header>
+
+        <section id="secaoPerfil">
+            <div id="quadroPerfil">
+                <p id="informacoesUsuario">Informações do Usuário</p>
+                <div
+                    style="border: 1px solid #6BB39B; border-radius: 5px; margin: 20px 0 20px 230px; display: flex; flex-direction: column; width: 650px;">
+                    <div style="display: flex; flex-direction: row; margin: 25px 20px 10px;">
+                        <p style="width: 70px;">Nome</p>
+                        <input type="text" value="Nome Completo do Usuário" id="inputNomeUsuario" disabled>
+                        <img src="../resources/images/ImagemEditarPerfilUsuario.png" alt="Editar" id="botaoEditarNomeUsuario">
+                    </div>
+                    <div style="display: flex; flex-direction: row; margin: 10px 20px 10px;">
+                        <p style="width: 70px;">CPF</p>
+                        <input type="text" value="000.000.000-00" id="inputCpfUsuario" disabled>
+                        <img src="../resources/images/ImagemEditarPerfilUsuario.png" alt="Editar" id="botaoEditarCpfUsuario">
+                    </div>
+                    <div style="display: flex; flex-direction: row; margin: 10px 20px 25px;">
+                        <p style="width: 70px;">Telefone</p>
+                        <input type="text" value="(00) 00000-0000" id="inputTelefoneUsuario" disabled>
+                        <img src="../resources/images/ImagemEditarPerfilUsuario.png" alt="Editar" id="botaoEditarTelefoneUsuario">
+                    </div>
+                </div>
+
+                <p id="informacoesConta">Informações da Conta</p>
+                <div
+                    style="border: 1px solid #6BB39B; border-radius: 5px; margin: 20px 0 20px 230px; display: flex; flex-direction: column; width: 650px;">
+                    <div style="display: flex; flex-direction: row; margin: 25px 20px 10px;">
+                        <p style="width: 70px;">E-mail</p>
+                        <input type="text" value="aaaaaa@gmail.com" id="inputEmailUsuario" disabled>
+                        <img src="../resources/images/ImagemEditarPerfilUsuario.png" alt="Editar" id="botaoEditarEmailUsuario">
+                    </div>
+                    <div style="display: flex; flex-direction: row; margin: 10px 20px 10px;">
+                        <p style="width: 70px;">Senha</p>
+                        <input type="text" value="*********" id="inputSenhaUsuario" disabled>
+                        <img src="../resources/images/ImagemEditarPerfilUsuario.png" alt="Editar" id="botaoEditarSenhaUsuario">
+                    </div>
+                    <div style="display: flex; flex-direction: row; margin: 10px 20px 25px;">
+                        <p style="width: 70px;">Confirmar Senha</p>
+                        <input type="text" value="*********" id="inputConfirmarSenhaUsuario" disabled>
+                    </div>
+                </div>
+
+                <img src="../resources/images/ImagemLogo.png" alt="Logo Viagem" id="imagemLogoViagem">
+            </div>
+        </section>
+</body>
+
+</html>

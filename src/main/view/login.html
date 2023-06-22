@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <title>POG Viagens - Login</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/login.js"></script>
+</head>
+
+<body>
+    <section id="secaoLogin">
+        <h1 id="tituloLogin"><span>POG</span>&nbsp;VIAGENS</h1>
+
+        <p id="textoSecaoLogin">Explore o mundo e desbavre novos <span>horizontes</span></p>
+
+        <div id="centralizaInputsLogin">
+            <div style="display: flex; flex-direction: column; align-items: center;">
+                <p id="textoEmailLogin">E-mail</p>
+                <input type="text"id="inputEmailLogin">
+
+                <p id="textoSenhaLogin">Senha</p>
+                <input type="text" id="inputSenhaLogin">
+                <!-- <p id="textoEsqueceuSenhaLogin">Esqueceu sua senha? <a href=""
+                        style="color: #F5B963; font-size: 12px;">clique aqui</a></p> -->
+
+                <input type="button" value="Entrar" id="botaoEntrar" onclick="fazerLogin()">
+                <p id="textoSemCadastroTelaLogin">Ainda não possui uma conta? <a href="../view/cadastro.html"
+                        style="color: #F5B963; font-size: 12px;">registre-se</a></p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>

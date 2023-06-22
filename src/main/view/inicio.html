@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/home.js"></script>
+    <title>POG Viagens</title>
+</head>
+
+<body onload="mostrarPacotesCadastrados()">
+    <div id="paginaInicial">
+        <header id="topoInicial">
+            <div id="divCentralizaTopo">
+                <h1 onclick="window.location.href='../view/inicio.html'" id="tituloPaginaInicial">POG&nbsp;<span>Viagens</span></h1>
+
+                <div id="elipsePerfilUsuario">
+                    <div id="bordaImagemPerfilUsuario">
+                        <img src="../resources/images/ImagemPerfilUsuario.png" alt="Perfil"
+                            id="botaoImagemPerfilUsuario" onclick="ajustarVisibilidadePerfil()">
+                    </div>
+                </div>
+            </div>
+
+            <div id="menuUsuario">
+                <p id="nomeMenuUsuario">Nome Usuário</p>
+
+                <div class="opcoesMenuUsuario">
+                    <p onclick="window.location.href='../view/perfilUsuario.html'">Perfil</p>
+                </div>
+
+                <div class="opcoesMenuUsuario">
+                    <p onclick="window.location.href='../view/pacotesPerfil.html'">Meus Pacotes</p>
+                </div>
+
+                <div class="opcoesMenuUsuario"
+                    style="border-bottom-left-radius: 2%; border-bottom-right-radius: 2%; display: flex; flex-direction: row;">
+                    <p onclick="window.location.href='../view/login.html'" style="padding-right: 5px;">Sair</p>
+                </div>
+            </div>
+        </header>
+
+        <article id="conteudoInicial">
+            <section id="secaoImagemInicial">
+                <h2 id="tituloSecundario">Seu portal para explorar o mundo e desbravar novos <span>horizontes</span>
+                </h2>
+
+                <p id="textoSecundario">Com uma ampla seleção de destinos nacionais, oferecemos <br>
+                    opções de pacotes completos e customizados para atender a <br>
+                    todos os tipos de viajantes. Não espere mais para viver as <br>
+                    melhores experiências de viagem, visite Pog Viagens hoje e <br>
+                    comece a sua jornada!
+                </p>
+
+                <img id="imagemInicial" src="../resources/images/ImagemInicio.png" alt="Viagem">
+            </section>
+
+            <div style="display:flex; width: 100vw;justify-content: center;">
+                <input id="botaoCriarPacote" type="button" value="Crie seu Pacote" onclick="criarPacote()">
+            </div>
+
+            <section id="secaoPacotesCompletos">
+                <h3>Pacotes completos</h3>
+
+                <div style="position: absolute;
+                            width: 122px;
+                            left: 260px;
+                            top: 125px;
+                            border: 2px solid #D97128;"></div>
+
+                <p id="textoSecaoPacotes">Veja os pacotes de viagens criados com desconto para você!</p>
+
+                <div style="display: flex; justify-content: center;">
+                    <div id="divCentralizaPacotes">
+                    </div>
+                </div>
+            </section>
+
+            <section id="secaoFeedback">
+                <img style="width: 100vw; min-height: 663px; max-height: 663px; object-fit: cover; filter: blur(2px);"
+                    src="../resources/images/ImagemViagem.png" alt="Viagem">
+                <h3>Viaje, explore, se divirta!</h3>
+                <p id="comentarioFeedback"> “O POG Viagens, me ajudou a economizar tempo e dinheiro, e tornou o processo
+                    de planejamento de
+                    viagens muito mais simples e agradável.
+                    <br><br>Realmente recomendo, para uma viagem relaxante e divertida, pois tive uma ótima
+                    experiência!”
+                </p>
+                <p id="autorFeedback">- Damiris S.</p>
+            </section>
+
+            <section id="secaoFaq">
+                <h3>Perguntas frequentes</h3>
+
+                <div id="perguntasFaq">
+                    <div class="quadroPergunta">
+                        <p id="pergunta">1. O que é um site de viagens?</p>
+
+                        <div id="resposta">
+                            <p>Um site de viagens é uma plataforma online que oferece informações e serviços
+                                relacionados a viagens, como pacotes de viagens, passagens aéreas, reservas de hotéis,
+                                aluguel de carros, seguro viagem e outras atividades turísticas.</p>
+                        </div>
+                    </div>
+
+                    <div class="quadroPergunta">
+                        <p id="pergunta">2. Quais são os serviços que um site de viagens oferece?</p>
+
+                        <div id="resposta">
+                            <p>Um site de viagens pode oferecer uma ampla variedade de serviços. No POG Viagens,
+                                oferecemos consultas para busca de preços e locais desejados, assim como, suas passagens
+                                aéreas.</p>
+                        </div>
+                    </div>
+
+                    <div class="quadroPergunta">
+                        <p id="pergunta">3. Como faço para encontrar as melhores ofertas de viagens?</p>
+
+                        <div id="resposta">
+                            <p>Para encontrar as melhores ofertas de viagens, é importante pesquisar e comparar várias
+                                opções de pacotes de viagens, passagens aéreas e hospedagem. No POG Viagens, as ofertas
+                                aparecem no tela principal do site.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <p id="footerFaq" style="font-weight: bold;">Não encontrou o que procurava?</p>
+                <p id="footerFaq" style="margin-top: 21px;">Se ainda possui dúvidas, entre em contato conosco e
+                    ficaremos felizes em ajudar.</p>
+            </section>
+        </article>
+
+        <footer id="fimInicial">
+            <div id="divCentralizaFim">
+                <div id="footerSobre">
+                    <h3>Sobre nós</h3><br>
+                    <a>Redes Sociais</a>
+                    <a>Projeto</a>
+                </div>
+
+                <div id="footerPacotes">
+                    <h3>Nossos pacotes</h3><br>
+                    <p>Amsterdã, Países Baixos</p>
+                    <p>Veneza, Itália</p>
+                    <p>Míconos, Grécia</p>
+                    <p>Capri, Itália</p>
+                    <p>São Paulo, Brasil</p><br><br>
+                    <h3 style="color: #85E6C0;">Em alta</h3><br>
+                    <p>Atenas, Grécia</p>
+                    <p>Lagos, Portugal</p>
+                </div>
+
+                <div id="footerInspire">
+                    <h3>Inspire-se</h3><br>
+                    <div id="divCentralizaInspire">
+                        <div>
+                            <p>Pontos Turísticos</p><br>
+                            <p>Museus</p>
+                            <p>Parques</p>
+                            <p>Aquários</p><br><br>
+
+                            <p>Descanse e relaxe</p><br>
+                            <p>Piscinas</p>
+                            <p>Spas</p>
+                            <p>Passeios</p>
+                        </div>
+
+                        <div>
+                            <p>Comidas & Bebidas</p><br>
+                            <p>Pubs</p>
+                            <p>Resturantes</p>
+                            <p>Street food</p><br><br>
+
+                            <p>Para você</p><br>
+                            <p>Solo ou casal</p>
+                            <p>Pet friendly</p>
+                            <p>Accessibilidade</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="footerAjuda">
+                    <h3>Ajuda</h3><br>
+                    <p>Contate-nos</p>
+                    <p>Políticas</p>
+                </div>
+            </div>
+
+            <div id="footerHorizontalLine"></div>
+
+            <div id="divCentralizaCreditos">
+                <p id="pogViagensFooter">POG VIAGENS</p>
+                <p id="pogViagensCreditos">© 2023 POG Viagens</p>
+                <p style="color: #252525;">POG VIAGENS</p>
+            </div>
+        </footer>
+    </div>
+</body>
+
+</html>

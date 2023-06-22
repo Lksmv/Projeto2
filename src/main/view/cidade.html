@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/cidade.js"></script>
+    <title>POG Viagens - Escolher Cidade</title>
+</head>
+
+<body>
+    <section id="secaoEscolherCidadeDestino">
+        <!--<img id="imagemCidade" src="../resources/images/imagemLoginCidade.png" alt="Deck">-->
+
+        <h1 id="tituloPaginaCidade">Informe a sua&nbsp;<span>cidade</span>&nbsp;de destino</h1>
+
+        <p id="textoSecaoCidade">Nessa parte, é importante que você informe a cidade que você irá se hospedar para que
+            possamos procurar os melhores hotéis e pontos turíticos próximos.</p>
+
+        <p id="textoEstado">Informe o Estado</p>
+        <select id="inputEstado">
+        </select>
+
+        <p id="textoCidade">Informe a Cidade</p>
+        <select id="inputCidade" onchange="obterValorOpcao()" disabled >
+        </select>
+
+        <input type="button" value="Confirmar" id="botaoConfirmarCidade" onclick="confirmarCidade()">
+    </section>
+</body>
+
+</html>

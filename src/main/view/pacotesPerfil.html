@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/pacotesPerfil.js"></script>
+    <title>POG Viagens - Perfil</title>
+</head>
+
+<body onload="mostrarPacotesTela()">
+    <div id="paginaInicial">
+        <header id="topoInicial">
+            <div id="divCentralizaTopo">
+                <h1 onclick="window.location.href='../view/inicio.html'" id="tituloPaginaInicial">POG&nbsp;<span>Viagens</span></h1>
+
+                <div id="elipsePerfilUsuario">
+                    <div id="bordaImagemPerfilUsuario">
+                        <img src="../resources/images/ImagemPerfilUsuario.png" alt="Perfil"
+                            id="botaoImagemPerfilUsuario" onclick="ajustarVisibilidadePerfil()">
+                    </div>
+                </div>
+            </div>
+
+            <div id="menuUsuario">
+                <p id="nomeMenuUsuario">Nome Usuário</p>
+
+                <div class="opcoesMenuUsuario">
+                    <p onclick="window.location.href='../view/perfilUsuario.html'">Perfil</p>
+                </div>
+
+                <div class="opcoesMenuUsuario">
+                    <p onclick="window.location.href='../view/pacotesPerfil.html'">Meus Pacotes</p>
+                </div>
+
+                <div class="opcoesMenuUsuario"
+                    style="border-bottom-left-radius: 2%; border-bottom-right-radius: 2%; display: flex; flex-direction: row;">
+                    <p onclick="window.location.href='../view/login.html'" style="padding-right: 5px;">Sair</p>
+                </div>
+            </div>
+        </header>
+
+        <section id="secaoPacotes">
+            <div id="quadroPacotes">
+                <div id="meusPacotes">
+                </div>
+
+                <div id="botoesPacotes">
+                    <input type="button" value="Criar Pacote" id="botaoAdicionarPacote" onclick="window.location.href='../view/inicio.html'">
+                    <input type="button" value="Remover" id="botaoRemoverPacote" disabled>
+                </div>
+        </section>
+</body>
+
+</html>

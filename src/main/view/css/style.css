@@ -1,0 +1,1955 @@
+/* Configurações Gerais */
+* {
+    padding: 0;
+    margin: 0;
+    font-size: 18px;
+    font-family: 'Poppins';
+}
+
+/* Página Inicial */
+#paginaInicial {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    background: #FFFFFF;
+    overflow-x: hidden;
+}
+
+/* Footer da Página */
+#topoInicial {
+    position: absolute;
+    width: 100vw;
+    height: 100px;
+    background: #F7F4E8;
+}
+
+/* Centraliza o Header */
+#divCentralizaTopo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    position: absolute;
+    right: 259px;
+    height: 48px;
+    left: 259px;
+    top: 26px;
+}
+
+/* Título da Págnina Inicial */
+#tituloPaginaInicial {
+    width: 166px;
+    height: 24px;
+    font-weight: 600;
+    line-height: 24px;
+
+    display: flex;
+    align-items: center;
+    text-align: center;
+    text-transform: uppercase;
+    color: #6BB39B;
+}
+
+/* Segunda Cor do Título da Págnina Inicial */
+#tituloPaginaInicial span {
+    color: #0B0B0D;
+}
+
+/* Borda com a Elipse do Perfil do Usuário */
+#elipsePerfilUsuario {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-sizing: border-box;
+    width: 48px;
+    height: 48px;
+    background: #F2FAF9;
+    border: 1px solid #3F3F3F;
+    border-radius: 100%;
+    z-index: 3;
+}
+
+/* Posicionamento e Centralização da Imagem do Usuário */
+#bordaImagemPerfilUsuario {
+    position: absolute;
+    width: 24px;
+    height: 24px;
+    right: 12px;
+    top: 12px;
+}
+
+/* Menu de Perfil do Usuário */
+#menuUsuario {
+    display: none;
+    position: absolute;
+    z-index: 2;
+    width: 200px;
+    background-color: #FFFFFF;
+    right: 250px;
+    top: 16px;
+    border-radius: 2%;
+    box-shadow: 0px 1px 2px rgba(18, 18, 20, 0.2), 0px 12px 24px rgba(39, 45, 77, 0.2);
+}
+
+/* Nome do Usuário no Menu */
+#nomeMenuUsuario {
+    margin: 28px 15px;
+    font-size: 14px;
+}
+
+/* Opções Disponíveis no Menu do Usuário*/
+.opcoesMenuUsuario {
+    width: calc(100% - 30px);
+    padding: 15px;
+}
+
+/* Gradiente da Imagem na Tela Inicial */
+#secaoImagemInicial {
+    position: absolute;
+    width: 100vw;
+    height: 500px;
+    left: 0px;
+    top: 100px;
+
+    background: linear-gradient(90deg, #6BB39B 7.37%, #2E2E31 101.56%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Título Secundário da Imagem na Tela Inicial */
+#tituloSecundario {
+    position: absolute;
+    width: 700px;
+    height: 112px;
+    left: 260px;
+    top: 96px;
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 56px;
+    display: flex;
+    align-items: end;
+    color: #FFFFFF;
+    z-index: 1;
+}
+
+/* Segunda Cor do Título Secundário */
+#tituloSecundario span {
+    font-size: 44px;
+    color: #F5B963;
+    z-index: 1;
+}
+
+/* Texto da Imagem na Tela Inicial */
+#textoSecundario {
+    position: absolute;
+    height: 140px;
+    left: 260px;
+    top: 230px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    color: #FFFFFF;
+    z-index: 1;
+}
+
+/* Imagem da Tela Inicial */
+#imagemInicial {
+    position: absolute;
+    width: 50%;
+    height: 500px;
+    right: 0;
+    opacity: 5%;
+
+    background: linear-gradient(90deg, #588879 5.34%, rgba(0, 0, 0, 0) 34.25%);
+}
+
+/* Botão para Criar um Pacote */
+#botaoCriarPacote {
+    position: absolute;
+    width: 512px;
+    height: 54px;
+    top: 573px;
+    border: 1px solid #FFFFFF;
+    background: #FFFFFF;
+    box-shadow: 0px 1px 2px rgba(18, 18, 20, 0.2), 0px 12px 24px rgba(39, 45, 77, 0.2);
+    border-radius: 4px;
+
+    color: #59361D;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    z-index: 1;
+}
+
+/* Seção com os Pacotes Criados pelo Usuário Admin */
+#secaoPacotesCompletos {
+    position: absolute;
+    width: 100vw;
+    height: 740px;
+    left: 0;
+    top: 600px;
+
+    background: #F7F4E8;
+}
+
+/* Título da Seção de Pacotes */
+#secaoPacotesCompletos h3 {
+    position: absolute;
+    width: 240px;
+    height: 26px;
+    left: 260px;
+    top: 89px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 26px;
+
+    color: #0B0B0D;
+}
+
+/* Texto da Seção de Pacotes */
+#textoSecaoPacotes {
+    position: absolute;
+    height: 28px;
+    left: 260px;
+    top: 148px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #0B0B0D;
+}
+
+/* Centraliza os Pacotes */
+#divCentralizaPacotes {
+    display: flex;
+    flex-direction: row;
+    margin-top: 199px;
+    overflow: auto;
+    margin-left: 260px;
+    margin-right: 260px;
+}
+
+/* Pacotes */
+.pacotes {
+    min-width: 339px;
+    max-width: 339px;
+    height: 489px;
+    margin: 0 10px 0 0;
+
+    background: #252525;
+    border-radius: 4px;
+}
+
+/* Imagem do Pacote */
+.imagemPacote {
+    width: 339px;
+    height: 247px;
+}
+
+/* Ajusta a Posição do Texto Dentro do Pacote */
+.textoDentroPacote {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 13px 18px;
+    gap: 8px;
+    margin: 0 10px 0 0;
+
+    width: 303px;
+    height: 174px;
+
+    background: #252525;
+}
+
+/* Texto 1 Dentro do Pacote */
+#texto1Pacote {
+    height: 26px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 14px;
+    line-height: 26px;
+
+    text-transform: uppercase;
+
+    color: #D7FFF1;
+}
+
+/* Ajusta a Posição dos Textos 2 e 3 */
+#posicaoTexto2e3 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+    gap: 4px;
+
+    width: 303px;
+    height: 52px;
+}
+
+/* Texto 2 Dentro do Pacote */
+#texto2Pacote {
+    width: 50px;
+    height: 26px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 26px;
+
+    color: #FFFFFF;
+}
+
+/* Texto 3 Dentro do Pacote */
+#texto3Pacote {
+    width: 132px;
+    height: 55px;
+
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 26px;
+
+    text-align: right;
+    text-transform: uppercase;
+
+    color: #FFFFFF;
+}
+
+/* Texto 4 Dentro do Pacote */
+#texto4Pacote {
+    width: 303px;
+    height: 24px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #E0F2EB;
+}
+
+/* Seção de Feedback */
+#secaoFeedback {
+    position: absolute;
+    width: 100vw;
+    min-height: 663px;
+    max-height: 663px;
+    left: 0px;
+    top: 1340px;
+}
+
+/* Título da Seção de Feedback */
+#secaoFeedback h3 {
+    position: absolute;
+    width: 412px;
+    height: 108px;
+    right: 260px;
+    top: 146px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 54px;
+
+    color: #0B0B0D;
+    z-index: 1;
+}
+
+/* Texto do Feedback */
+#comentarioFeedback {
+    position: absolute;
+    width: 412px;
+    height: 144px;
+    right: 260px;
+    top: 276px;
+
+    font-family: 'Poppins';
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: justify;
+
+    color: #0B0B0D;
+    z-index: 1;
+}
+
+/* Autor do Feedback */
+#autorFeedback {
+    position: absolute;
+    width: 90px;
+    height: 24px;
+    right: 260px;
+    top: 420px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    color: #0B0B0D;
+}
+
+/* Seção de FAQ */
+#secaoFaq {
+    position: absolute;
+    width: 100vw;
+    height: 652px;
+    top: 2003px;
+}
+
+/* Título da Seção FAQ */
+#secaoFaq h3 {
+    position: absolute;
+    width: 277px;
+    height: 56px;
+    left: 260px;
+    top: 60px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 56px;
+
+    color: #0B0B0D;
+}
+
+/* Perguntas FAQ */
+#perguntasFaq {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0;
+    gap: 34px;
+
+    position: absolute;
+    height: 338px;
+    left: 260px;
+    right: 260px;
+    top: 157px;
+
+    background: #F7F4E8;
+}
+
+/* Quadro com Pergunta */
+.quadroPergunta {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 56px;
+    min-height: 90px;
+}
+
+/* Questão de Pergunta */
+#pergunta {
+    max-width: 300px;
+    position: absolute;
+    font-style: normal;
+    font-weight: 600;
+    line-height: 21px;
+
+    color: #0B0B0D;
+}
+
+/* Resposta da Pergunta */
+#resposta {
+    box-sizing: border-box;
+    position: absolute;
+    width: 600px;
+    min-height: 90px;
+    right: 0;
+    text-align: justify;
+
+    background: #6BB39B;
+    border: 1px solid #BEC2D9;
+    box-shadow: 0px 2px 4px #D1DFDA;
+    border-radius: 6px;
+    padding: 15px;
+}
+
+/* Texto de Resposta */
+#resposta p {
+    font-style: normal;
+    font-weight: 500;
+    line-height: 21px;
+    display: flex;
+    align-items: center;
+}
+
+/* Texto Entrar em Contato */
+#footerFaq {
+    position: absolute;
+    height: 45px;
+    left: 260px;
+    top: 545px;
+
+    font-style: normal;
+    font-weight: 600;
+    line-height: 24px;
+    display: flex;
+    align-items: center;
+
+    color: #0B0B0D;
+}
+
+/* Footer da Página Inicial */
+#fimInicial {
+    position: absolute;
+    width: 100vw;
+    height: 513.31px;
+    left: 0;
+    top: 2655px;
+    background: #252525;
+}
+
+/* Centraliza os Textos do Footer */
+#divCentralizaFim {
+    display: flex;
+    flex-direction: row;
+    margin: 67px 260px;
+    justify-content: space-between;
+}
+
+/* Informações Sobre */
+#footerSobre {
+    width: 114px;
+    height: 101.2px;
+    top: 2722px;
+
+
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+
+    color: #85E6C0;
+}
+
+/* Links do Sobre */
+#footerSobre a {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    color: #C1C7CD;
+}
+
+/* Informações Pacotes */
+#footerPacotes {
+    width: 170px;
+    height: 303px;
+    top: 2722px;
+
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+
+    color: #85E6C0;
+}
+
+/* Parágrafos do Pacotes */
+#footerPacotes p {
+    width: 170px;
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    color: #C1C7CD;
+}
+
+/* Informações Inspire-se */
+#footerInspire {
+    width: 338px;
+    height: 296px;
+
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+
+    color: #85E6C0;
+}
+
+/* Centraliza Inspire-se */
+#divCentralizaInspire {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+/* Parágrafos do Inspire-se */
+#footerInspire p {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    color: #C1C7CD;
+}
+
+/* Informações Ajuda */
+#footerAjuda {
+    width: 156px;
+    height: 132.23px;
+
+    font-style: normal;
+    font-weight: 600;
+    line-height: 20px;
+
+    color: #85E6C0;
+}
+
+/* Parágrafos do Ajuda */
+#footerAjuda p {
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    color: #C1C7CD;
+}
+
+/* Linha Horizontal do Footer */
+#footerHorizontalLine {
+    height: 0px;
+    margin-left: 260px;
+    margin-right: 260px;
+    top: 3063px;
+
+    border: 0.8441px solid #346769;
+}
+
+/* Centraliza Créditos do Footer */
+#divCentralizaCreditos {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 25px 260px;
+}
+
+/* POG Viagens no Footer */
+#pogViagensFooter {
+    width: 170px;
+    height: 16.17px;
+
+    font-style: normal;
+    font-weight: 600;
+    font-size: 24px;
+    line-height: 24px;
+
+    text-transform: uppercase;
+    color: #85E6C0;
+}
+
+/* Centraliza Creditos do POG Viagens */
+#pogViagensCreditos {
+    width: 143px;
+    height: 22px;
+    left: 706px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 22px;
+
+    color: #909EA2;
+}
+
+/* Seção Imagem Pacote */
+#secaoImagemInicialPacote {
+    position: absolute;
+    width: 100vw;
+    height: 423px;
+    left: 0px;
+    top: 100px;
+
+    background: linear-gradient(90deg, #6BB39B 7.37%, #2E2E31 101.56%);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+}
+
+/* Imagem da Tela de Pacotes */
+#imagemInicialPacote {
+    position: absolute;
+    width: 50%;
+    height: 423px;
+    right: 0;
+    opacity: 5%;
+
+    background: linear-gradient(90deg, #588879 5.34%, rgba(0, 0, 0, 0) 34.25%);
+}
+
+/* Seção para Selecionar as Passagens Aéreas */
+#secaoPassagemAerea {
+    height: 537px;
+    top: 523px;
+    background: #F7F4E8;
+    position: absolute;
+    width: 100vw;
+    left: 0;
+
+    background: #F7F4E8;
+}
+
+/* Título da Seção de Pacotes */
+#secaoPassagemAerea h3 {
+    position: absolute;
+    width: 385px;
+    height: 26px;
+    left: 260px;
+    top: 89px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 26px;
+
+    color: #0B0B0D;
+}
+
+/* Texto do Input Local de Saída */
+#textoInputSaida {
+    position: absolute;
+    width: 451px;
+    height: 28px;
+    left: 260px;
+    top: 148px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #0B0B0D;
+}
+
+/* Input Local de Saída */
+#inputSaida {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    width: 431px;
+    height: 58px;
+    left: 260px;
+    top: 199px;
+
+    background: #FFFFFF;
+    border: 1px solid #2B3030;
+    border-radius: 4px;
+}
+
+/* Texto do Input Local de Destino */
+#textoInputDestino {
+    position: absolute;
+    width: 447px;
+    height: 28px;
+    right: 275px;
+    top: 148px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #0B0B0D;
+}
+
+/* Input Local de Destino */
+#inputDestino {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    width: 431px;
+    height: 58px;
+    right: 260px;
+    top: 199px;
+
+    background: #FFFFFF;
+    border: 1px solid #2B3030;
+    border-radius: 4px;
+}
+
+/* Texto do Input Escolher Datas */
+#textoInputDatas {
+    position: absolute;
+    width: 451px;
+    height: 28px;
+    left: 260px;
+    top: 305px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #0B0B0D;
+}
+
+/* Texto do Input Ida */
+#textoInputIda {
+    position: absolute;
+    width: 23px;
+    height: 25px;
+    left: 260px;
+    top: 425px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #47475F;
+}
+
+/* Input Ida */
+#inputIda {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    margin-right: 49px;
+    width: 179px;
+    height: 58px;
+    left: 260px;
+    top: 356px;
+
+    background: #FFFFFF;
+    border: 1px solid #2B3030;
+    border-radius: 4px;
+}
+
+/* Texto do Input Volta */
+#textoInputVolta {
+    position: absolute;
+    width: 39px;
+    height: 25px;
+    left: 512px;
+    top: 425px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #47475F;
+}
+
+/* Input Volta */
+#inputVolta {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    left: 512px;
+    width: 179px;
+    height: 58px;
+    top: 356px;
+
+    background: #FFFFFF;
+    border: 1px solid #2B3030;
+    border-radius: 4px;
+}
+
+/* Texto do Input Passageiros */
+#textoInputPassageiros {
+    position: absolute;
+    width: 447px;
+    height: 28px;
+    right: 275px;
+    top: 305px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #0B0B0D;
+}
+
+/* Input Passageiros */
+#inputPassageiros {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    right: 512px;
+    width: 179px;
+    height: 58px;
+    top: 356px;
+
+    background: #FFFFFF;
+    border: 1px solid #2B3030;
+    border-radius: 4px;
+}
+
+/* Botão Buscar */
+#botaoBuscar {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    position: absolute;
+    width: 199px;
+    height: 58px;
+    right: 260px;
+    top: 356px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
+/* Texto do Valor da Passagem Aérea */
+#textoValorPassagem {
+    position: absolute;
+    width: 152px;
+    height: 28px;
+    left: 180px;
+    top: 13px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 28px;
+
+    color: #0B0B0D;
+}
+
+/* Opção de Passagem Aérea */
+#secaoOpcoesPassagem {
+    position: absolute;
+    width: 100vw;
+    height: 285px;
+    left: 0;
+    top: 1087px;
+
+    background: #FFFFFF;
+}
+
+/* Texto da Opção de Avião de Ida */
+#textoIda {
+    position: absolute;
+    width: 23px;
+    height: 24px;
+    left: 68px;
+    top: 46px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #0B0B0D;
+}
+
+/* Texto da Opção de Avião de Volta */
+#textoVolta {
+    position: absolute;
+    width: 44px;
+    height: 24px;
+    right: 634px;
+    top: 46px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 24px;
+
+    color: #0B0B0D;
+}
+
+/* Opções de Ida e Volta */
+#opcao0Aviao,
+#opcao1Aviao,
+#opcao2Aviao,
+#opcao3Aviao,
+#opcao4Aviao,
+#opcao5Aviao,
+#opcao6Aviao,
+#opcao7Aviao,
+#opcao8Aviao,
+#opcao9Aviao,
+#opcao10Aviao,
+#opcao11Aviao {
+    display: flex;
+    flex-direction: row;
+    width: 666px;
+    height: 54px;
+
+    background: #FFFFFF;
+}
+
+/* Checkbox Selecionar Ida e Volta */
+.checkboxAviao {
+    width: 26px;
+    height: 22px;
+    margin-left: 80px;
+    border: 1px solid #2B3030;
+    border-radius: 4px;
+    outline: none;
+    margin-top: 4px;
+}
+
+/* Todos os Textos das Passagens */
+.textosAviao {
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 28px;
+    color: #47475F;
+}
+
+/* Opção de Passagem Aérea */
+#secaoOpcoesPassagem2 {
+    position: absolute;
+    width: 100vw;
+    height: 285px;
+    left: 0;
+    top: 1430px;
+
+    background: #FFFFFF;
+}
+
+/* Botão de Confirmar Passagem */
+#botaoConfirmarPassagem {
+    display: flex;
+    justify-content: center;
+    width: 199px;
+    height: 58px;
+    left: 681px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
+/* Footer da Página de Criar Pacote */
+#fimPacote {
+    position: absolute;
+    width: 100vw;
+    height: 85px;
+    left: 0;
+    top: 1846px;
+    background: #252525;
+}
+
+/* Seção para Escolher a Cidade de Destino */
+#secaoEscolherCidadeDestino {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+
+    background: linear-gradient(90deg, #000B02 6.34%, #2F2E36 37.81%);
+}
+
+/* Imagem da Secao de Escolher Cidade */
+#imagemCidade {
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    left: 796px;
+    right: 0;
+}
+
+/* Título da Página para Escolher a Cidade de Destino */
+#tituloPaginaCidade {
+    position: absolute;
+    width: 643px;
+    height: 56px;
+    left: 260px;
+    top: 124px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 56px;
+
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+/* Muda a cor da palavra 'Cidade' na Página de Escolha do Destino */
+#tituloPaginaCidade span {
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 56px;
+    color: #85E6C0;
+}
+
+/* Texto da Página de Escolher Destino */
+#textoSecaoCidade {
+    position: absolute;
+    width: 544px;
+    height: 84px;
+    left: 260px;
+    top: 216px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+
+    color: #FFFFFF;
+}
+
+/* Texto do Input Escolher Estado */
+#textoEstado {
+    position: absolute;
+    width: 451px;
+    height: 28px;
+    left: 260px;
+    top: 399px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+/* Input de Escolher Estado */
+#inputEstado {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    width: 421px;
+    height: 58px;
+    left: 260px;
+    top: 450px;
+
+    background: #FFFFFF;
+    border-radius: 4px;
+}
+
+/* Texto do Input Escolher Cidade */
+#textoCidade {
+    position: absolute;
+    width: 421px;
+    height: 28px;
+    right: 260px;
+    top: 399px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+/* Input de Escolher Cidade */
+#inputCidade {
+    padding: 0 15px;
+    outline: none;
+    position: absolute;
+    width: 421px;
+    height: 58px;
+    right: 260px;
+    top: 450px;
+
+    border-radius: 4px;
+}
+
+/* Botao para Confirmar Cidade de Destino */
+#botaoConfirmarCidade {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    position: absolute;
+    width: 199px;
+    height: 58px;
+    right: 260px;
+    top: 595px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
+/* Página de Login */
+#secaoLogin {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    overflow-x: hidden;
+}
+
+/* Título da Página de Login */
+#tituloLogin {
+    position: absolute;
+    width: 284px;
+    height: 56px;
+    left: 157px;
+    top: 164px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 56px;
+
+    display: flex;
+    align-items: center;
+
+    color: #000000;
+}
+
+/* Cor da Palavra 'pog' no Título da Página de Login */
+#tituloLogin span {
+    color: #6BB39B;
+    font-size: 44px;
+}
+
+/* Texto da Secao de Login */
+#textoSecaoLogin {
+    position: absolute;
+    width: 605px;
+    height: 105px;
+    left: 157px;
+    top: 265px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 44px;
+    line-height: 44px;
+
+    color: #000000;
+}
+
+/* Cor do Texto da Seção de Login*/
+#textoSecaoLogin span {
+    color: #F5B963;
+    font-size: 44px;
+}
+
+/* Centraliza os Inputs da Tela de Login*/
+#centralizaInputsLogin {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    min-width: 50%;
+    max-width: 50%;
+    height: 100vh;
+    right: 0;
+    top: 0;
+
+    background: linear-gradient(90deg, #6BB39B 21.55%, rgba(107, 179, 155, 0) 42.18%), url(../../resources/images/imagemLoginCidade.png);
+    background-size: cover;
+}
+
+/* Texto do Input de Email na Tela de Login */
+#textoEmailLogin,
+#textoEmailCadastro {
+    width: 451px;
+    height: 28px;
+    margin-top: 112px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+/* Input de Email na Tela de Login */
+#inputEmailLogin,
+#inputEmailCadastro {
+    padding: 0 15px;
+    outline: none;
+    width: 421px;
+    height: 58px;
+    margin-top: 23px;
+
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #2B3030;
+}
+
+/* Texto do Input de Senha na Tela de Login */
+#textoSenhaLogin,
+#textoSenhaCadastro,
+#textoConfirmarSenhaCadastro {
+    width: 451px;
+    height: 28px;
+    margin-top: 48px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+/* Input de Senha na Tela de Login */
+#inputSenhaLogin,
+#inputSenhaCadastro,
+#inputConfirmarSenhaCadastro {
+    padding: 0 15px;
+    outline: none;
+    width: 421px;
+    height: 58px;
+    margin-top: 23px;
+
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #2B3030;
+}
+
+/* Texto Esqueceu Senha na Tela de Login */
+#textoEsqueceuSenhaLogin {
+    width: 451px;
+    height: 28px;
+    margin-top: 23px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+/* Botão Entrar na Tela de Login */
+#botaoEntrar {
+    color: #FFFFFF;
+    width: 199px;
+    height: 58px;
+    margin-top: 74px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
+/* texto da tela de Login Caso Ainda não Teha Cadastro */
+#textoSemCadastroTelaLogin {
+    height: 28px;
+    margin-top: 40px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+/* Seção para Escolher o Hotel de Destino */
+#secaoEscolherHotel,
+#secaoEscolherPontosTuristicos {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+}
+
+/* Div com o Mapa de Hotéis */
+#mapaHotel,
+#mapaPontosTuristicos {
+    position: absolute;
+    width: 100vw;
+    height: calc(100% - 158px);
+    left: 0;
+    top: 0;
+    background-color: #FFFFFF;
+}
+
+/* Texto da Tela de Escolha de Hotel */
+#textoEscolherHotel,
+#textoEscolherPontosTuristicos {
+    position: absolute;
+    width: 544px;
+    height: 56px;
+    left: 50px;
+    bottom: 50px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    display: flex;
+    align-items: center;
+
+    color: #47475F;
+}
+
+/* Checkbox para não Escolher Hotel */
+.checkboxHotel,
+.checkboxPontosTuristicos {
+    position: absolute;
+    width: 26px;
+    height: 22px;
+    right: 299px;
+    bottom: 68px;
+    outline: none;
+}
+
+/* Texto Pular Escolha de Hotel */
+#textoPularHotel,
+#textoPularPontosTuristicos {
+    position: absolute;
+    width: 203px;
+    height: 26px;
+    right: 305px;
+    bottom: 68px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    display: flex;
+    align-items: center;
+
+    color: #47475F;
+}
+
+/* Botão para Confirmar Hotel */
+#botaoConfirmarHotel,
+#botaoFinalizarPontosTuristicos {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    position: absolute;
+    width: 199px;
+    height: 58px;
+    right: 50px;
+    bottom: 50px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
+#botaoFinalizarPontosTuristicos {
+    background: #59361D;
+    border: 1px solid #59361D;
+    color: #FFFFFF;
+}
+
+/* Seção de Pacote Criado */
+#secaoPacoteCriado {
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: url(../../resources/images/ImagemPacoteCriado.png);
+    background-size: cover;
+}
+
+/* Título da Tela de pacote Criado */
+#tituloPacoteCriado {
+    position: absolute;
+    width: 412px;
+    height: 108px;
+    right: 260px;
+    top: 146px;
+
+    font-family: 'Source Serif Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 44px;
+    line-height: 54px;
+
+    color: #0B0B0D;
+    z-index: 1;
+}
+
+/* Texto da Tela de Pacote Criado */
+#textoPacoteCriado {
+    position: absolute;
+    width: 419px;
+    height: 120px;
+    right: 260px;
+    top: 350px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 24px;
+
+    color: #0B0B0D;
+}
+
+/* Botão de Continuar Pacote Criado */
+#botaoContinuarPacoteCriado {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+
+    position: absolute;
+    width: 199px;
+    height: 58px;
+    right: 260px;
+    bottom: 146px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
+/* Seção de Perfil do Usuário */
+#secaoPerfil,
+#secaoPacotes {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100vw;
+    height: 100vh;
+    background: linear-gradient(90deg, #6BB39B 7.37%, #2E2E31 101.56%);
+}
+
+/* Quadro com Informações do Perfil */
+#quadroPerfil {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 95%;
+    width: 95%;
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 2px rgba(18, 18, 20, 0.2), 0px 12px 24px rgba(39, 45, 77, 0.2);
+    border-radius: 10px;
+}
+
+/* Texto de Informações do Usuário */
+#informacoesUsuario {
+    margin-top: 100px;
+    margin-left: 230px;
+}
+
+/* Inputs das Seções de Informação e Conta do Usuário */
+#inputNomeUsuario,
+#inputCpfUsuario,
+#inputTelefoneUsuario,
+#inputEmailUsuario,
+#inputSenhaUsuario,
+#inputConfirmarSenhaUsuario {
+    padding: 0 15px;
+    outline: none;
+    width: 451px;
+    height: 28px;
+    margin-left: 15px;
+
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #2B3030;
+}
+
+/* Texto de Informações da Conta */
+#informacoesConta {
+    margin-top: 50px;
+    margin-left: 230px;
+}
+
+/* Botão de Editar Perfil do Usuário */
+#botaoEditarNomeUsuario,
+#botaoEditarCpfUsuario,
+#botaoEditarTelefoneUsuario,
+#botaoEditarEmailUsuario,
+#botaoEditarSenhaUsuario {
+    width: 20px;
+    height: 20px;
+    background-color: #6BB39B;
+    padding: 5px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
+
+/* Imagem da Logo */
+#imagemLogoViagem {
+    position: absolute;
+    width: 256px;
+    height: 256px;
+    right: 230px;
+    margin-top: 100px;
+}
+
+/* Quadro com Informações do Pacote */
+#quadroPacotes {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 95%;
+    width: 95%;
+    background-color: #FFFFFF;
+    box-shadow: 0px 1px 2px rgba(18, 18, 20, 0.2), 0px 12px 24px rgba(39, 45, 77, 0.2);
+    border-radius: 10px;
+}
+
+/* Guarda os Pacotes Criados */
+#meusPacotes {
+    display: flex;
+    flex-direction: column;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    width: 1000px;
+    height: 500px;
+}
+
+/* Ajusta os Botões de Adicionar e Remover Pacote */
+#botoesPacotes {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    width: 1000px;
+    height: 58px;
+    margin-top: 25px;
+}
+
+/* Pacote Criado pelo Usuário */
+.pacoteCriado {
+    width: 970px;
+    background-color: #FFFFFF;
+    border: 1px solid #2B3030;
+    box-shadow: 0px 1px 2px rgba(18, 18, 20, 0.2), 0px 12px 24px rgba(39, 45, 77, 0.2);
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Checkbox do Pacote Criado */
+.checkboxSelecionarPacote {
+    width: 26px;
+    height: 22px;
+    outline: none;
+    margin: 10px;
+}
+
+/* Conteúdo do Pacote Criado */
+#conteudoPacote {
+    display: flex;
+    flex-direction: column;
+    margin: 15px 30px;
+}
+
+/* Passagem do Pacote */
+#passagemEscolhidaPacote {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 15px;
+}
+
+/* Hotel do Pacote */
+#hotelEscolhidoPacote {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Pontos Turísticos do Pacote */
+#pontosTuristicosPacote {
+    display: flex;
+    flex-direction: row;
+    margin-top: 30px;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+/* Botões da Tela de Meus Pacotes */
+#botaoAdicionarPacote,
+#botaoRemoverPacote {
+    width: 199px;
+    height: 58px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
+/* Fundo da Tela de Cadastro */
+#secaoCadastro {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-size: cover;
+    background-image: url(../../resources/images/ImagemInicio.png);
+}
+
+/* Fundo dos Inputs de Cadastro */
+#contornoInputsCadastro {
+    width: 90%;
+    height: 90%;
+    background-color: #FFFFFF;
+    border-radius: 20%;
+}
+
+/* Centraliza os Inputs da Tela de Cadastro */
+#cadastroPerfil {
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    left: 100px;
+    top: 0;
+}
+
+/* Texto do Input de Nome na Tela de Cadastro */
+#textoNomeCadastro {
+    width: 451px;
+    height: 28px;
+    margin-top: 112px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+/* Input de Nome na Tela de Cadastro */
+#inputNomeCadastro {
+    padding: 0 15px;
+    outline: none;
+    width: 421px;
+    height: 58px;
+    margin-top: 23px;
+
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #2B3030;
+}
+
+/* Texto do Input de CPF na Tela de Cadastro */
+#textoCpfCadastro,
+#textoTelefoneCadastro {
+    width: 451px;
+    height: 28px;
+    margin-top: 48px;
+
+    font-style: normal;
+    font-weight: 400;
+    line-height: 28px;
+
+    color: #FFFFFF;
+}
+
+/* Input de CPF na Tela de Cadastro */
+#inputCpfCadastro,
+#inputTelefoneCadastro {
+    padding: 0 15px;
+    outline: none;
+    width: 421px;
+    height: 58px;
+    margin-top: 23px;
+
+    background: #FFFFFF;
+    border-radius: 4px;
+    border: 1px solid #2B3030;
+}
+
+/* Centraliza os Inputs da Tela de Cadastro */
+#cadastroConta {
+    position: absolute;
+    width: 50%;
+    height: 100vh;
+    right: 100px;
+    top: 0;
+}
+
+#textoNomeCadastro,
+#textoCpfCadastro,
+#textoTelefoneCadastro,
+#textoEmailCadastro,
+#textoSenhaCadastro,
+#textoConfirmarSenhaCadastro {
+    color: inherit;
+}
+
+/* Centralizar Botão de Cadastro */
+#divBotaoCadastro {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/* Botão de Cadastrar Usuário */
+#botaoCadastrar {
+    position: absolute;
+    bottom: 160px;
+    color: #FFFFFF;
+    width: 199px;
+    height: 58px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
+/* Texto se Possui Cadastro */
+#textoPossuiCadastro {
+    position: absolute;
+    bottom: 100px;
+    height: 28px;
+    margin-top: 40px;
+
+    font-style: normal;
+    font-weight: 400;
+    font-size: 12px;
+    line-height: 28px;
+}
+
+/* Imagem de Fundo da Tela Principal */
+#secaoPrincipal {
+    height: 100vh;
+    width: 100vw;
+    background: linear-gradient(90deg, #eccbad 21.55%, rgba(107, 179, 155, 0) 42.18%), url(../../resources/images/ImagemPrincipal.png);
+    background-size: cover;
+}
+
+/* Título da Seção Principal */
+#tituloSecaoPrincipal {
+    position: absolute;
+    right: 160px;
+    top: 250px;
+    font-size: 44px;
+}
+
+/* Texto da Seção Principal */
+#textoSecaoPrincipal {
+    font-size: 24px;
+    position: absolute;
+    right: 160px;
+    top: 330px;
+}
+
+/* Botão Começar da Tela Principal */
+#botaoComecar {
+    position: absolute;
+    right: 160px;
+    bottom: 250px;
+    width: 199px;
+    height: 58px;
+
+    background: #6BB39B;
+    border: 1px solid #6BB39B;
+    border-radius: 4px;
+}
+
+#imagemPrincipalLogo {
+    position: absolute;
+    left: 160px;
+    top: calc(100vh - 50%);
+}
+
+/* Hovers */
+
+/* Título da Página Inicial ao Passar o Mouse */
+#tituloPaginaInicial:hover {
+    cursor: pointer;
+    opacity: 80%;
+}
+
+/* Botão da Imagem de Perfil ao Passar o Mouse */
+#botaoImagemPerfilUsuario:hover {
+    cursor: pointer;
+    opacity: 80%;
+}
+
+.opcoesMenuUsuario:hover {
+    cursor: pointer;
+    color: #F5B963;
+}
+
+/* Botão para Criar um Pacote ao Passar o Mouse */
+#botaoCriarPacote:hover {
+    cursor: pointer;
+    background-color: #d3d3d3;
+    border-color: #d3d3d3;
+}
+
+/* Selecionar Pacote ao Passar o Mouse */
+.pacotes:hover {
+    cursor: pointer;
+    opacity: 70%;
+}
+
+/* Botão de Buscar e Confirmar ao Passar o Mouse*/
+#botaoBuscar:hover,
+#botaoEntrar:hover,
+#botaoConfirmarPassagem:hover,
+#botaoConfirmarCidade:hover,
+#botaoConfirmarHotel:hover,
+#botaoContinuarPacoteCriado:hover,
+#botaoAdicionarPacote:hover,
+#botaoRemoverPacote:hover,
+#botaoCadastrar:hover,
+#botaoComecar:hover {
+    cursor: pointer;
+    background: #8adfc2;
+    border: 1px solid #8adfc2;
+}
+
+#botaoFinalizarPontosTuristicos:hover {
+    cursor: pointer;
+    background: #7e5336;
+    border: 1px solid #7e5336;
+}
+
+/* Checkboxes ao Passar o Mouse */
+.checkboxAviao:hover,
+.checkboxHotel:hover,
+.checkboxPontosTuristicos:hover,
+.checkboxSelecionarPacote:hover {
+    cursor: pointer;
+}
+
+/* Botões de Editar Usuário ao Passar o Mouse */
+#botaoEditarNomeUsuario:hover,
+#botaoEditarCpfUsuario:hover,
+#botaoEditarTelefoneUsuario:hover,
+#botaoEditarEmailUsuario:hover,
+#botaoEditarSenhaUsuario:hover {
+    cursor: pointer;
+    background: #8adfc2;
+}
+
+/* Focus */
+
+/* Focus Inputs */
+#inputSaida:focus,
+#inputDestino:focus,
+#inputIda:focus,
+#inputVolta:focus,
+#inputPassageiros:focus,
+#inputEstado:focus,
+#inputCidade:focus,
+#inputEmailLogin:focus,
+#inputSenhaLogin:focus,
+#inputNomeCadastro:focus,
+#inputCpfCadastro:focus,
+#inputTelefoneCadastro:focus,
+#inputEmailCadastro:focus,
+#inputSenhaCadastro:focus,
+#inputConfirmarSenhaCadastro:focus {
+    border: 1px solid #437963;
+}
+
+.botao-desabilitado {
+    pointer-events: none;
+    opacity: 0.5;
+}
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .input-container select,
+  .input-container input {
+    margin-bottom: 10px;
+  }

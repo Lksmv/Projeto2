@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/css/select2.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.13/js/select2.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/passagemAerea.js"></script>
+    <title>POG Viagens - Criar Pacote</title>
+</head>
+
+<body onload="colocarNomeUsuario()">
+    <div id="paginaInicial">
+        <header id="topoInicial">
+            <div id="divCentralizaTopo">
+                <h1 onclick="window.location.href='../view/inicio.html'" id="tituloPaginaInicial">POG&nbsp;<span>Viagens</span></h1>
+
+                <div id="elipsePerfilUsuario">
+                    <div id="bordaImagemPerfilUsuario">
+                        <img src="../resources/images/ImagemPerfilUsuario.png" alt="Perfil"
+                            id="botaoImagemPerfilUsuario" onclick="ajustarVisibilidadePerfil()">
+                    </div>
+                </div>
+            </div>
+
+            <div id="menuUsuario">
+                <p id="nomeMenuUsuario">Nome Usuário</p>
+
+                <div class="opcoesMenuUsuario">
+                    <p onclick="window.location.href='../view/perfilUsuario.html'">Perfil</p>
+                </div>
+
+                <div class="opcoesMenuUsuario">
+                    <p onclick="window.location.href='../view/pacotesPerfil.html'">Meus Pacotes</p>
+                </div>
+
+                <div class="opcoesMenuUsuario"
+                    style="border-bottom-left-radius: 2%; border-bottom-right-radius: 2%; display: flex; flex-direction: row;">
+                    <p onclick="window.location.href='../view/login.html'" style="padding-right: 5px;">Sair</p>
+                </div>
+            </div>
+        </header>
+
+        <article>
+            <section id="secaoImagemInicialPacote">
+                <h2 id="tituloSecundario">Crie seu&nbsp;<span>pacote</span></h2>
+
+                <p id="textoSecundario">Deixe que suas viagens te levem a lugares que você nunca<br>
+                    imaginou!
+                </p>
+
+                <img id="imagemInicialPacote" src="../resources/images/ImagemPacote.png" alt="Viagem">
+            </section>
+
+            <section id="secaoPassagemAerea">
+                <h3>Selecione as passagens aéreas</h3>
+
+                <div style="position: absolute;
+                            width: 122px;
+                            left: 260px;
+                            top: 125px;
+                            border: 2px solid #D97128;"></div>
+
+                <p id="textoInputSaida">De onde você está saindo?</p>
+                <input id="inputSaida" type="text">
+
+                <p id="textoInputDestino">Para onde você vai?</p>
+                <input id="inputDestino" type="text">
+
+                <p id="textoInputDatas">Escolha as datas</p>
+                <input type="date" id="inputIda">
+                <p id="textoInputIda">Ida</p>
+                <input type="date" id="inputVolta">
+                <p id="textoInputVolta">Volta</p>
+
+                <p id="textoInputPassageiros">Número de passageiros</p>
+                <input type="text" id="inputPassageiros">
+
+                <input type="button" value="Buscar" id="botaoBuscar" onclick="buscarPacotes()">
+            </section>
+
+            <div id="valorPacote"></div>
+
+            <div id="container">
+                <div id="divGeral"></div>
+
+                <div id="botaoDeConfirmar" onclick="redirecionarInformacoesPassagem()"></div>
+            </div>
+        </article>
+
+        <div id="footerAqui"></div>
+
+        <!-- <footer id="fimPacote">
+            <div id="divCentralizaCreditos">
+                <p id="pogViagensFooter">POG VIAGENS</p>
+                <p id="pogViagensCreditos">© 2023 POG Viagens</p>
+                <p style="color: #252525;">POG VIAGENS</p>
+            </div>
+        </footer> -->
+    </div>
+</body>
+
+</html>

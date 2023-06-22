@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/escolherHotel.js"></script>
+    <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAi5tPz-6LWThzqPIDeQysJOk8I2GuFK9U&callback=initMap&libraries=places">
+    </script>
+    <title>POG Viagens - Escolher Hotel</title>
+</head>
+
+<body onload="searchHotels()">
+    <section id="secaoEscolherHotel">
+        <div id="mapaHotel"></div>
+
+        <p id="textoEscolherHotel">Com base no seu destino, selecionamos alguns hoteis que você possa ter interesse</p>
+
+        <p id="textoPularHotel">Desejo pular esta opção</p>
+        <input type="checkbox" class="checkboxHotel" id="checkboxHotel">
+
+        <input type="button" value="Confirmar" id="botaoConfirmarHotel" class="botao-desabilitado" onclick="confirmarHotel()">
+    </section>
+</body>
+
+</html>

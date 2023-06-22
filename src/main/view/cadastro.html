@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/cadastro.js"></script>
+    <title>POG Viagens - Cadastro</title>
+</head>
+
+<body onload="adicionarEventoChange()">
+    <section id="secaoCadastro">
+        <div id="contornoInputsCadastro">
+            <div id="cadastroPerfil">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <p id="textoNomeCadastro">Nome Completo</p>
+                    <input type="text" id="inputNomeCadastro">
+
+                    <p id="textoCpfCadastro">CPF</p>
+                    <input type="text" id="inputCpfCadastro">
+
+                    <p id="textoTelefoneCadastro">Telefone</p>
+                    <input type="text" id="inputTelefoneCadastro">
+                </div>
+            </div>
+
+            <div id="cadastroConta">
+                <div style="display: flex; flex-direction: column; align-items: center;">
+                    <p id="textoEmailCadastro">E-mail</p>
+                    <input type="text" id="inputEmailCadastro">
+
+                    <p id="textoSenhaCadastro">Senha</p>
+                    <input type="text" id="inputSenhaCadastro">
+
+                    <p id="textoConfirmarSenhaCadastro">Confirmar Senha</p>
+                    <input type="text" id="inputConfirmarSenhaCadastro">
+                </div>
+            </div>
+
+            <div id="divBotaoCadastro">
+                <input type="button" value="Cadastrar" id="botaoCadastrar">
+                <p id="textoPossuiCadastro">Já possui uma conta? <a href="../view/login.html"
+                        style="color: #6BB39B; font-size: 12px;">faça
+                        log-in</a></p>
+            </div>
+        </div>
+    </section>
+</body>
+
+</html>
