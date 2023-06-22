@@ -61,13 +61,17 @@ public class VooService {
         List<VooEntity> vooEntities = vooRepository.findVooEntitiesByDataPartidaBetweenAndOrigemAndDestino(dataInicio, dataFinal, origem, destino);
         for (VooEntity voo : vooEntities) {
             voo.setCompanhiaAerea(voo.getCompanhiaAerea().toUpperCase());
-                voo.setValor((double) vetor[indiceAleatorio]);
-            if (voo.getCompanhiaAerea() == "LATAM") {
+            String companhia = voo.getCompanhiaAerea().trim();
+            voo.setValor((double) vetor[indiceAleatorio]);
+            if (companhia == "LATAM") {
                 voo.setCompanhiaAerea("TAM");
-            } else if (voo.getCompanhiaAerea() == "AZUL" || voo.getCompanhiaAerea() == "Azul") {
+                vooRepository.save(voo);
+            } else if (companhia == "AZUL") {
                 voo.setCompanhiaAerea("AZU");
-            } else if (voo.getCompanhiaAerea() == "AVIANCA" || voo.getCompanhiaAerea() == "Avianca") {
+                vooRepository.save(voo);
+            } else if (companhia == "AVIANCA") {
                 voo.setCompanhiaAerea("AVA");
+                vooRepository.save(voo);
             }
         }
         return vooEntities.stream()
