@@ -41,6 +41,9 @@ public class PacoteEntity {
     @Column(name = "NOME_PACOTE")
     private String nome;
 
+    @Column(name = "qnt_pessoa")
+    private Integer qntPessoa;
+
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)

@@ -45,6 +45,13 @@ public class VooService {
         LocalDateTime dataInicio = LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 0, 0, 0);
         LocalDateTime dataFinal = LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 23, 59, 59);
         List<VooEntity> vooEntities = vooRepository.findVooEntitiesByDataPartidaBetweenAndOrigemAndDestino(dataInicio, dataFinal, origem, destino);
+        for(VooEntity voo: vooEntities){
+            voo.setCompanhiaAerea(voo.getCompanhiaAerea().toUpperCase());
+//            voo.setValor();
+            if(voo.getCompanhiaAerea()=="LATAM"){
+                voo.setCompanhiaAerea("TAM");
+            }
+        }
         return vooEntities.stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());

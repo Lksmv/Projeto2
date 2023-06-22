@@ -1,5 +1,6 @@
 package com.pog.projeto.controller;
 
+import com.pog.projeto.dtos.AddVooDTO;
 import com.pog.projeto.dtos.PacoteDTO;
 import com.pog.projeto.dtos.PacoteUpdateDTO;
 import com.pog.projeto.exception.BusinessException;
@@ -25,6 +26,7 @@ public class PacoteController {
     public ResponseEntity<List<PacoteDTO>> listar() {
         return new ResponseEntity<>(pacoteService.listar(), HttpStatus.OK);
     }
+
     @GetMapping("/promocionais")
     public ResponseEntity<List<PacoteDTO>> ListarPromocionais() {
         return new ResponseEntity<>(pacoteService.listarPacotesPromocinal(), HttpStatus.OK);
@@ -47,8 +49,9 @@ public class PacoteController {
                                                      @RequestParam(required = false) String nome,
                                                      @RequestParam(required = false) Date dataPartida,
                                                      @RequestParam(required = false) Date dataChegada,
+                                                     @RequestParam(required = false) Integer qntPessoa,
                                                      @RequestParam(required = false) String cidade) throws BusinessException {
-        PacoteDTO dto = pacoteService.atualizar(idPacote, nome, dataPartida, dataChegada, cidade);
+        PacoteDTO dto = pacoteService.atualizar(idPacote, nome, dataPartida, dataChegada, cidade, qntPessoa);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
@@ -71,8 +74,8 @@ public class PacoteController {
     }
 
     @PostMapping("/add-voo")
-    public ResponseEntity<PacoteDTO> adicionarVoo(@RequestParam List<Integer> idVoo, Integer idPacote) throws BusinessException {
-        PacoteDTO dto = pacoteService.adicionarVoo(idVoo, idPacote);
+    public ResponseEntity<PacoteDTO> adicionarVoo(@RequestBody AddVooDTO addVooDTO) throws BusinessException {
+        PacoteDTO dto = pacoteService.adicionarVoo(addVooDTO);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 

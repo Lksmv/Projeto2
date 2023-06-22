@@ -34,6 +34,7 @@ public class PacoteService {
         pacoteEntity.setHoteis(Collections.emptySet());
         pacoteEntity.setVooEntities(Collections.emptySet());
         pacoteEntity.setPontoTuristicoEntities(Collections.emptySet());
+        pacoteEntity.setQntPessoa(1);
         PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.valueOf(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString())).get();
         if (pessoaEntity.getCargoEntity().getNome().equals("ROLE_ADMIN")) {
             pacoteEntity.setPromocional("S");
@@ -62,9 +63,10 @@ public class PacoteService {
                 .collect(Collectors.toList());
     }
 
-    public PacoteDTO atualizar(Integer idPacote, String nome, Date dataPartida, Date dataChegada, String cidade) throws BusinessException {
+    public PacoteDTO atualizar(Integer idPacote, String nome, Date dataPartida, Date dataChegada, String cidade, Integer qntPessoa) throws BusinessException {
         PacoteEntity pacoteEntity = repository.findById(idPacote).orElseThrow(() -> new BusinessException("Id invalido"));
         pacoteEntity.setCidade(cidade == null ? pacoteEntity.getCidade() : cidade);
+        pacoteEntity.setQntPessoa(qntPessoa == null ? pacoteEntity.getQntPessoa() : qntPessoa);
         pacoteEntity.setNome(nome == null ? pacoteEntity.getNome() : nome);
         pacoteEntity.setDataChegada(dataChegada == null ? pacoteEntity.getDataChegada() : dataChegada);
         pacoteEntity.setDataPartida(dataPartida == null ? pacoteEntity.getDataPartida() : dataPartida);
@@ -138,13 +140,15 @@ public class PacoteService {
         return toDTO(pacoteEntity);
     }
 
-    public PacoteDTO adicionarVoo(List<Integer> idVoo, Integer idPacote) throws BusinessException {
+    public PacoteDTO adicionarVoo(AddVooDTO addVooDTO) throws BusinessException {
+        List<Integer> idVoo = addVooDTO.getIdVoos();
+        Integer idPacote = addVooDTO.getIdPacote();
         PacoteEntity pacoteEntity = repository.findById(idPacote).orElseThrow(() -> new BusinessException("Não Encontrado pacote"));
         Set<VooEntity> vooEntities = pacoteEntity.getVooEntities();
         for (Integer id : idVoo) {
             VooEntity v = vooService.findEntityById(id);
             vooEntities.add(v);
-            pacoteEntity.setValor(pacoteEntity.getValor() + v.getValor());
+            pacoteEntity.setValor(pacoteEntity.getValor() + (v.getValor() * pacoteEntity.getQntPessoa()));
         }
         pacoteEntity.setVooEntities(vooEntities);
         pacoteEntity = repository.save(pacoteEntity);
