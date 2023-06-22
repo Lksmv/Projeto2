@@ -25,6 +25,8 @@ public class PacoteDTO {
 
     private String cidade;
 
+    private Integer qntPessoa;
+
     private Set<HotelDTO> hoteis;
 
     private Set<VooDTO> vooDTOS;
