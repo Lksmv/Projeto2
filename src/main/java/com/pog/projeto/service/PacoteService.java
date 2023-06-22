@@ -138,13 +138,15 @@ public class PacoteService {
         return toDTO(pacoteEntity);
     }
 
-    public PacoteDTO adicionarVoo(Integer idVoo, Integer idPacote) throws BusinessException {
+    public PacoteDTO adicionarVoo(List<Integer> idVoo, Integer idPacote) throws BusinessException {
         PacoteEntity pacoteEntity = repository.findById(idPacote).orElseThrow(() -> new BusinessException("Não Encontrado pacote"));
         Set<VooEntity> vooEntities = pacoteEntity.getVooEntities();
-        VooEntity v = vooService.findEntityById(idVoo);
-        vooEntities.add(vooService.findEntityById(idVoo));
+        for (Integer id : idVoo) {
+            VooEntity v = vooService.findEntityById(id);
+            vooEntities.add(v);
+            pacoteEntity.setValor(pacoteEntity.getValor() + v.getValor());
+        }
         pacoteEntity.setVooEntities(vooEntities);
-        pacoteEntity.setValor(pacoteEntity.getValor() + v.getValor());
         pacoteEntity = repository.save(pacoteEntity);
         return toDTO(pacoteEntity);
     }

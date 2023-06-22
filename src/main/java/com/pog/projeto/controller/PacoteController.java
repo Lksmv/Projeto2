@@ -71,7 +71,7 @@ public class PacoteController {
     }
 
     @PostMapping("/add-voo")
-    public ResponseEntity<PacoteDTO> adicionarVoo(@RequestParam Integer idVoo, Integer idPacote) throws BusinessException {
+    public ResponseEntity<PacoteDTO> adicionarVoo(@RequestParam List<Integer> idVoo, Integer idPacote) throws BusinessException {
         PacoteDTO dto = pacoteService.adicionarVoo(idVoo, idPacote);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
