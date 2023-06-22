@@ -18,9 +18,9 @@ public class HotelCreateDTO {
     @NotNull
     private Date dataChegada;
     @NotNull
-    private Integer numero;
+    private String numero;
     @NotNull
-    private Integer telefone;
+    private String telefone;
     @NotNull
-    private Integer diaria;
+    private Double diaria;
 }

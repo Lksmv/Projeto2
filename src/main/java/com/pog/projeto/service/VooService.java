@@ -1,10 +1,7 @@
 package com.pog.projeto.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.pog.projeto.dtos.HotelCreateDTO;
-import com.pog.projeto.dtos.HotelDTO;
-import com.pog.projeto.dtos.VooCreateDTO;
-import com.pog.projeto.dtos.VooDTO;
+import com.pog.projeto.dtos.*;
 import com.pog.projeto.entity.HotelEntity;
 import com.pog.projeto.entity.PacoteEntity;
 import com.pog.projeto.entity.PessoaEntity;
@@ -46,30 +43,18 @@ public class VooService {
         vooRepository.delete(entity);
     }
 
-    public List<VooDTO> findVooIda(Instant dataInstant) {
+    public List<VooDTO> findVoo(VooFindDTO vooFindDTO) {
         ZoneId zone = ZoneId.systemDefault();
-        ZonedDateTime zonedDateTime = dataInstant.atZone(zone);
+        ZonedDateTime zonedDateTime = vooFindDTO.getData().atZone(zone);
         LocalDateTime data = zonedDateTime.toLocalDateTime();
         LocalDateTime dataInicio = LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 0, 0, 0);
         LocalDateTime dataFinal = LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 23, 59, 59);
-        List<VooEntity> vooEntities = vooRepository.findVooEntitiesByDataPartidaBetweenAndDescricao(dataInicio, dataFinal, "IDA");
+        List<VooEntity> vooEntities = vooRepository.findVooEntitiesByDataPartidaBetweenAndOrigemAndDestino(dataInicio, dataFinal, vooFindDTO.getOrigem(), vooFindDTO.getDestino());
         return vooEntities.stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());
     }
 
-
-    public List<VooDTO> findVooVolta(Instant dataInstant) {
-        ZoneId zone = ZoneId.systemDefault();
-        ZonedDateTime zonedDateTime = dataInstant.atZone(zone);
-        LocalDateTime data = zonedDateTime.toLocalDateTime();
-        LocalDateTime dataInicio = LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 0, 0, 0);
-        LocalDateTime dataFinal = LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 23, 59, 59);
-        List<VooEntity> vooEntities = vooRepository.findVooEntitiesByDataPartidaBetweenAndDescricao(dataInicio, dataFinal, "VOLTA");
-        return vooEntities.stream()
-                .map(this::toDTO)
-                .collect(Collectors.toList());
-    }
 
     public VooEntity findEntityById(Integer id) throws BusinessException {
         return vooRepository.findById(id)

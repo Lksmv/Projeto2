@@ -18,8 +18,6 @@ public class VooDTO {
     private String destino;
 
     private LocalDateTime dataPartida;
-
-    private String descricao;
     
     private Double valor;
 }

@@ -2,6 +2,7 @@ package com.pog.projeto.controller;
 
 import com.pog.projeto.dtos.VooCreateDTO;
 import com.pog.projeto.dtos.VooDTO;
+import com.pog.projeto.dtos.VooFindDTO;
 import com.pog.projeto.exception.BusinessException;
 import com.pog.projeto.service.VooService;
 import io.swagger.v3.oas.models.security.SecurityScheme;
@@ -37,15 +38,11 @@ public class VooController {
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
 
-    @GetMapping("/get-voo-ida")
-    public ResponseEntity<List<VooDTO>> listarVoosIda(@RequestParam Instant data) {
-        return new ResponseEntity<>(vooService.findVooIda(data), HttpStatus.OK);
+    @GetMapping("/get-voo")
+    public ResponseEntity<List<VooDTO>> listarVoos(@RequestBody VooFindDTO vooFindDTO) {
+        return new ResponseEntity<>(vooService.findVoo(vooFindDTO), HttpStatus.OK);
     }
 
-    @GetMapping("/get-voo-volta")
-    public ResponseEntity<List<VooDTO>> listarVoosVolta(@RequestParam Instant data) {
-        return new ResponseEntity<>(vooService.findVooVolta(data), HttpStatus.OK);
-    }
 
     @DeleteMapping
     public void delete(@RequestParam Integer id) throws BusinessException {

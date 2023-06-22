@@ -19,8 +19,6 @@ public class VooCreateDTO {
 
     private LocalDateTime dataPartida;
 
-    private String descricao;
-
     private Double valor;
 
 }

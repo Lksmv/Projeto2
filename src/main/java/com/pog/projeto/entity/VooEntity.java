@@ -36,9 +36,6 @@ public class VooEntity {
     @Column(name = "DATA_PARTIDA")
     private LocalDateTime dataPartida;
 
-    @Column(name = "DESCRICAO")
-    private String descricao;
-
     @Column(name = "VALOR")
     private Double valor;
 

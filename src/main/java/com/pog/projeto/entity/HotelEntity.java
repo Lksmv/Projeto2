@@ -37,13 +37,13 @@ public class HotelEntity {
     private Date dataChegada;
 
     @Column(name = "NUMERO")
-    private Integer numero;
+    private String numero;
 
     @Column(name = "TELEFONE")
-    private Integer telefone;
+    private String telefone;
 
     @Column(name = "DIARIA")
-    private Integer diaria;
+    private Double diaria;
 
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)

@@ -19,9 +19,9 @@ public class HotelDTO {
 
     private Date dataChegada;
 
-    private Integer numero;
+    private String numero;
 
-    private Integer telefone;
+    private String telefone;
 
-    private Integer diaria;
+    private Double diaria;
 }

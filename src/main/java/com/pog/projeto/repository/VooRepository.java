@@ -14,5 +14,5 @@ import java.util.Optional;
 @Repository
 public interface VooRepository extends JpaRepository<VooEntity, Integer> {
 
-    public List<VooEntity> findVooEntitiesByDataPartidaBetweenAndDescricao(LocalDateTime dataInicio,LocalDateTime dataFim, String descricao);
+    public List<VooEntity> findVooEntitiesByDataPartidaBetweenAndOrigemAndDestino(LocalDateTime dataInicio,LocalDateTime dataFim, String origem,String destino);
 }
