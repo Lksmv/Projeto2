@@ -1,47 +1,49 @@
 let contadorSecoes = 1;
 let tamanhoOriginal = 750;
 let tamanhoAcrescentar = 350;
+let mudarVisibilidade = true;
+let arrayFilterIda = [];
+let arrayFilterVolta = [];
+let horasAleatorias = '';
+let horasAleatorias2 = '';
+let voos = [];
+let voosParams = [];
+voosParams.push({ VOLTA: 'V' });
+voosParams.push({ IDA: 'I' });
+let valorTotalIda = 0;
+let valorTotalVolta = 0;
+let contadorIda = 0;
+let contadorVolta = 0;
 
 function buscarPacotes() {
     limparResultadoTela();
     contadorSecoes = 1
-    valorTotal = 0;
-    axios.get('https://projetosoftware2.herokuapp.com/voo').then(response => {
-        let arrayFilter = response.data.filter(element => element.origem == document.getElementById('inputSaida').value &&
-            element.destino == document.getElementById('inputDestino').value);
-
-        let arrayFilterDatas = arrayFilter.filter(element => filtrarDatasTela(element.dataPartida, 'I') || filtrarDatasTela(element.dataChegada, 'V'));
-
-        if (arrayFilterDatas.length == 0) {
-            alert('Não foram encontrados dados para esses filtros, tente utilizar outros filtros');
-            return;
-        }
-
-        arrayFilterDatas.forEach(data => {
-            setarValorTotalPacote(data);
+    axios.get(`https://projetosoftware2.herokuapp.com/voo/get-voo?data=${new Date(document.getElementById('inputIda').value).toISOString()}&origem=${document.getElementById('inputSaida').value}&destino=${document.getElementById('inputDestino').value}`).then(response => {
+        arrayFilterIda = response.data;
+        axios.get(`https://projetosoftware2.herokuapp.com/voo/get-voo?data=${new Date(document.getElementById('inputVolta').value).toISOString()}&origem=${document.getElementById('inputDestino').value}&destino=${document.getElementById('inputSaida').value}`).then(response => {
+            arrayFilterVolta = response.data;
+            setarValorTotalPacote();
 
             let section = criaSectionDivGeral();
 
-            criarFilhosSection(section, data);
+            criarFilhosSection(section);
 
             let divGeral = document.getElementById('divGeral');
             divGeral.appendChild(section);
 
-            adicionarBotaoTela();
-
             criarEventoChangeCheckbox();
 
             document.getElementById('botaoConfirmarPassagem').scrollIntoView({ behavior: 'smooth', block: 'end' });
-        })
-    }).catch(err => {
-        alert('Erro! ' + err);
+
+        }).catch(erro => {
+            alert('Não foram encontrado registros');
+        });
+    }).catch(erro => {
+        alert('Não foram encontrado registros');
     });
 }
 
-function setarValorTotalPacote(data) {
-    let valorTotal = 0;
-    valorTotal += data.valor;
-
+function setarValorTotalPacote() {
     let valorPacote = document.getElementById('valorPacote');
 
     let divExterno = document.createElement('div');
@@ -62,7 +64,7 @@ function setarValorTotalPacote(data) {
 
     let paragrafo = document.createElement('p');
     paragrafo.id = 'textoValorPassagem';
-    paragrafo.textContent = 'R$ ' + valorTotal.toLocaleString('pt-BR');
+    paragrafo.textContent = 'R$ ' + '0,00';
 
     divInterno.appendChild(paragrafo);
 
@@ -72,63 +74,72 @@ function setarValorTotalPacote(data) {
 }
 
 
-function criarFilhosSection(section, data) {
+function criarFilhosSection(section) {
+    horasAleatorias2 = Math.floor(Math.random() * 6) + 1;
     //IDA
-    let divIdIda = document.createElement('div');
-    divIdIda.setAttribute('id', data.idVoo);
-    section.appendChild(divIdIda);
-
-    let pIda = document.createElement('p');
-    pIda.setAttribute('id', 'textoIda');
-    pIda.textContent = 'IDA';
-    section.appendChild(pIda);
-
     let div1 = document.createElement('div');
-    div1.style.position = 'absolute';
+    let divOpcao1;
+    let divOpcao4;
 
-    let divOpcao1 = criarOpcaoAviao(1, data);
-    divOpcao1.setAttribute('id', 'opcao1Aviao');
-    divOpcao1.style.marginTop = '95px';
-    div1.appendChild(divOpcao1);
+    for (let i = 0; i < arrayFilterIda.length; i++) {
+        let divIdIda = document.createElement('div');
+        divIdIda.setAttribute('id', arrayFilterIda[i].idVoo);
+        section.appendChild(divIdIda);
 
-    let divOpcao2 = criarOpcaoAviao(2, data);
-    divOpcao2.setAttribute('id', 'opcao2Aviao');
-    div1.appendChild(divOpcao2);
+        let pIda = document.createElement('p');
+        pIda.setAttribute('id', 'textoIda');
+        pIda.textContent = 'IDA';
+        section.appendChild(pIda);
 
-    let divOpcao3 = criarOpcaoAviao(3, data);
-    divOpcao3.setAttribute('id', 'opcao3Aviao');
-    div1.appendChild(divOpcao3);
 
-    section.appendChild(div1);
+        div1.style.position = 'absolute';
+
+        divOpcao1 = criarOpcaoAviao(i, arrayFilterIda[i]);
+        divOpcao1.setAttribute('id', 'opcao' + i + 'Aviao');
+        divOpcao1.style.display = 'flex';
+        divOpcao1.style.flexDirection = 'row';
+        divOpcao1.style.width = '666px';
+        divOpcao1.style.height = '54px';
+        divOpcao1.style.background = '#FFFFFF';
+        div1.appendChild(divOpcao1);
+
+        section.appendChild(div1);
+        contadorIda++;
+
+    }
 
     //VOLTA
-    let divIdVolta = document.createElement('div');
-    divIdVolta.setAttribute('id', data.idVoo);
-    section.appendChild(divIdVolta);
-
-    let pVolta = document.createElement('p');
-    pVolta.setAttribute('id', 'textoVolta');
-    pVolta.textContent = 'VOLTA';
-    section.appendChild(pVolta);
-
     let div2 = document.createElement('div');
-    div2.style.position = 'absolute';
-    div2.style.right = '80px';
 
-    let divOpcao4 = criarOpcaoAviao(4, data);
-    divOpcao4.setAttribute('id', 'opcao4Aviao');
-    divOpcao4.style.marginTop = '95px';
-    div2.appendChild(divOpcao4);
+    for (let i = 0; i < arrayFilterVolta.length; i++) {
+        let divIdVolta = document.createElement('div');
+        divIdVolta.setAttribute('id', arrayFilterVolta[i].idVoo);
+        section.appendChild(divIdVolta);
 
-    let divOpcao5 = criarOpcaoAviao(5, data);
-    divOpcao5.setAttribute('id', 'opcao5Aviao');
-    div2.appendChild(divOpcao5);
+        let pVolta = document.createElement('p');
+        pVolta.setAttribute('id', 'textoVolta');
+        pVolta.textContent = 'VOLTA';
+        section.appendChild(pVolta);
 
-    let divOpcao6 = criarOpcaoAviao(6, data);
-    divOpcao6.setAttribute('id', 'opcao6Aviao');
-    div2.appendChild(divOpcao6);
+        div2.style.position = 'absolute';
+        div2.style.right = '80px';
 
-    section.appendChild(div2);
+        divOpcao4 = criarOpcaoAviao(i, arrayFilterVolta[i]);
+        divOpcao4.setAttribute('id', 'opcao' + i + 'Aviao');
+        divOpcao4.style.display = 'flex';
+        divOpcao4.style.flexDirection = 'row';
+        divOpcao4.style.width = '666px';
+        divOpcao4.style.height = '54px';
+        divOpcao4.style.background = '#FFFFFF';
+
+        div2.appendChild(divOpcao4);
+        section.appendChild(div2);
+        contadorVolta++;
+    }
+    divOpcao1.parentNode.childNodes[0].style.marginTop = '95px';
+    divOpcao4.parentNode.childNodes[0].style.marginTop = '95px';
+    contadorSecoes = contadorIda - contadorIda + 2;
+    adicionarBotaoTela();
 }
 
 function criaSectionDivGeral() {
@@ -141,7 +152,6 @@ function criaSectionDivGeral() {
     section.style.left = 0;
     section.style.top = tamanhoOriginal + (tamanhoAcrescentar * contadorSecoes) + 'px';
     section.style.background = '#FFFFFF';
-    contadorSecoes++;
     return section;
 }
 
@@ -171,9 +181,6 @@ function adicionarBotaoTela() {
 }
 
 function criarOpcaoAviao(index, data) {
-
-    let { horaFormatada1, diferencaFormatada, horaFormatada2 } = getDatas(data);
-
     let divOpcao = document.createElement('div');
     divOpcao.setAttribute('class', 'opcaoAviao');
     divOpcao.setAttribute('id', 'opcaoAviao' + index);
@@ -181,6 +188,7 @@ function criarOpcaoAviao(index, data) {
     let checkbox = document.createElement('input');
     checkbox.setAttribute('type', 'checkbox');
     checkbox.setAttribute('class', 'checkboxAviao');
+    checkbox.setAttribute('id', data.idVoo);
     divOpcao.appendChild(checkbox);
 
     let p1 = document.createElement('p');
@@ -192,13 +200,13 @@ function criarOpcaoAviao(index, data) {
     let p2 = document.createElement('p');
     p2.setAttribute('class', 'textosAviao');
     p2.style.marginLeft = '87px';
-    p2.textContent = index >= 4 ? data.destino : data.origem;
+    p2.textContent = data.origem;
     divOpcao.appendChild(p2);
 
     let p3 = document.createElement('p');
     p3.setAttribute('class', 'textosAviao');
     p3.style.marginLeft = '17px';
-    p3.textContent = horaFormatada1;
+    p3.textContent = new Date(data.dataPartida).toISOString().substring(11, 16);
     divOpcao.appendChild(p3);
 
     let div2 = document.createElement('div');
@@ -212,9 +220,11 @@ function criarOpcaoAviao(index, data) {
     p4.textContent = 'Direto';
     div2.appendChild(p4);
 
+    const horaPartidaAleatoria = adicionarHorasAleatorias(data.dataPartida);
+
     let p5 = document.createElement('p');
     p5.setAttribute('class', 'textosAviao');
-    p5.innerHTML = diferencaFormatada;
+    p5.innerHTML = horasAleatorias + ':00';
     div2.appendChild(p5);
 
     divOpcao.appendChild(div2);
@@ -222,42 +232,29 @@ function criarOpcaoAviao(index, data) {
     let p6 = document.createElement('p');
     p6.setAttribute('class', 'textosAviao');
     p6.style.marginLeft = '82px';
-    p6.textContent = horaFormatada2;
+    p6.textContent = horaPartidaAleatoria;
     divOpcao.appendChild(p6);
 
     let p7 = document.createElement('p');
     p7.setAttribute('class', 'textosAviao');
     p7.style.marginLeft = '17px';
-    p7.textContent = index >= 4 ? data.origem : data.destino;
+    p7.textContent = data.destino;
     divOpcao.appendChild(p7);
 
     return divOpcao;
 }
 
-function getDatas(data) {
-    const partida = new Date(data.dataPartida);
-    const chegada = new Date(data.dataChegada);
+function adicionarHorasAleatorias(instant) {
+    let data = new Date(instant);
+    let horasAtuais = data.getHours();
+    horasAleatorias = horasAleatorias2;
+    let novasHoras = horasAtuais + horasAleatorias;
 
-    const diferencaEmMilissegundos = chegada - partida;
+    data.setHours(novasHoras);
 
-    const horas = Math.floor(diferencaEmMilissegundos / (1000 * 60 * 60));
-    const minutos = Math.floor((diferencaEmMilissegundos % (1000 * 60 * 60)) / (1000 * 60));
+    let novaDataFormatada = data.toISOString().substring(11, 16);
 
-    let diferencaFormatada;
-    if (minutos <= 0) {
-        diferencaFormatada = `${horas}h`;
-    } else {
-        diferencaFormatada = `${horas}h ${minutos}min`;
-    }
-
-    const horas1 = ("0" + partida.getHours()).slice(-2);
-    const minutos1 = ("0" + partida.getMinutes()).slice(-2);
-    const horaFormatada1 = `${horas1}:${minutos1}`;
-
-    const horas2 = ("0" + chegada.getHours()).slice(-2);
-    const minutos2 = ("0" + chegada.getMinutes()).slice(-2);
-    const horaFormatada2 = `${horas2}:${minutos2}`;
-    return { horaFormatada1, diferencaFormatada, horaFormatada2 };
+    return novaDataFormatada;
 }
 
 function criarFooter() {
@@ -304,20 +301,6 @@ function limparResultadoTela() {
     document.getElementById('valorPacote').innerHTML = '';
 }
 
-function filtrarDatasTela(data, ehIdaVolta) {
-    //Data Ida
-    if (ehIdaVolta == 'I') {
-        const dataIda1 = document.getElementById('inputIda').value;
-        const dataIda2 = data.substring(0, 10);
-        return dataIda1 == dataIda2
-    } else {
-        //Data Volta
-        const dataVolta1 = document.getElementById('inputVolta').value;
-        const dataVolta2 = data.substring(0, 10);
-        return dataVolta1 == dataVolta2;
-    }
-}
-
 function criarEventoChangeCheckbox() {
     const checkboxes = document.querySelectorAll('.opcaoAviao input[type="checkbox"]');
 
@@ -330,18 +313,95 @@ function criarEventoChangeCheckbox() {
             checkboxesInSection.forEach((cb) => {
                 if (cb !== clickedCheckbox) {
                     cb.checked = false;
+                } else {
+                    if (cb.parentNode.parentNode.previousElementSibling.textContent == 'IDA') {
+                        voosParams[0].id = cb.id;
+                    } else {
+                        voosParams[1].id = cb.id;
+                    }
+                    localStorage.setItem('idVooClicado', JSON.stringify(voosParams));
                 }
             });
 
-            localStorage.setItem('idVooClicado', parentSection.parentNode.childNodes[0].id);
+            const idVooClicado = JSON.parse(localStorage.getItem('idVooClicado'));
+            arrayFilterIda.forEach(element => {
+                if (element.idVoo == idVooClicado[0].id) {
+                    valorTotalIda = element.valor;
+                }
+            });
+
+            arrayFilterVolta.forEach(element => {
+                if (element.idVoo == idVooClicado[1].id) {
+                    valorTotalVolta = element.valor;
+                }
+            });
+
+            let valorTotalPassagens = valorTotalIda + valorTotalVolta
+            let numeroPassageiros = document.getElementById('inputPassageiros').value || 1
+            let valorMultiplicadoPassagens = valorTotalPassagens * numeroPassageiros;
+
+            document.getElementById('textoValorPassagem').textContent = valorMultiplicadoPassagens.toLocaleString('pt-BR', {
+                style: 'currency',
+                currency: 'BRL'
+            });
         });
     });
 }
 
 function redirecionarInformacoesPassagem() {
-    axios.post(`https://projetosoftware2.herokuapp.com/pacote/add-voo?idVoo=${localStorage.getItem('idVooClicado')}&idPacote=${localStorage.getItem('idPacoteAtual')}`).then(() => {
-        window.location.href = '../view/cidade.html';
+    const json = localStorage.getItem('idVooClicado');
+    const data = JSON.parse(json);
+    const idsVetor = []
+
+    const ids = data.map(({ id }) => id);
+    ids.forEach(element => {
+        idsVetor.push(element);
+    });
+
+    const params = {
+        "idVoos": idsVetor,
+        "idPacote": localStorage.getItem('idPacoteAtual')
+    }
+    axios.put(`https://projetosoftware2.herokuapp.com/pacote/atualizar?idPacote=${localStorage.getItem('idPacoteAtual')}&qntPessoa=${document.getElementById('inputPassageiros').value || 1}`, {}, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    }).then(() => {
+        axios.post(`https://projetosoftware2.herokuapp.com/pacote/add-voo`, params, {
+            headers: {
+                'Authorization': `Bearer ${localStorage.getItem('token')}`
+            }
+        }).then(() => {
+            window.location.href = '../view/cidade.html';
+        }).catch(erro => {
+            alert(erro);
+        });
     }).catch(erro => {
         alert(erro);
-    });   
+    });
+}
+
+function ajustarVisibilidadePerfil() {
+    const menuUsuario = document.getElementById('menuUsuario');
+
+    if (mudarVisibilidade) {
+        menuUsuario.style.display = "block"
+        mudarVisibilidade = false;
+    } else {
+        menuUsuario.style.display = "none";
+        mudarVisibilidade = true;
+    }
+}
+
+function getValorHotelAleatorio() {
+    const min = 101;
+    const max = 3000;
+
+    return Math.floor(Math.random() * (max - min)) + min;
+}
+
+function colocarNomeUsuario() {
+    const elementoNomeUsuario = document.getElementById("nomeMenuUsuario");
+
+    elementoNomeUsuario.textContent = localStorage.getItem('nomeUsuario');;
 }

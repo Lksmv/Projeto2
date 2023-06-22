@@ -961,6 +961,7 @@
 }
 
 /* Opções de Ida e Volta */
+#opcao0Aviao,
 #opcao1Aviao,
 #opcao2Aviao,
 #opcao3Aviao,
@@ -1941,3 +1942,14 @@
     pointer-events: none;
     opacity: 0.5;
 }
+
+.input-container {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .input-container select,
+  .input-container input {
+    margin-bottom: 10px;
+  }

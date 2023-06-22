@@ -12,6 +12,17 @@ $(document).ready(function() {
             type: 'GET',
             dataType: 'json',
             success: function(data) {
+                data.sort(function(a, b) {
+                    var nomeA = a.nome.toUpperCase();
+                    var nomeB = b.nome.toUpperCase();
+                    if (nomeA < nomeB) {
+                        return -1;
+                    }
+                    if (nomeA > nomeB) {
+                        return 1;
+                    }
+                    return 0;
+                });
                 let options = '<option value="">Selecione o Estado</option>';
                 for (let i = 0; i < data.length; i++) {
                     options += '<option value="' + data[i].id + '">' + data[i].nome + '</option>';
@@ -35,6 +46,9 @@ $(document).ready(function() {
             url: 'https://servicodados.ibge.gov.br/api/v1/localidades/estados/' + estadoID + '/municipios',
             type: 'GET',
             dataType: 'json',
+            data: {
+                sort: 'nome'
+            },
             success: function(data) {
                 let options = '<option value="">Selecione a Cidade</option>';
                 for (let i = 0; i < data.length; i++) {
@@ -51,7 +65,11 @@ $(document).ready(function() {
 });
 
 function confirmarCidade() {
-    axios.post(`https://projetosoftware2.herokuapp.com/pacote/atualizar?idPacote=${localStorage.getItem('idPacoteAtual')}&cidade=${localStorage.getItem('cidade')}`).then(() => {
+    axios.put(`https://projetosoftware2.herokuapp.com/pacote/atualizar?idPacote=${localStorage.getItem('idPacoteAtual')}&cidade=${localStorage.getItem('cidade')}`, {}, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    }).then(() => {
         window.location.href = '../view/escolherHotel.html';
     }).catch(erro => {
         alert(erro);

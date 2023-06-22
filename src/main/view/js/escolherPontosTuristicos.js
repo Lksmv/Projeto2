@@ -118,6 +118,13 @@ function adicionarEventoChangeBotao() {
         if (checkbox.checked) {
             botaoFinalizar.classList.remove('botao-desabilitado');
             botaoFinalizar.disabled = false;
+            if (infoWindows.length > 0) {
+                infoWindows.forEach(element => {
+                    infoWindows.pop();
+                    listaPontosTuristicos.pop();
+                    element.close();
+                });
+            }
         } else {
             botaoFinalizar.classList.add('botao-desabilitado');
             botaoFinalizar.disabled = true;
@@ -125,6 +132,9 @@ function adicionarEventoChangeBotao() {
     });
 
     botaoFinalizar.addEventListener('click', () => {
+        if (document.getElementById('checkboxPontosTuristicos').checked) {
+            return window.location.href = '../view/pacoteCriado.html';
+        }
         let id = 0;
         for (let i = 0; i < listaPontosTuristicos.length; i++) {
             const params = {
@@ -132,9 +142,17 @@ function adicionarEventoChangeBotao() {
                 "endereco": listaPontosTuristicos[i].DS_ENDERECO.replace('<br>', ''),
                 "descricao": ''
             }
-            axios.post(`https://projetosoftware2.herokuapp.com/ponto-turistico/cadastro`, params).then(response => {
+            axios.post(`https://projetosoftware2.herokuapp.com/ponto-turistico/cadastro`, params, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(response => {
                 if (response.status == 200) {
-                    axios.post(`https://projetosoftware2.herokuapp.com/pacote/add-ponto?idPonto=${response.data.idPontoTuristico}&idPacote=${localStorage.getItem('idPacoteAtual')}`).then(() => {
+                    axios.post(`https://projetosoftware2.herokuapp.com/pacote/add-ponto?idPonto=${response.data.idPontoTuristico}&idPacote=${localStorage.getItem('idPacoteAtual')}`, {}, {
+                        headers: {
+                            'Authorization': `Bearer ${localStorage.getItem('token')}`
+                        }
+                    }).then(() => {
                         if (response.status == 200) {
                             id++;
 

@@ -6,10 +6,12 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="./css/style.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="./js/cadastro.js"></script>
     <title>POG Viagens - Cadastro</title>
 </head>
 
-<body>
+<body onload="adicionarEventoChange()">
     <section id="secaoCadastro">
         <div id="contornoInputsCadastro">
             <div id="cadastroPerfil">
@@ -40,7 +42,7 @@
 
             <div id="divBotaoCadastro">
                 <input type="button" value="Cadastrar" id="botaoCadastrar">
-                <p id="textoPossuiCadastro">Já possui uma conta? <a href=""
+                <p id="textoPossuiCadastro">Já possui uma conta? <a href="../view/login.html"
                         style="color: #6BB39B; font-size: 12px;">faça
                         log-in</a></p>
             </div>

@@ -130,7 +130,13 @@ function adicionarEventoChangeBotao() {
 }
 
 function confirmarHotel() {
-    const params = {
+    const checkbox = document.getElementById('checkboxHotel');
+    let params = {};
+    if (checkbox.checked) {
+        return window.location.href = '../view/escolherPontosTuristicos.html';
+    }
+
+    params = {
         "nome": paramsHotel.NOME,
         "endereco": paramsHotel.ENDERECO.replace('<br>', ''),
         "dataPartida": new Date().toISOString(),
@@ -139,10 +145,19 @@ function confirmarHotel() {
         "telefone": 0,
         "diaria": paramsHotel.VALOR.replace('.', '').replace(',', '')
     }
-    axios.post(`https://projetosoftware2.herokuapp.com/hotel`, params).then(response => {
+
+    axios.post(`https://projetosoftware2.herokuapp.com/hotel`, params, {
+        headers: {
+            'Authorization': `Bearer ${localStorage.getItem('token')}`
+        }
+    }).then(response => {
         if (response.status == 200) {
             localStorage.setItem('idHotel', response.data.idHotel);
-            axios.post(`https://projetosoftware2.herokuapp.com/pacote/add-hotel?idHotel=${localStorage.getItem('idHotel')}&idPacote=${localStorage.getItem('idPacoteAtual')}`).then(() => {
+            axios.post(`https://projetosoftware2.herokuapp.com/pacote/add-hotel?idHotel=${localStorage.getItem('idHotel')}&idPacote=${localStorage.getItem('idPacoteAtual')}`, {}, {
+                headers: {
+                    'Authorization': `Bearer ${localStorage.getItem('token')}`
+                }
+            }).then(() => {
                 if (response.status == 200) {
                     window.location.href = '../view/escolherPontosTuristicos.html';
                 }

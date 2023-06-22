@@ -9,8 +9,10 @@ function fazerLogin() {
 
     axios.post('https://projetosoftware2.herokuapp.com/auth/login', dadosUsuario).then(response => {
       if (response.data.token != null) {
+        localStorage.clear();
+        localStorage.setItem('nomeUsuario', response.data.usuario);
         localStorage.setItem('token', response.data.token);
-        window.location.href = '../view/index.html';
+        window.location.href = '../view/inicio.html';
       } else {
         alert('Usuário inválido!');
       }
