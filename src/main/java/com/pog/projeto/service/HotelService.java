@@ -55,6 +55,11 @@ public class HotelService {
         return toDTO(hotelRepositoy.save(hotel));
     }
 
+    public void delete(Integer id) throws BusinessException {
+        findEntityById(id);
+        hotelRepositoy.deleteById(id);
+    }
+
 
     public HotelDTO toDTO(HotelEntity hotel) {
         return objectMapper.convertValue(hotel, HotelDTO.class);
@@ -64,9 +69,6 @@ public class HotelService {
         return objectMapper.convertValue(hotel, HotelEntity.class);
     }
 
-    public HotelEntity toEntity(HotelDTO hotel) {
-        return objectMapper.convertValue(hotel, HotelEntity.class);
-    }
 
 }
 

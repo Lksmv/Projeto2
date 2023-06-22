@@ -32,4 +32,10 @@ public class PontoTuristicoController {
         PontoTuristicoDTO dto = pontoTuristicoService.create(pontoTuristicoCreateDTO);
         return new ResponseEntity<>(dto, HttpStatus.OK);
     }
+
+    @DeleteMapping
+    public void delete(@RequestParam Integer id) throws BusinessException {
+        pontoTuristicoService.delete(id);
+        ResponseEntity.ok();
+    }
 }

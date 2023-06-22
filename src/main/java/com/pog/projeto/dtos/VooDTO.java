@@ -19,7 +19,7 @@ public class VooDTO {
 
     private LocalDateTime dataPartida;
 
-    private LocalDateTime dataChegada;
+    private String descricao;
     
     private Double valor;
 }

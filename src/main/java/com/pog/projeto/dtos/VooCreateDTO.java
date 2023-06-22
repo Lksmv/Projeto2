@@ -19,7 +19,7 @@ public class VooCreateDTO {
 
     private LocalDateTime dataPartida;
 
-    private LocalDateTime dataChegada;
+    private String descricao;
 
     private Double valor;
 

@@ -27,8 +27,6 @@ public class PacoteDTO {
 
     private Set<HotelDTO> hoteis;
 
-    private Set<RestauranteDTO> restauranteDTOS;
-
     private Set<VooDTO> vooDTOS;
 
     private Set<PontoTuristicoDTO> pontoTuristicoDTOS;

@@ -30,6 +30,36 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.list(), HttpStatus.OK);
     }
 
+    @PutMapping("/update-nome")
+    public void updateNome(@RequestParam String nome) {
+        pessoaService.updateNome(nome);
+        ResponseEntity.ok();
+    }
+
+    @PutMapping("/update-telefone")
+    public void updateTelefone(@RequestParam String telefone) throws BusinessException {
+        pessoaService.updateTelefone(telefone);
+        ResponseEntity.ok();
+    }
+
+    @PutMapping("/update-senha")
+    public void updateSenha(@RequestParam String senha) throws BusinessException {
+        pessoaService.updateSenha(senha);
+        ResponseEntity.ok();
+    }
+
+    @PutMapping("/update-email")
+    public void updateEmail(@RequestParam String email) throws BusinessException {
+        pessoaService.updateEmail(email);
+        ResponseEntity.ok();
+    }
+
+    @PutMapping("/update-cpf")
+    public void updateCpf(@RequestParam String cpf) throws BusinessException {
+        pessoaService.updateCpf(cpf);
+        ResponseEntity.ok();
+    }
+
     @PostMapping("/cadastro")
     public ResponseEntity<PessoaDTO> cadastroPessoa(@Valid @RequestBody PessoaCreateDTO pessoaCreateDTO) throws BusinessException {
         PessoaDTO pessoaDTO = pessoaService.cadastrar(pessoaCreateDTO);
@@ -40,7 +70,6 @@ public class PessoaController {
     public ResponseEntity<List<PacoteListagemDTO>> pacotesUsuarioLogado() {
         return new ResponseEntity<>(pacoteService.pacotesUsuarioLogado(), HttpStatus.OK);
     }
-
 
 
 }

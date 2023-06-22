@@ -8,6 +8,7 @@ import com.pog.projeto.repository.PacoteRepository;
 import com.pog.projeto.repository.PessoaRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.parameters.P;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
@@ -27,12 +28,10 @@ public class PacoteService {
     private final PontoTuristicoService pontoTuristicoService;
     private final VooService vooService;
     private final PessoaRepository pessoaRepository;
-    private final RestauranteService restauranteService;
 
     public PacoteDTO create() {
         PacoteEntity pacoteEntity = new PacoteEntity();
         pacoteEntity.setHoteis(Collections.emptySet());
-        pacoteEntity.setRestauranteEntities(Collections.emptySet());
         pacoteEntity.setVooEntities(Collections.emptySet());
         pacoteEntity.setPontoTuristicoEntities(Collections.emptySet());
         PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.valueOf(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString())).get();
@@ -49,6 +48,13 @@ public class PacoteService {
         return toDTO(repository.save(pacoteEntity));
     }
 
+    public List<PacoteDTO> listar() {
+        List<PacoteEntity> lista = repository.findAll();
+        return lista.stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
+    }
+
     public PacoteDTO atualizar(Integer idPacote, String nome, Date dataPartida, Date dataChegada, String cidade) throws BusinessException {
         PacoteEntity pacoteEntity = repository.findById(idPacote).orElseThrow(() -> new BusinessException("Id invalido"));
         pacoteEntity.setCidade(cidade == null ? pacoteEntity.getCidade() : cidade);
@@ -58,16 +64,31 @@ public class PacoteService {
         return toDTO(repository.save(pacoteEntity));
     }
 
-    public PacoteDTO getById(Integer idPacote) {
-        PacoteEntity pacoteEntity = repository.findById(idPacote).get();
-        return toDTO(repository.save(pacoteEntity));
+    public PacoteDTO getById(Integer idPacote) throws BusinessException {
+        PacoteEntity pacoteEntity = repository.findById(idPacote).orElseThrow(() -> new BusinessException("Id invalido."));
+        return toDTO(pacoteEntity);
+    }
+
+    public PacoteEntity getEntityById(Integer idPacote) throws BusinessException {
+        return repository.findById(idPacote).orElseThrow(() -> new BusinessException("Id invalido."));
+    }
+
+    public void deletePacote(Integer idPacote) throws BusinessException {
+        PacoteEntity pacoteEntity = getEntityById(idPacote);
+        if (pacoteEntity.getPromocional() == "S") {
+            String idPessoa = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+            PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(idPessoa)).get();
+            Set<PacoteEntity> pacoteEntities = pessoaEntity.getPacoteEntities();
+            pacoteEntities.remove(pacoteEntity);
+            pessoaEntity.setPacoteEntities(pacoteEntities);
+            pessoaRepository.save(pessoaEntity);
+        } else {
+            repository.deleteById(idPacote);
+        }
     }
 
     public PacoteDTO toDTO(PacoteEntity pacoteEntity) {
         PacoteDTO pacoteDTO = objectMapper.convertValue(pacoteEntity, PacoteDTO.class);
-        pacoteDTO.setRestauranteDTOS(pacoteEntity.getRestauranteEntities().stream()
-                .map(restaurante -> restauranteService.toDTO(restaurante))
-                .collect(Collectors.toSet()));
         pacoteDTO.setVooDTOS(pacoteEntity.getVooEntities().stream()
                 .map(vooEntity -> vooService.toDTO(vooEntity))
                 .collect(Collectors.toSet()));
@@ -82,16 +103,9 @@ public class PacoteService {
 
     public List<PacoteListagemDTO> pacotesUsuarioLogado() {
         PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString())).get();
-        if (pessoaEntity.getCargoEntity().getNome().equals("ROLE_ADMIN")) {
-            return pessoaEntity.getPacoteEntities().stream()
-                    .map(pacoteEntity -> objectMapper.convertValue(pacoteEntity, PacoteListagemDTO.class))
-                    .collect(Collectors.toList());
-        } else {
-            return pessoaEntity.getPacoteEntities().stream()
-                    .filter(pacoteEntity -> pacoteEntity.getPromocional().equals("N"))
-                    .map(pacoteEntity -> objectMapper.convertValue(pacoteEntity, PacoteListagemDTO.class))
-                    .collect(Collectors.toList());
-        }
+        return pessoaEntity.getPacoteEntities().stream()
+                .map(pacoteEntity -> objectMapper.convertValue(pacoteEntity, PacoteListagemDTO.class))
+                .collect(Collectors.toList());
     }
 
     public PacoteDTO adicionarHotel(Integer idHotel, Integer idPacote) throws BusinessException {
@@ -128,13 +142,5 @@ public class PacoteService {
         return toDTO(pacoteEntity);
     }
 
-    public PacoteDTO adicionarRestaurante(Integer idRestaurante, Integer idPacote) throws BusinessException {
-        PacoteEntity pacoteEntity = repository.findById(idPacote).orElseThrow(() -> new BusinessException("Não Encontrado pacote"));
-        Set<RestauranteEntity> restauranteEntities = pacoteEntity.getRestauranteEntities();
-        restauranteEntities.add(restauranteService.findEntityById(idRestaurante));
-        pacoteEntity.setRestauranteEntities(restauranteEntities);
-        pacoteEntity = repository.save(pacoteEntity);
-        return toDTO(pacoteEntity);
-    }
 
 }

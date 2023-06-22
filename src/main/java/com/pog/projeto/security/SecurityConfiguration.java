@@ -32,7 +32,9 @@ public class SecurityConfiguration {
                 .and().cors()
                 .and().csrf().disable()
                 .authorizeHttpRequests((auth) -> auth.antMatchers("/", "/auth/**", "/auth").permitAll()
-                        .antMatchers(HttpMethod.POST).permitAll()
+                        .antMatchers(HttpMethod.POST).hasRole("USUARIO")
+                        .antMatchers(HttpMethod.DELETE).hasRole("USUARIO")
+                        .antMatchers(HttpMethod.PUT).hasRole("USUARIO")
                         .antMatchers(HttpMethod.GET).permitAll()
                         .anyRequest().authenticated()
                 );

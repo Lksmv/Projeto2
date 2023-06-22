@@ -36,4 +36,10 @@ public class HotelController {
         return new ResponseEntity<>(hotelService.create(hotel), HttpStatus.OK);
     }
 
+    @DeleteMapping
+    public void delete(@RequestParam Integer id) throws BusinessException {
+        hotelService.delete(id);
+        ResponseEntity.ok();
+    }
+
 }

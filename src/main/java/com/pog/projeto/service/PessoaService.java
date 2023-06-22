@@ -13,6 +13,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.Column;
 import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
@@ -38,18 +39,52 @@ public class PessoaService {
         return toDTO(pessoaRepository.save(pessoaEntity));
     }
 
+
+    public void updateNome(String nome) {
+        String idPessoa = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(idPessoa)).get();
+        pessoaEntity.setNome(nome);
+        pessoaRepository.save(pessoaEntity);
+    }
+
+    public void updateCpf(String cpf) throws BusinessException {
+        String idPessoa = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        if (pessoaRepository.findPessoaEntityByCpf(cpf).isPresent()) {
+            throw new BusinessException("Email ou CPF Já cadastrados");
+        }
+        PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(idPessoa)).get();
+        pessoaEntity.setCpf(cpf);
+        pessoaRepository.save(pessoaEntity);
+    }
+
+    public void updateEmail(String email) throws BusinessException {
+        String idPessoa = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        if (pessoaRepository.findPessoaEntityByEmail(email).isPresent()) {
+            throw new BusinessException("Email ou CPF Já cadastrados");
+        }
+        PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(idPessoa)).get();
+        pessoaEntity.setEmail(email);
+        pessoaRepository.save(pessoaEntity);
+    }
+
+    public void updateTelefone(String telefone) throws BusinessException {
+        String idPessoa = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(idPessoa)).get();
+        pessoaEntity.setTelefone(telefone);
+        pessoaRepository.save(pessoaEntity);
+    }
+
+    public void updateSenha(String senha) throws BusinessException {
+        String idPessoa = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(idPessoa)).get();
+        pessoaEntity.setSenha(passwordEncoder.encode(senha));
+        pessoaRepository.save(pessoaEntity);
+    }
+
     public List<PessoaDTO> list() {
         return pessoaRepository.findAll().stream()
                 .map(pessoaEntity -> toDTO(pessoaEntity))
                 .collect(Collectors.toList());
-    }
-
-    public Integer getIdLoggedUser() {
-        return Integer.parseInt(SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString());
-    }
-
-    public PessoaDTO getLoggedUser() throws BusinessException {
-        return toDTO(findById(getIdLoggedUser()));
     }
 
     public PessoaEntity findById(Integer idPessoa) throws BusinessException {

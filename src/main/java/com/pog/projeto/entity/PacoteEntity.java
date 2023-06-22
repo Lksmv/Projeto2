@@ -59,16 +59,7 @@ public class PacoteEntity {
             inverseJoinColumns = @JoinColumn(name = "ID_PESSOA")
     )
     private Set<PessoaEntity> pessoas;
-
-    @JsonIgnore
-    @ManyToMany(fetch = FetchType.LAZY)
-    @JoinTable(
-            name = "PACOTE_RESTAURANTE",
-            joinColumns = @JoinColumn(name = "ID_PACOTE"),
-            inverseJoinColumns = @JoinColumn(name = "ID_RESTAURANTE")
-    )
-    private Set<RestauranteEntity> restauranteEntities;
-
+    
     @JsonIgnore
     @ManyToMany(fetch = FetchType.LAZY)
     @JoinTable(
