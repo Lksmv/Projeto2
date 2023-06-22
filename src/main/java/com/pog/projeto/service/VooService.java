@@ -12,6 +12,7 @@ import com.pog.projeto.repository.VooRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestParam;
 
 import java.time.Instant;
 import java.time.LocalDateTime;
@@ -37,13 +38,13 @@ public class VooService {
         vooRepository.delete(entity);
     }
 
-    public List<VooDTO> findVoo(VooFindDTO vooFindDTO) {
+    public List<VooDTO> findVoo(Instant datai, String origem, String destino) {
         ZoneId zone = ZoneId.systemDefault();
-        ZonedDateTime zonedDateTime = vooFindDTO.getData().atZone(zone);
+        ZonedDateTime zonedDateTime = datai.atZone(zone);
         LocalDateTime data = zonedDateTime.toLocalDateTime();
         LocalDateTime dataInicio = LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 0, 0, 0);
         LocalDateTime dataFinal = LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 23, 59, 59);
-        List<VooEntity> vooEntities = vooRepository.findVooEntitiesByDataPartidaBetweenAndOrigemAndDestino(dataInicio, dataFinal, vooFindDTO.getOrigem(), vooFindDTO.getDestino());
+        List<VooEntity> vooEntities = vooRepository.findVooEntitiesByDataPartidaBetweenAndOrigemAndDestino(dataInicio, dataFinal, origem, destino);
         return vooEntities.stream()
                 .map(this::toDTO)
                 .collect(Collectors.toList());
