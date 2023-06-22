@@ -31,7 +31,7 @@ public class PessoaController {
         return new ResponseEntity<>(pessoaService.list(), HttpStatus.OK);
     }
 
-    @GetMapping
+    @GetMapping("/get-logged-user")
     public ResponseEntity<PessoaDTO> getUsuarioLogado() {
         return new ResponseEntity<>(pessoaService.getUsuarioLogado(), HttpStatus.OK);
     }
