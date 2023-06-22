@@ -19,6 +19,7 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.time.ZonedDateTime;
 import java.util.List;
+import java.util.Random;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -39,17 +40,34 @@ public class VooService {
     }
 
     public List<VooDTO> findVoo(Instant datai, String origem, String destino) {
+        int[] vetor = {389, 523, 456, 597,
+                434, 601, 362, 618, 521,
+                589, 371, 490, 508, 384,
+                601, 544, 570, 416, 612,
+                493, 488, 380, 547, 451,
+                620, 405, 474, 425, 611,
+                529, 605, 548, 539, 555,
+                591, 613, 625, 470, 506,
+                605, 489, 449, 462, 412,
+                504, 600, 575, 586, 532,
+                501, 458, 490};
+        Random random = new Random();
+        int indiceAleatorio = random.nextInt(vetor.length);
         ZoneId zone = ZoneId.systemDefault();
         ZonedDateTime zonedDateTime = datai.atZone(zone);
         LocalDateTime data = zonedDateTime.toLocalDateTime();
         LocalDateTime dataInicio = LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 0, 0, 0);
         LocalDateTime dataFinal = LocalDateTime.of(data.getYear(), data.getMonth(), data.getDayOfMonth(), 23, 59, 59);
         List<VooEntity> vooEntities = vooRepository.findVooEntitiesByDataPartidaBetweenAndOrigemAndDestino(dataInicio, dataFinal, origem, destino);
-        for(VooEntity voo: vooEntities){
+        for (VooEntity voo : vooEntities) {
             voo.setCompanhiaAerea(voo.getCompanhiaAerea().toUpperCase());
-//            voo.setValor();
-            if(voo.getCompanhiaAerea()=="LATAM"){
+                voo.setValor((double) vetor[indiceAleatorio]);
+            if (voo.getCompanhiaAerea() == "LATAM") {
                 voo.setCompanhiaAerea("TAM");
+            } else if (voo.getCompanhiaAerea() == "AZUL" || voo.getCompanhiaAerea() == "Azul") {
+                voo.setCompanhiaAerea("AZU");
+            } else if (voo.getCompanhiaAerea() == "AVIANCA" || voo.getCompanhiaAerea() == "Avianca") {
+                voo.setCompanhiaAerea("AVA");
             }
         }
         return vooEntities.stream()
