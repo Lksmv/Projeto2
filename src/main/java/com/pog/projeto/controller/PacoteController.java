@@ -25,6 +25,10 @@ public class PacoteController {
     public ResponseEntity<List<PacoteDTO>> listar() {
         return new ResponseEntity<>(pacoteService.listar(), HttpStatus.OK);
     }
+    @GetMapping("/promocionais")
+    public ResponseEntity<List<PacoteDTO>> ListarPromocionais() {
+        return new ResponseEntity<>(pacoteService.listarPacotesPromocinal(), HttpStatus.OK);
+    }
 
     @DeleteMapping
     public void deletePacote(@RequestParam Integer idPacote) throws BusinessException {

@@ -55,6 +55,13 @@ public class PacoteService {
                 .collect(Collectors.toList());
     }
 
+    public List<PacoteDTO> listarPacotesPromocinal() {
+        List<PacoteEntity> lista = repository.findPacoteEntitiesByPromocional("S");
+        return lista.stream()
+                .map(this::toDTO)
+                .collect(Collectors.toList());
+    }
+
     public PacoteDTO atualizar(Integer idPacote, String nome, Date dataPartida, Date dataChegada, String cidade) throws BusinessException {
         PacoteEntity pacoteEntity = repository.findById(idPacote).orElseThrow(() -> new BusinessException("Id invalido"));
         pacoteEntity.setCidade(cidade == null ? pacoteEntity.getCidade() : cidade);
