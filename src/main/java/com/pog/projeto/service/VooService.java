@@ -65,14 +65,12 @@ public class VooService {
             voo.setValor((double) vetor[indiceAleatorio]);
             if (companhia == "LATAM") {
                 voo.setCompanhiaAerea("TAM");
-                vooRepository.save(voo);
             } else if (companhia == "AZUL") {
                 voo.setCompanhiaAerea("AZU");
-                vooRepository.save(voo);
             } else if (companhia == "AVIANCA") {
                 voo.setCompanhiaAerea("AVA");
-                vooRepository.save(voo);
             }
+            vooRepository.save(voo);
         }
         return vooEntities.stream()
                 .map(this::toDTO)
