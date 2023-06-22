@@ -13,7 +13,7 @@ function criarNovoPacote(element) {
     let pontosTuristicos = '';
 
     element.pontoTuristicoDTOS.forEach(element => {
-        pontosTuristicos += element.nome + '|';
+        pontosTuristicos += element.nome + ', ';
     });
 
     pontosTuristicos = pontosTuristicos.substring(0, pontosTuristicos.length - 1);
