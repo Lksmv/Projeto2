@@ -2,6 +2,7 @@ package com.pog.projeto.service;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.pog.projeto.dtos.*;
+import com.pog.projeto.entity.PacoteEntity;
 import com.pog.projeto.entity.PessoaEntity;
 import com.pog.projeto.entity.PontoTuristicoEntity;
 import com.pog.projeto.exception.BusinessException;
@@ -16,6 +17,7 @@ import org.springframework.stereotype.Service;
 import javax.persistence.Column;
 import java.util.Collections;
 import java.util.List;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
@@ -64,6 +66,16 @@ public class PessoaService {
         }
         PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(idPessoa)).get();
         pessoaEntity.setEmail(email);
+        pessoaRepository.save(pessoaEntity);
+    }
+
+
+    public void addPacote(Integer idPacote) throws BusinessException {
+        String idPessoa = SecurityContextHolder.getContext().getAuthentication().getPrincipal().toString();
+        PessoaEntity pessoaEntity = pessoaRepository.findById(Integer.parseInt(idPessoa)).get();
+        Set<PacoteEntity> pacoteEntitySet = pessoaEntity.getPacoteEntities();
+        pacoteEntitySet.add(pacoteService.getEntityById(idPacote));
+        pessoaEntity.setPacoteEntities(pacoteEntitySet);
         pessoaRepository.save(pessoaEntity);
     }
 

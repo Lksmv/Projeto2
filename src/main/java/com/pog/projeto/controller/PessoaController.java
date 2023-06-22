@@ -48,6 +48,12 @@ public class PessoaController {
         ResponseEntity.ok();
     }
 
+    @PutMapping("/add-pacote")
+    public void updateSenha(@RequestParam Integer idPacote) throws BusinessException {
+        pessoaService.addPacote(idPacote);
+        ResponseEntity.ok();
+    }
+
     @PutMapping("/update-email")
     public void updateEmail(@RequestParam String email) throws BusinessException {
         pessoaService.updateEmail(email);
